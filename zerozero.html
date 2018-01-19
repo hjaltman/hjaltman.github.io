@@ -1,0 +1,430 @@
+<html>
+<head>
+<title>No, seriously, 0^0=1</title>
+</head>
+<body>
+<h1>No, seriously, 0<sup>0</sup>=1</h1>
+
+<p>by <a href="http://www-personal.umich.edu/~haltman/">Harry Altman</a></p>
+
+<p>Lately I seem to have encountered a large number of arguments on the internet
+over whether or not 0<sup>0</sup>=1.  I'm getting pretty tired of this so my
+goal here is to address this issue comprehensively so that maybe a few of these
+arguments might actually end with something getting resolved.  As you've
+probably figured out by now, I claim that 0<sup>0</sup>=1.</p>
+
+<p>Well, OK, here's the thing: The arguments why 0<sup>0</sup> should be 1 have
+been stated in many places.  But so have the arguments why 0<sup>0</sup> should
+be undefined, or is an "indeterminate form".  I could state lots of reasons why
+0<sup>0</sup> should be 1... but this probably wouldn't actually convince anyone
+who insists that it isn't.  Hence what I'm actually going to spend most of the
+time doing here is rebutting the claims that it's undefined or an "indeterminate
+form".  Indeed, I will introduce the arguments that 0<sup>0</sup> should be 1
+only when it becomes necessary for one particular argument I want to make that
+depends on understanding them.  If I hadn't needed to introduce them for that,
+I'd probably just say, "Once I've shown that the claimed reasons why it should
+be undefined or an 'indeterminate form' are wrong, hopefully everyone can then
+see for themselves why it should be 1."</p>
+
+<p>I'm also going to belabor my points quite a bit, for obvious reasons.</p>
+ 
+<p>So first off, for those who are new to this, let's be absolutely clear on
+this argument is about:</p>
+
+<h2>Yes, 0<sup>0</sup> is whatever we define it to be</h2>
+
+<p>But that doesn't make it arbitrary.  Yeah, we <i>could</i> define it to be
+whatever we want, but the fact is that some definitions are better than others.
+Sometimes there is no good definition and the best thing to do is to leave
+something undefined (as with, e.g., 0/0).  Hence my claim here is not that I can
+mathematically prove that 0<sup>0</sup>=1 or anything like that, just that
+<ol>
+<li>This is the best definition</li>
+<li>This is a good definition (i.e. it would not be better to leave it
+undefined)</li>
+</ol></p>
+
+<p>OK.  With that out of the way, let me begin on the first misconception:</p>
+
+<h2>It's not an "indeterminate form", because there's no such thing</h2>
+
+<p>No, 0/0 isn't one either.  (I'll stick to the 0/0 example for a while to make
+things simpler.)</p>
+
+<p>"Bullshit!" you cry.  "I have often made use of the notion of 'indeterminate
+form', getting correct results thereby, whereas, had I not known of
+indeterminate forms, I would not have!  I defy you to explain to me, if there is
+no such thing as an indeterminate form, how is it that as x&rarr;1,
+(x&sup2;-1)/(x-1)&rarr;2, while as x&rarr;2, (x&sup2;-4)/(x-2)&rarr;4?  Surely
+you would not claim that both these limits are actually undefined?"</p>
+
+<p>No, I would most certainly not make that claim.  Of course those limits are
+as you claim.  But this does not require any notion of "indeterminate form" to
+explain.  I don't doubt that you've gotten many correct results by using this
+notion, but that doesn't mean that the notion is actually correct.  Whoever told
+you about indeterminate forms had a few things mixed up.</p>
+
+<p>The problem is, you are conflating the value of a function <i>at</i> a point
+with the behavior of the function <i>near</i> the point.  The two need not be
+related.  In nice cases, when things are continuous or almost so, they are.  But
+in general they need not be -- otherwise, we wouldn't need to talk about
+continuity in the first place!</p>
+
+<p>Let's be a bit more explicit.  Certainly you learned that
+lim<sub>x&rarr;c</sub>(f(x)+g(x)) =
+lim<sub>x&rarr;c</sub>f(x)+lim<sub>x&rarr;c</sub>g(x), and similarly that 
+lim<sub>x&rarr;c</sub>(f(x)-g(x)) =
+lim<sub>x&rarr;c</sub>f(x)-lim<sub>x&rarr;c</sub>g(x), and
+lim<sub>x&rarr;c</sub>(f(x)&middot;g(x)) =
+lim<sub>x&rarr;c</sub>f(x)&middot;lim<sub>x&rarr;c</sub>g(x).  What this is
+really saying, fundamentally, is that <i>addition, subtraction, and
+multiplication are all continuous</i>.</p>
+
+<p>You may not be used to thinking of addition, subtraction, multiplication,
+division, and exponentiation as functions as such, but they certainly are --
+they're functions of two arguments, and that means we can talk about their
+continuity.  s(x,y)=x+y; d(x,y)=x-y; p(x,y)=xy; q(x,y)=x/y;
+e(x,y)=x<sup>y</sup>.  Pretty straightforward, no?</p>
+
+<p>Addition, subtraction, and multiplication are defined for all real numbers
+and are always continuous.  Thus there are no exceptions to the limit laws
+stated above.  Division is more of a problem, and is where people start
+insisting that while 1/0 just "undefined", 0/0 is an "indeterminate form".</p>
+
+<p>"Yeah," you say, "with good reason!  Say we have functions f and g such that,
+as x&rarr;c, f&rarr;1 and g&rarr;0.  Then as x&rarr;c, the limit of f/g is
+<i>undefined</i>.  Hence 1/0 is undefined.  But if instead f&rarr;0 and g&rarr;0
+as well, then the limit of f/g could be anything (or nothing).  Hence 0/0 is
+<i>indeterminate</i>."</p>
+
+<p>Right, so, what's going on here is based on a real distinction.  Division (or
+the function "q" above) is different around the points (1,0) and (0,0).  But
+this distinction has nothing to do with the value (or lack thereof) of 1/0 or
+0/0.  The above deals with <i>limits</i>, what happens as you approach (1,0) and
+(0,0); nowhere does what happen at the points themselves comes into play.  1/0
+and 0/0 are themselves both undefined; there's no sensible way to define them.
+A function is either defined at a point, or it isn't.  Well, or perhaps it
+hasn't been defined there yet, but there is a sensible way to extend it to
+include that point.  But "indeterminate" as distinct from "undefined" is not an
+actual option.</p>
+
+<p>So if as x&rarr;c, f(x)&rarr;a and g(x)&rarr;b, where b&ne;0, then
+lim<sub>x&rarr;c</sub>(f(x)/g(x))=a/b -- division is continuous away from points
+of the form (a,0).  It isn't even defined at those points, actually, so it is
+continuous everywhere that it is defined.  Now you begin to see why you were
+told that "0/0 is an indeterminate form"?  Rather than explain that, if b=0,
+this doesn't work and you need to be careful, you were told that it works in
+general.  And that 1/0 is undefined (correct), and thus if f(x)&rarr;1 and
+g(x)&rarr;0 then f(x)/g(x) is undefined (true, but not because 1/0 is undefined;
+this statement deals with the behavior near (1,0) rather than at (1,0)).  Which
+leaves whoever told you this in the sticky situation of having to explain the
+case of when f(x)&rarr;0 and g(x)&rarr;0, because they'd told you that this
+should be 0/0.  And 0/0 is undefined, but in fact that limit might not be
+undefined.  The right thing to do here would be to back up, admit that claiming
+it works in general was an incorrect simplification, and that the value at a
+point is not the same thing as the behavior near the point.  But instead we've
+got a tradition of telling people that 0/0 is some special thing called
+"indeterminate" to patch over this mistake.</p>
+
+<p>In short, <b>indeterminates are a lie we tell students to keep them from
+tripping over themselves, because it's easier than explaining what's actually
+going on correctly</b>.</p>
+
+<p>So I think I've now well established that there's no such thing as an
+indeterminate.  All the above applies to 0<sup>0</sup> as well.  If, as
+x&rarr;c, f(x)&rarr;0 and g(x)&rarr;0, this isn't enough information to
+determine lim<sub>x&rarr;c</sub>f(x)<sup>g(x)</sup>; based just on that, it
+could be anything at all.  But this is a statement about how exponentiation
+behaves <i>near</i> (0,0), not <i>at</i> it.</p>
+
+<h2>Finally, that's done.  Now for a better (but still wrong) objection.</h2>
+
+<p>OK.  So now that we have firmly established that there is no such thing is an
+indeterminate, we are still left with the very real problem of the behavior of
+the function e(x,y)=x<sup>y</sup> near the point (0,0).<a href="#ft1"
+name="back1"><sup>[1]</sup></a>You can indeed get any limit as you approach this point along a
+curve; that's why it got called "indeterminate" in the first place.  Which means
+that no matter how we define 0<sup>0</sup>, x<sup>y</sup> is not going to be
+continuous at (0,0).  It is continuous everywhere else, but it won't be there.
+And if it's not continuous, it certainly won't be differentiable or analytic or
+anything!  Thus, the argument goes, we should leave it undefined, because if a
+function cannot be extended continuously to a point, it should be left undefined
+there (and this is indeed what we usually do).</p>
+
+<p>My response to this is as follows:  Yes, ordinarily we leave functions
+undefined at points where there is no way to define it so as to make the
+function continuous.  However, this is because in most such situations, we lack
+any particular reason to pick a value for that point, and the ability to extend
+it continuously would supply the only reason to define it there.  In this case,
+we do lack that particular reason, but we do have many other reasons to define
+0<sup>0</sup>=1.  That is to say, your argument shows the failure of one
+potential reason to define 0<sup>0</sup>=1, but it does not show a positive
+reason to not define 0<sup>0</sup>=1, nor does it address the many other
+reasons 0<sup>0</sup>=1.</p>
+
+<p>Or to put it another way, the exponentiation function is simply naturally
+discontinuous at (0,0); discontinuous functions do come up in mathematics, after
+all!  And this just happens to be one of them.  To be discontinuous at just one
+point is unusual, because we prefer to smooth things out when possible, but here
+we can't smooth it out; it happens and it's not seriously problematic.</p>
+
+<p>There's actually a further, and in my mind rather more convincing, reason
+that this argument is wrong -- though it's essentially an expansion of the
+immediately preceding paragraph -- but to explain it properly requires first
+going over the arguments that 0<sup>0</sup>=1.  (If you're already well familiar
+with them, go ahead and skip the next section.)</p>
+
+<h2>"Fine then, so why do you claim 0<sup>0</sup>=1?"</h2>
+
+<p>Let's forget all about continuity for the time being and only consider
+whole-number (nonnegative integer) exponents.  Then surely, 0<sup>0</sup>=1
+because x<sup>0</sup>=1 for any x.  Simple as that, right?</p>
+
+<p>"Hell no I'm not buying that!" you say.  "I agree this is true when x&ne;0,
+but you can't just claim that this obviously generalizes to when x=0; that's
+exactly what's under dispute!  You're begging the question!  Anyway, even
+ignoring continuity considerations, I disagree; x<sup>0</sup> is always 1
+because x<sup>1</sup> is x, so x<sup>0</sup> has to be x<sup>1</sup>/x=x/x=1;
+but that doesn't work when x=0, because you can't divide by 0."</p>
+
+<p>Fair enough; I was trying to slip one by you there.  I don't suppose you'd
+accept that 0<sup>0</sup> has to be 1 in order to make the function
+f(x)=x<sup>0</sup> continuous?</p>
+
+<p>"No, you explicitly told me to ignore all considerations of continuity for
+now."</p>
+
+<p>Good, just checking you're paying attention.  In any case, I'd best get
+around to addressing your argument that 0<sup>0</sup> shouldn't be 1 because you
+can't divide by 0.</p>
+
+<p>The mistake here is that you're using a starting-from-1 way of thinking
+rather than a starting-from-0 way of thinking.  Mathematicians, like
+programmers, prefer to start from 0 when possible.  x<sup>0</sup> isn't 1
+because it's x<sup>1</sup>/x, working backwards from the base case;
+x<sup>0</sup> <i>is</i> the base case.  x<sup>0</sup> is 1 because it's a
+special case of an empty product, the product of no numbers, which is always 1
+-- the same reason that 0! is 1.</p>
+
+<p>Mathematicians work with multiplication in very general settings, not just
+multiplication of numbers.  And whenever we have multiplication, we can define
+powers, as long as some basic requirements are satisfied (if x(xx) is not the
+same as (xx)x, you have a problem defining x&sup3;).  And the way we do this is
+via the recursion x<sup>0</sup>=1, x<sup>n+1</sup>=x<sup>n</sup>x.  At least, if
+there is a "1" in this setting.  If not, well, then we do have to use
+x<sup>1</sup>=1 as our base case.  But that's only because we were prevented
+from using 0; it doesn't mean that the 0 case is derived by working backwards.
+Rather, the start-from-1 definition is simply the only way of generalizing the
+start-from-0 definition to settings that don't have a 1.</p>
+
+<p>Remember I said that in general, the product of no numbers (or no things) is
+1?  It's because if you multiply x by the product of no things, then you have a
+product consisting solely of x, i.e., you have x.  Thus the product of no things
+has to be 1.  (Similarly, the sum of no things is always 0.)</p>
+
+<p>"Sure, but demanding that 0<sup>0</sup>0<sup>n</sup>=0<sup>n</sup> would work
+just as well with any value of 0<sup>0</sup>, that doesn't force
+0<sup>0</sup>=1."</p>
+
+<p>No, but the more general requirement that 0<sup>0</sup>x=x does, because
+0<sup>0</sup> is still just a special case (like 0!) of the product of no
+things.  If you're taking the product of no things, it can't possibly matter
+what it is that you're taking the product of none of, because you don't have any
+of it to influence the product!</p>
+
+<p>Here's another way of stating the above:<a href="#ft2"
+name="back2"><sup>[2]</sup></a>, consider the function f(n)=ab<sup>n</sup>.
+(Here we will again only consider whole number values of n.)  Then f(n) is how
+much you have after n steps in a process where you start with a and multiply by
+b in each step.  Then regardless of b, f(0) has to be a, since you haven't
+multiplied by any copies of b yet!  This applies even if b=0, and so
+0<sup>0</sup> must be 1.</p>
+
+<p>Let's consider how you'd program this.  If you had to write a function that
+takes a list and returned its product, how would you write it?  (Let's assume
+you don't have anything to work with beyond the minimum required.)  You'd write
+something like the following pseudocode (except possibly recursively):</p>
+<pre>
+product = 1
+while(list is not empty)
+	product = product * (next element of list)
+return product
+</pre>
+<p>So if fed an empty list, this naturally returns 1.  Sure, you could start
+by reading the first element of the list and starting with that, but that would
+be more complicated, and you'd have a problem if the list were empty.  So much
+easier to just start with 1.  Writing it recursively instead, a no-element list,
+not a 1-element list, is the base case.</p>
+
+<p>OK, suppose now you need to write a function to compute x<sup>y</sup> (here
+y is a whole number).  Surely x<sup>y</sup> should return the same output as
+the product of a list of all x's, of length y?  That's what x<sup>y</sup>
+means, after all.  (Which means that for any number x, x<sup>0</sup> must
+return the same thing, since a list of no x's is the same as a list of no y's.
+The value of x<sup>0</sup> simply cannot depend on x.) And once again, though
+you'd write it to work faster than the above pseudocode, you'd still probably
+write it to use y=0, not y=1, as the base case, because it makes things
+simpler.  And so it is in mathematics -- we prefer to start from 0 and use that
+as our base case.</p>
+
+<p>To not have 0<sup>0</sup>=1 would break algebra.  Like I said earlier, we
+consider multiplication in all sorts of systems, often where division is not in
+general possible, but this doesn't change the fact that in those systems we
+still consider x<sup>0</sup> to always be 1, even if x can't be divided by.  To
+not have this -- or more generally, to not have an empty product be 1 -- would
+break many formulae; no longer could you write that
+(1+x)<sup>n</sup>=&Sigma;<sub>0&le;k&le;n</sub>(n choose k)x<sup>k</sup>,
+because what if x=0, or x=-1?  Hell, the very notion that (n choose 0) is always
+1 is another expression of the fact that an empty product is always 1.
+Polynomials would have to be defined with a special 1's place instead of a
+simple x<sup>0</sup>'s place.  And so forth.</p>
+
+<p>The fact is that <i>empty products occur very naturally in a lot of places,
+both algebraic, combinatorial, and otherwise</i> and that the correct
+interpretation of them is always 1.  Sometimes, the null case behaves
+differently from this; but when this happens, it is easy to special-case it, and
+simply say that in that case the product gives you the wrong number.  By
+contrast, having any empty product -- 0<sup>0</sup> or otherwise -- not be 1
+would wreck the vast majority of cases where products <i>do</i> continue to work
+even when they're empty, and require a lot of pointless rewriting.</p>
+
+<p>Above I've talked about the algebraic or recursive situation; let's talk
+about the combinatorial meaning of 0<sup>0</sup>.  The combinatorial meaning of
+x<sup>y</sup> is "the number of functions from a y-element set to an x-element
+set".  (Indeed, for x and y general cardinals<a href="#ft3"
+name="back3"><sup>[3]</sup></a>, this is essentially the definition of
+x<sup>y</sup>.)  Equivalently for finite y, it's the number of ways of making a
+list of length y where there are x choices for each spot.  So x<sup>0</sup> is
+the number of ways of picking a 0-length sequence, with x choices for each spot.
+But that makes x irrelevant; there is precisely 1 empty list, and that's all
+there is to it.  Since you never get around to having to actually choose an
+element for any spot, 0<sup>0</sup> is just as much 1 as any other
+x<sup>0</sup>.  And if you use the function definition above, and use the
+set-theoretical definition of function, you will see that yes, there is indeed
+precisely 1 function from the empty set to the empty set.</p>
+
+<p>Here the general principle is that there is always precisely 1 way of doing
+nothing.  (Like (n choose 0) is always 1 -- how many ways are there to choose 0
+elements from a set of n elements?  Always 1; choose none of them.  This applies
+even when n is 0.)  The above examples have hopefully demonstrated this pretty
+well, but if not... well, get used to it, because not having it would break
+combinatorics.  And yes, that includes not having 0<sup>0</sup> be 1.  (E.g.,
+0<sup>n</sup>=&Sigma;<sub>0&le;k&le;n</sub>(n choose k)(-1)<sup>k</sup> is a
+combinatorial relation as well as an algebraic one.)</p>
+
+<p>Thus, while it's tempting to say that 0<sup>0</sup> should be undefined due
+to a conflict between the rules that x<sup>0</sup>=1 and that 0<sup>x</sup>=0,
+in fact it's easy to see which way this conflict should be resolved due to the
+fact that these aren't "rules" of the same sort.  That x<sup>0</sup>=1 is simply
+part of the definition of exponentiation, true for all x; while the fact that
+0<sup>x</sup>=0 is a consequence of this definition that only follows for
+x&gt;0.  To have 0<sup>0</sup>&ne;0 results in a special case in a "rule", but
+to have 0<sup>0</sup>&ne;1 would require special-casing the actual
+definition.</p>
+
+<p>"Hold on," you say, "I have a slight problem with that last part.  I was
+reading about exponentiation of ordinals<a href="#ft4"
+name="back4"><sup>[4]</sup></a>, and sure enough, they define 0<sup>0</sup>=1,
+no special case there.  However, this results in them needing to make another
+special case in their definition!  Instead of being able to just, when y is a
+limit ordinal, define x<sup>y</sup> to be the supremum of x<sup>z</sup> for
+z&lt;y, they have to make a special case for when x=0, and say in that case
+0<sup>y</sup>=0, instead of 1!  So it's no better off!  If they instead defined
+0<sup>0</sup>=0, this would admittedly be a special case, but then they wouldn't
+need that limit ordinal special case."</p>
+
+<p>This is true, except that if you simply say "limit" instead of "supremum",
+that special case goes away.  So 0<sup>0</sup>=1 doesn't require a special case
+after all.  Also, even if this were a real problem, it would only be a real
+problem for infinite ordinals, and we're mainly concerned with real numbers
+here.</p>
+
+<h2>The better rebuttal</h2>
+
+<p>OK.  Now that I have made my case that x<sup>0</sup>=1 is always the correct
+definition when we're only considering whole number powers, that it's the
+correct definition in the general case, I can return to what I was saying
+above.</p>
+
+<p>First off, let's note that since certainly x<sup>0</sup>=1 is the correct
+definition both for whole numbers, and for other weird things, it would be very
+strange to have this one exception for real numbers.  It would require all sorts
+of special cases -- now no longer "unless x=0" but rather "unless you're dealing
+with real numbers".  Which is just silly, as often what particular system you're
+working with just doesn't matter, and there often may not be a clear boundary
+between dealing with integers and dealing with real numbers.</p>
+
+<p>But on top of that, when we talk about exponentiation with non-integral
+exponents, the <i>entire point</i> is to <i>extend</i> the notion of
+exponentiation with integral exponents!  If we agree that 0<sup>0</sup>=1 is the
+correct definition for whole numbers, then it must also be true for real
+numbers, because the latter is an extension of the former, and if it doesn't
+match up then you haven't done a proper extension!  You can't properly claim to
+have extended exponentiation to the real numbers if you drop a point!  To have
+generalized it to the real numbers, perhaps, but not to have extended it.</p>
+
+<p>The fact is that the law x<sup>0</sup>=1 is just more fundamental than any
+continuity properties of exponentiation, since the latter only comes up when we
+generalize to non-integral exponents.</p>
+
+<p>"But (assuming we have already defined exponentiation for rational exponents)
+how do we describe this generalization, then?  The obvious way would be to say
+'we generalize it so as to make it continuous', but if you insist on properly
+extending it, and keeping 0<sup>0</sup> defined, we can't do that!  I mean, it
+seems like on the one hand you're telling me to extend it continuously, but on
+the other hand, you're telling me to disregard continuity issues."</p>
+
+<p>Well, I'd say we're extending it while making it continuous as possible while
+still keeping it as an actual extension.  If you want to succinctly describe it,
+just be a bit more explicit -- say you're starting from the rational-exponent
+version, and extending it so that it's continuous at the new points (i.e. (x,y)
+for any x and y irrational).  Simple.  And nicely enough, this makes it
+continuous everywhere except (0,0)!</p>
+
+<p>"OK.  One last objection.  Why not have different conventions for different
+contexts?  Like, 0<sup>0</sup>=1 for whole numbers, but 0<sup>0</sup> is
+undefined for real numbers.  Well, OK, you've just argued against that specific
+arrangement, but I don't see why it's such a problem in general."</p>
+
+<p>In general, it isn't; I don't have a problem with the idea of having
+different conventions for different contexts.  We do that all the time in
+mathematics.  However, having different conventions for different contexts makes
+sense when the different definitions would actually yield disagreeing values; it
+doesn't make sense when, at the point of "disagreement", one definition would
+yield a value and the other fails to define it at all.  In that case, you
+should just go with the more general one and define it there.  Until someone
+can show me a context where 0<sup>0</sup> should be defined and unequal to 1,
+rather than not defined, I don't consider this a very good argument.</p>
+
+<p><b>Thus, I claim, the unique sensible definition for 0<sup>0</sup> is
+1.</b></p>
+
+<h2>Footnotes</h2>
+
+<p><a href="#back1" name="ft1"><sup>[1]</sup></a>Note: Here I am considering
+x<sup>y</sup> only for x&ge;0.  Otherwise, if we want to allow arbitrary real y,
+there are some problems defining it, unless you want to go picking principal
+values.  Note also, of course, that we cannot sensibly define 0<sup>y</sup> when
+y is negative.</p>
+
+<p><a href="#back2" name="ft2"><sup>[2]</sup></a>I am copying this restatement
+from <a href =
+"http://betterexplained.com/articles/understanding-exponents-why-does-00-1/">
+this page</a> at betterexplained.com.</p>
+
+<p><a href="#back3" name="ft3"><sup>[3]</sup></a>Cardinals are the system of
+numbers used to measure the size of general sets; the size of a set is also
+called its "cardinality".  (Actually, cardinality is a pretty crude measure of
+the "size" of a set; there are often better measures to use in many situations.
+However, the advantage of cardinality is that it applies universally.)  The
+finite cardinals are simply the whole numbers, and work exactly as the whole
+numbers always do, as a finite set has some whole number of elements.  But there
+are also infinite cardinals, which work somewhat differently, though the same
+definitions can often be used in dealing with them.</p>
+
+<p><a href="#back4" name="ft4"><sup>[4]</sup></a>Another commonly-used system of
+numbers that allows for infinities, different from cardinals.  Again, the finite
+ones are just the whole numbers and work the same way, but infinite ordinals
+work rather differently from infinite cardinals.</p>
+</body>
+</html>

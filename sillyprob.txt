@@ -1,0 +1,132 @@
+So the other day I encountered on the internet the following simple open
+problem I hadn't heard of before: Is there a finite coloring of the positive
+integers such that for all (m,n)!=(2,2), m+n gets a different color from m*n?
+The expected answer, of course, is no.  (You could also do it as whole numbers
+if you add in an exception for (0,0) as well.  Of course then this just means
+that 0 gets its own color and the rest is as before.)
+
+Anyway I thought this was neat and pointed this out to Josh Zelinsky with no
+intention of actually thinking about this at all because I mean really, what
+would I do with it?  I don't know anything about this sort of stuff.  (Also, I
+have actual work to do.)  But then he suggested: Obviously proving any finite
+coloring won't work would be too hard, but what if we just considered the
+greedy coloring (colors are the positive integers, each number gets the
+smallest color that doesn't violate the constraints from the previous one)?
+Could you at least show that ends up using infinitely many colors?
+
+Well, after a bit of thinking and a bit of computation, I'm pretty sure the
+answer is "There is no way I have the time or knowledge to tackle this right
+now".  But before I really stop thinking about this and get back to stuff I
+actually need to be doing, let me write down here what I have figured out so
+far about this greedy coloring.
+
+Notation: f(n) will mean the color of n.  I'll also just say "n gets m" to mean
+f(n)=m.  I'm going to start my colors at 1 rather than 0, because that's what
+Josh did and so that's what I've been doing and I don't feel like changing it.
+(It also means that if you use the starting at 0 variant, and start your colors
+at 0 too, then 0 gets 0, and the rest is the same as without either sort of
+zero.  However, I'll be excluding 0 as it's just inconvenient.)
+
+Here then are the facts!
+
+Firstly, unless n is 0 or 4 mod 16, f(n) is easily determined.  If n is odd,
+f(n)=1, and conversely, if n is even, f(n)>=2.  If n is 2 mod 4, or 12 mod
+16, f(n) is 2.  If n is 8 mod 16, f(n) is 3; more generally, if n is divisible
+by 8, f(n)>=3.  It's only if n is 0 or 4 mod 16 that f(n) varies (and no,
+these do not seem to be periodic wrt some higher modulus -- these ones actually
+get bigger, after all!).
+
+If n is 4 mod 16, then f(n)>=2, as noted above; if n is 0 mod 16, then f(n)>=3,
+as also noted above.  Furthermore, if n is divisible by 128, then f(n)>=4.
+Also, if n=16 (mod 32) and f(n)=3, then n=48 (mod 64).  If n=4 (mod 16) and
+f(n)=2, then n=4 (mod 32) and n has no prime factors that are 3 mod 4.
+
+I'll refer to the congruence classes mod 16 as "columns".  The 4s column
+depends only on previous values of the 4s column (it can actually only "see"
+the 4s column, the odd columns, which are always 1, and the 12s column, which
+is always 2), while the 0s column depends on the previous values of both
+nontrivial columns (it can see all the columns).
+
+So you can see what I'm talking about, here's the columns visually
+(top row in hex, * means it varies, starting at 1 instead of 0 for obvious
+reasons)
+
+123456789ABCDEF0
+121*12131212121*
+
+That * beneath the 4 is at least a 2.  It is at least a 3 if the number is 20
+mod 32, or has any prime factors that are 3 mod 4.
+That * beneath the 0 is at least a 3.  It is at least a 4 if the number is
+divisible by 128, and is exactly 4 if the number is 16 mod 64.  It is at least
+5 if the number is divisible by 1024, or is exactly divisible by 512 and has
+any prime factors that are 3 mod 4.
+
+...that's about as far as pure reasoning gets me.  But I wrote a simple C
+program to compute these numbers and computed up to 2^25.  (Or, I suppose,
+2^25+3, seeing as I can easily fill those in.  Of course the program can go
+higher, but 2^25 was relatively quick while 2^26 was turning out not to be, so
+I stopped there.)  So using this, let's look at when values of f first appear!
+
+1 first occurs at 1.
+2 at 2.
+3 at 8.
+4 at 16.
+5 at 64.
+6 at 1024.
+7 at 4080.
+8 at 32000.
+9 at 9625536.
+10 does not occur within the range of my computation.
+
+What's going on here?  No idea!  But we can state the conclusion: The values of
+f really do grow slowly.  Josh pointed out that f(n)=o(n^eps); in fact, we can
+see that f(n)=O(log n), since if we let g(k) be the first number to be colored
+k, then for k>=3, we must have g(k)>=2^(k-1)+4.  But from the numbers it looks
+like it's much smaller even than that.  In any case, getting lower bounds?
+Yikes.
+
+Now you'll notice all the numbers above (save for the initial 1, 2, 8) are 0
+mod 16.  What if we look at the first occurrences in the 4s column?  That gets
+us:
+
+1 does not occur
+2 at 4
+3 at 20
+4 at 36
+5 at 1188
+6 at 22932
+7 at 389844
+8 at 13197780
+9 does not occur within the range of my computation.
+
+Or, these are even slower.  Note, by the way, that if we explicitly restricted
+attention to the 0s column instead, we'd never see 1 or 2, and we'd see 4
+before 3 -- a 4 at 16 and a 3 at 32.  That sort of non-monotonicity can't
+happen in the 4s column due to its limited "vision".  Of course it can't happen
+in the 0s column either past that point so long as the 0s column continues to
+get the actual firsts.
+
+Regarding my note that these are slower, let's actually compare the two lists
+above by merging them.  If we do, the list goes:
+First 1
+First 2
+First 2 in 4s column
+First 3
+First 4
+First 3 in 4s column
+[First 3 in 0s column, if we care]
+First 4 in 4s column
+First 5
+First 6
+First 5 in 4s column
+First 7
+First 6 in 4s column
+First 8
+First 7 in 4s column
+First 9
+First 8 in 4s column
+
+The first few are irregular but starting with the first 6 there's a definite
+pattern evident in the order they mesh together.  Why?  What does this mean?  I
+have no idea!  And now, having written this down, I have no intention of
+thinking about it any further.

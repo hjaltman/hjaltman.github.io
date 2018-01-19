@@ -1,0 +1,15 @@
+#A list of math terms where "co-" has its ordinary English meaning, rather
+#than denoting complementation or dualization.
+cobordant
+cobordism
+coefficient
+cofactor
+cofinal
+coinitial
+collinear
+comaximal
+coordinate
+coplanar
+coprime
+covariance
+covariant

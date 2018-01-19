@@ -1,0 +1,193 @@
+<html>
+<head>
+<title>Jacobsthal's exponentiation may not be natural, but it is
+interesting</title>
+</head>
+<body>
+<h1>Jacobsthal's exponentiation may not be natural, but it is
+interesting</h1>
+
+So!  Let's review ordinal arithmetic.  Ordinals have the successor
+operation; if we transfinitely iterate this, we get ordinal addition.  If we
+transfinitely iterate this, we get ordinal multiplication; and if we
+transfinitely iterate that, we get ordinal exponentiation.  One could keep going
+and get ordinal hyper but hyper has no nice algebraic properties so we won't be
+concerned with it here.<p>
+
+The ordinals also have the operation known as natural addition, denoted &oplus;
+(or sometimes #) which is defined by a different recursion.  It is commutative
+and associative.  Jacobsthal in 1907 defined a new multiplication by
+transfinitely iterating natural addition instead of ordinary addition; I'll call
+this "Jacobsthal multiplication" and denote it &times;, as he did.  He then
+defined an exponentiation by transfinitely iterating &times;, which I'll call
+"Jacobsthal exponentiation", he denoted it a<sup><u>b</u></sup>, but I'll denote
+it a<sup>&times;b</sup> because... well, you'll see.<p>
+
+Finally there is natural multiplication, denoted &otimes; (or sometimes by a
+weird 16-pointed asterisk?), which is defined in terms of &oplus; by a different
+recursion.  It is commutative, associative, and distributes over natural
+addition.  We can, of course, transfinitely iterate this to get yet a third
+notion of exponentiation; I'll call this "super-Jacobsthal exponentiation", and
+denote it a<sup>&otimes;b</sup>.  (Hence why I'm using the notation
+a<sup>&times;b</sup> above -- if I called it a<sup><u>b</u></sup>, I wouldn't
+have a good parallel notation for super-Jacobsthal exponentiation.  In my own
+writing I've been denoting it by a<sup>b</sup> with a bar over the b instead of
+under it, but while that's easy in TeX I can't do that in HTML (unless I'm going
+to start pulling out the Unicode combining characters, and that wouldn't look
+right anyway if the exponent was more than one character long, as it frequently
+will be).)<p>
+
+(And yes, all these operations really are different.  I'll leave finding
+examples to you.)<p>
+
+You could continue on to get additional notions of hyper, but again, this does
+not seem very interesting.<p>
+
+So what algebraic relations do these satisfy?  Of course for the ordinary and
+natural operations these are well-known, but let's do this from scratch
+regardless.  I won't be giving any proofs (most of them are straightforward),
+just sort of heuristic reasons.<p>
+
+I'm going to leave out relations about how 1 and 0 behave as these are all
+obvious and exactly what you expect (unless you expect 1+a=Sa, I guess).  0 and
+1 are never problematic.<p>
+
+<b>Ordinary addition:</b><p>
+
+a+(b+c)=(a+b)+c.  + is just S iterated transfinitely; to start with a and apply
+S b+c many times, is to start with a, apply S b many times, and then apply S c
+many times.<p>
+
+<b>Ordinary multiplication:</b><p>
+
+a(b+c)=ab+ac.  &middot; is just + iterated transfinitely; to add together b+c
+copies of a, is to add together b copies of a, and add to that the sum of c
+copies of a.  Note this requires the associativity of ordinary addition, and the
+fact that ordinary addition -- being a transfinite iteration -- is continuous on
+the right.<p>
+
+a(bc)=(ab)c.  To add together bc copies of a, is to add together b copies of a,
+and then add together c copies of the result.  Note this requires
+a(b+c)=ab+ac.<p>
+
+<b>Ordinary exponentiation:</b><p>
+
+a<sup>b+c</sup>=a<sup>b</sup>a<sup>c</sup>.  To multiply together b+c copies of
+a, is to multiply together b copies of a, and multiply that by the product of c
+copies of a.  Note this requires the associativity of ordinary
+multiplication.<p>
+
+a<sup>bc</sup>=(a<sup>b</sup>)<sup>c</sup>.  To multiply together bc copies of
+a, is to multiply together b copies of a, and then multiply together c copies of
+the result.  Note this requires a<sup>b+c</sup>=a<sup>b</sup>a<sup>c</sup>.<p>
+
+Again, both these require the fact that ordinary addition and ordinary
+multiplication, being transfinite iterations, are both continuous on the
+right.<p>
+
+OK.  So far so standard.  Now for the next series.<p>
+
+<b>Natural addition:</b><p>
+
+a&oplus;(b&oplus;c)=(a&oplus;b)&oplus;c, a&oplus;b=b&oplus;a.  I'm just going to
+take the properties of natural addition and natural multiplication as given; I'm
+not going to try to explain them.<p>
+
+<b>Jacobsthal multiplication:</b><p>
+
+This is where things get weird.  One might be tempted to write down relations
+about a&times;(b+c) and a&times;(bc) like those above.  However, while &oplus;
+is associative, and even commutative, it is not continuous on the right, which
+prevents such things from working.<p>
+
+That's not the weird part.  The weird part is that, as Jacobsthal discovered, we
+can get a relation involving this multiplication anyway:<br>
+<b>a&times;(b&oplus;c)=(a&times;b)&oplus;(a&times;c)</b><p>
+
+Yes, it's algebraically nice -- but what does it <i>mean</i>?  Why should this
+be true?  What does it mean to add something together b&oplus;c times?
+Unfortunately, I can give no really satisfying answer.  Jacobsthal proved it by
+figuring out how to compute &times; on Cantor normal forms; this is pretty
+easy, and once you have that, it's a straightforward verification.  But it
+seems very much like a mathematical coincidence, and that bugs me.  If there's
+a better reason for it, I don't know it.  (Of course, it's been 100 years since
+he discovered this, so there's a good chance this has since been resolved, but
+if there's a good reason it's certainly not obvious.)<p>
+
+Now, once we have this, it is pretty easy to get the relation:<br>
+a&times;(b&times;c)=(a&times;b)&times;c.  What a strange operation to be
+associative!  But it's a straightforward consequence of the relation above.<p>
+
+<b>Jacobsthal exponentiation:</b><p>
+
+Continuing on, Jacobsthal found relations involving his exponentiation.  These
+are straightforward consequences of the above:<p>
+
+a<sup>&times;(b+c)</sup>=a<sup>b</sup>&times;a<sup>c</sup>.  To multiply
+together b+c copies of a, is to multiply together b copies of a, and multiply
+that by the product of c copies of a.<p>
+
+a<sup>&times;(bc)</sup>=(a<sup>&times;b</sup>)<sup>&times;c</sup>. To multiply
+together bc copies of a, is to multiply together b copies of a, and then
+multiply together c copies of the result.  This requires the above relation.<p>
+
+So these are some pretty natural-looking relations... except for the fact that
+the first one, and therefore both of them, relies on the fact that &times; is
+associative!  Notice neither of my heuristic justifications makes any sense if
+&times; is not associative.  And &times; being associative rests on the apparent
+mathematical coincidence of it distributing over natural addition (on one side,
+anyway).  (They also rely on +, &middot;, and &times; all being transfinite
+iterations and therefore continuous on the right, but that's not surprising.)<p>
+
+So.  Let's take a look at the third series.<p>
+
+<b>Natural multiplication</b>:<p>
+
+a&otimes;(b&oplus;c)=(a&otimes;b)&oplus;(a&otimes;c),
+(a&oplus;b)&otimes;c=(a&otimes;c)&oplus;(b&otimes;c),
+a&otimes;(b&otimes;c)=(a&otimes;b)&otimes;c, a&otimes;b=b&otimes;a.  Again, I'm
+just going to take these as givens.<p>
+
+<b>Semi-Jacobsthal exponentiation</b>:<p>
+
+This is where things get even weirder.  Again, it's tempting to try to state a
+relation about a<sup>&otimes;(b+c)</sup> or a<sup>&otimes;(bc)</sup>, but
+because &otimes; is not continuous on the right, this won't work.<p>
+
+But playing around a bit reveals the following surprising relation:<br>
+<b>a<sup>&otimes;(b&oplus;c)</sup> =
+a<sup>&otimes;b</sup>&otimes;a<sup>&otimes;c</sup></b><p>
+
+Once again, algebraically nice, but leaving the question -- why should this be
+true?  What does it mean to multiply a together b&oplus;c times?  Once again, I
+can't give a really satisfying answer.  I proved this by coming up with a rule
+to compute a<sup>&otimes;b</sup> on Cantor normal forms, and then it's a
+straightforward verification.  (I assume this is not original to me, but I was
+not working from anything else; I've only ever seen Jacobsthal's operations in
+that one paper of his, and I've never seen this operation anywhere.)<p>
+
+And not only that, but the earlier surprising coincidence is used in the proof
+of this one!  Not in some sort of induction, because it wasn't done by
+induction, but because Jacobsthal product appears in the rule for computing
+a<sup>&otimes;b</sup> on Cantor normal forms.  (Because &times; is iterated
+natural addition, and when one performs a natural multiplication, the exponents
+of the &omega;'s undergo natural addition.)<p>
+
+Let's continue on.  From this we can then deduce<br>
+a<sup>&otimes;(b&times;c)</sup>=(a<sup>&otimes;b</sup>)<sup>&otimes;c</sup>.
+Yes, that's Jacobsthal multiplication, not ordinary or natural multiplication!
+Because that's what you get when you iterate natural addition.  This relies on
+the above relation (and the continuity of &times; on the right).<p>
+
+So these strange hybrid operations end up having some nice relations... but, it
+would seem, based on two mathematical coincidences.  Two <i>related and very
+similar</i> mathematical coincidences.  One alone would be a bit suspect; two
+would already be suggestive; these practically scream that there must be
+something going on here, some better reason for this that I don't know.<p>
+
+But I've no idea how I might investigate that (other than ask on the internet
+and see if anyone knows -- I'm certainly not going to study it myself).<p>
+
+<a href="index.html">(back to main page)</a>
+</body>
+</html>

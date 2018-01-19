@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>Some questions about Snake</title>
+</head>
+<body>
+<h1><strike>Two</strike> Some questions about Snake</h1>
+
+Let's consider the game of Snake; except instead of playing it on a grid, we're
+going to play it on an arbitrary finite [simple] graph.  We assume the snake
+starts at length 1 -- the game begins by the "computer" (who acts adversarially)
+picking a starting spot for the snake and a starting spot for the fruit.  When
+the snake consumes the fruit (and thereby grows by 1), the computer picks a new
+spot for the fruit, which cannot be somewhere currently covered by the snake.
+We'll say the player wins if the snake covers the whole graph.  If the game goes
+on infinitely, I guess that's a draw, but we'll give it to the computer.<p>
+
+So the general question then is, for which graphs can the player always win?
+(Hence why I said draws go to the computer.)  Now this question is not
+necessarily that concrete; there might not be any nice characterization.  I have
+bunch of notes about necessary conditions and sufficient conditions for this,
+but I'm not going to list them all here.  I do, however, have two specific
+questions about this that I'd like to ask.<p>
+
+(Here are some obvious ones -- if a spanning subgraph of a graph is winnable,
+then so is the whole thing; any cycle is winnable, so so is any graph with a
+Hamilton cycle; in order to be winnable, a graph must have a Hamilton path.  But
+like I said, I'm not going to put all my notes here.)<p>
+
+So -- you'll notice I didn't give a totally formal specification of the rules
+above, and there's a reason for that.  When you formalize the rules, you realize
+there's the question: Should a snake of length 2 be allowed to turn around?  As
+in, move its head to the current location of the tail.  If you write the rules
+in the obvious manner, this is entirely legal, but it seems kind of unintuitive.
+So we can have two variants of the game: The <i>weak</i> game, where this is
+allowed; and the <i>strong</i> game, where it is not.  (Note that you could
+consider graphs with multiple edges, and say that then in the strong game you're
+allowed to turn around if there's a double edge; but I'm restricting to simple
+graphs for reasons you'll see shortly.)<p>
+
+There is at least one graph that is weakly winnable but not strongly winnable,
+namely, a path of length 3.  So, <b>question number one</b>: Are there any other
+such graphs?  I suspect the answer is no but have been unable to prove it.
+Hence the restriction to simple graphs -- if I'm right, then unless the
+"underlying simple graph" is P<sub>3</sub>, adding multiple edges simply won't
+affect anything.  (And it's easy to see how it affects P<sub>3</sub>.)<p>
+
+Here's a second question.  When I initially mentioned this problem to John
+Wiltshire-Gordon, he suggested that whether a graph is winnable or not should
+depend only on its topology.  But this is not so; I have examples of (weakly or
+strongly) winnable graphs that can be subdivided to be made non-winnable.
+However, I have been unable to find an example of a (weakly or strongly)
+non-winnable graph which can be subdivided to be made winnable.  So, <b>question
+number two</b>: If a graph is non-winnable (weakly or strongly), is the same
+true of any subdivision of it?  For this question I don't really have a good
+idea what the answer should be.  My guess would be yes, but I wouldn't be all
+that surprised if someone found a counterexample.<p>
+
+By the way, someone -- I forget who, unfortunately -- suggested that you could
+also play Snake on infinite graphs, with the win condition being that you grow
+arbitrarily large (now it's only a "draw" if the game goes on infinitely but
+your size stays bounded).  But that seems like a pretty different problem, so
+I'm not going to consider that here.<p>
+
+<hr>
+
+UPDATE 1 July 2015:<p>
+
+Above I wrote that the question of which graphs are winnable might be too broad
+to answer.  But actually it's possible -- I won't say likely, but possible --
+that it might have a not-too-complicated answer.<p>
+
+Let's reformulate the question first.  If a graph has a spanning subgraph which
+is winnable, then the graph is winnable.  Hence, rather than focusing on all
+winnable graphs, let's focus just on <i>minimal</i> winnables -- ones where
+deleting any edge renders the graph unwinnable.  (Note: For this section, I'm
+going to assume the strong game unless I say otherwise.)  Characterizing these
+would characterize all winnable graphs, as a graph is winnable iff it contains
+some minimal winnable.<p>
+
+Then so far I've only managed to find a few types of minimal winnable graphs!
+And, more generally, every winnable graph I know of contains one of these as a
+spanning subgraph.  There are of course the trivial ones -- the zero-vertex
+graph, the one-vertex graph, the path P<sub>2</sub>.  But the interesting ones
+are the following:
+<ol>
+<li>For n&ge;3, the cycle C<sub>n</sub>.  (In the weak game, we should restrict
+to n&ge;4, as there C<sub>3</sub> is not minimal.)
+<li>For n&ge;3, two copies of K<sub>n</sub> joined at a vertex.  (In the weak
+game, we should instead say n&ge;2, as n=2 yields the path P<sub>3</sub>.)
+<li>For 1&le;i&le;j&le;k, define &Theta;<sub>i,j,k</sub> to be the graph
+consisting of two vertices and three paths between them, with i, j, and k
+vertices in the interior of the three paths (respectively).  Then
+&Theta;<sub>1,1,k</sub>, &Theta;<sub>1,2,k</sub>, and &Theta;<sub>2,2,k</sub>
+are examples of minimal winnable graphs.
+</ol><p>
+
+So, <b>question number three</b>: Could this possibly be all of them?  It seems
+unlikely, but it might just be possible.  I have in fact verified that these are
+all of them up to 8 vertices, so any counterexample will have to be at least 9
+vertices, unless I've messed up.<p>
+
+Note that a positive answer to this question would also imply a positive answer
+to question two.  It would also imply a positive answer to question one, but
+that's because this proposition essentially just includes that; it isn't a
+nontrivial implication.  I should say, if this is true, I don't expect it to be
+at all easy to prove; it's not actually something I expect at all to solve...<p>
+
+<a href="index.html">(back to main page)</a>
+</body>
+</html>

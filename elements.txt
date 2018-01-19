@@ -1,0 +1,35 @@
+#All the ways of spelling elemental names with elemental symbols
+#Now updated to account for Nihonium, Moscovium, Tennessine, and Oganesson
+CaRbON
+CArBON
+NeON
+SiLiCoN
+SiLiCON
+SILiCoN
+SILiCON
+PHoSPHoRuS
+PHoSPHORuS
+PHOsPHoRuS
+PHOsPHORuS
+PHOSPHoRuS
+PHOSPHORuS
+IrON
+CoPPEr
+COPPEr
+ArSeNiC
+ArSeNIC
+KrYPtON
+SiLvEr
+SILvEr
+TiN
+XeNoN
+XeNON
+BiSmUTh
+BISmUTh
+AsTaTiNe
+TeNNeSSiNe
+TeNNeSSINe
+TeNNEsSiNe
+TeNNEsSINe
+OGaNNeSSON
+OGaNNEsSON

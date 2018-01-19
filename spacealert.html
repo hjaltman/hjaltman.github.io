@@ -1,0 +1,236 @@
+<html>
+<head>
+<title>Minimum and maximum possible scores in Space Alert</title>
+</head>
+<body>
+<h1>Minimum and maximum possible scores in Space Alert</h1>
+by <a href="http://www-personal.umich.edu/~haltman/">Harry Altman</a><p>
+
+<i>Note</I>: In this article I will primarily only be considering <i>Space
+Alert</i> without its expansion, <i>The New Frontier</i>.  This is because I do
+not at present own a copy of <i>The New Frontier</i>.  I do have some
+familiarity with it, and will make some notes on it at the end; however, it
+would be difficult to conduct the same level of detailed analysis without first
+buying a copy.<p>
+
+In this article I would to consider the questions, "What is the lowest possible
+surviving score in a game of Space Alert?" and "What is the highest possible
+score in a game of Space Alert?". (I like to say that dying is -&infin; points,
+but that is not very interesting.)<p>
+
+Let's be clear on the parameters of the problem -- this is Space Alert without
+the expansion.  4 or 5 players may be used. The players are actively trying to
+achieve the lowest/highest score. Any deck of threats may be used, any set of
+trajectories, etc.; we assume we are allowed to rig all the decks (damage tiles,
+etc.) and that the players know in advance everything that will happen. The
+audio track must be one of the 8 normal missions provided.<p>
+
+Some terminology: Let's define the "threat count" of a mission to be the number
+of common threats plus twice the number of serious threats.  (This is in fact
+the term used for it in the <i>New Frontier</i> rulebook.)  This is a useful
+quantity, because serious threats of a given difficulty level are (with a few
+exceptions) worth twice as much as common threats of that same level.
+Furthermore, it is constant across mission types -- it's equal to 3 for the test
+runs, 5 for simulation or advanced simulation (6 with 5 players), 7 for a
+mission (8 with 5 players), and if we include the expansion, it's equal to 8 for
+the easier double-action missions (10 with 5 players), and 10 for the standard
+double-action missions (12 with 5 players). So for our purposes now this
+quantity will always be equal to 7 or 8.<p>
+
+<h2>The maximum problem</h2>
+
+First, the maximum problem; this is the easier one. There's an obvious upper
+bound on the maximum possible score, which is 8*6+21=<b>69</b>. (8 threat count,
+times 6 points for destroying a yellow threat, plus 21 points from the window.)
+69 points is a "perfect game"... but is it actually possible?<p>
+
+Well, after several hours of trying to construct such a scenario, I can report
+that the answer is yes.  What follows is one solution.  Note of course that
+there may well be other solutions that look very different.<p>
+
+We use 5 players and audio track 8.  For the trajectories, we put T3 on blue
+zone, T6 on white zone, T4 on red zone, and T1 internally.  For the threats, we
+have an Overheated Reactor at time T+3, a Psionic Satellite at T+4, a Nebula
+Crab at T+5, a Juggernaut at T+7, and a Scout at T+8.<p>
+
+Finally, the moves.  Players will move in the order Red, Yellow, Green, Blue,
+Purple.<br>
+Turn 1: Red hits C, all other players change decks. (Green, Blue, and Purple are
+delayed.)<br>
+Turn 2: Red changes decks, Yellow hits B, all other players do nothing.<br>
+Turn 3: All players press C. (7 points.)<br>
+Turn 4: All players press C. (7 points.)<br>
+Turn 5: Red uses heroic B (the other side of which shows upper red). Yellow
+presses B. (Overheated Reactors destroyed.) Green moves blueward. Blue changes
+decks. Purple heroically rushes to upper blue. (Psionic Satellite reaches X. All
+players are delayed.)<br>
+Turn 6: All players do nothing.<br>
+Turn 7: Yellow moves redward; all other players press A. (Psionic Satellite
+destroyed; Nebula Crab takes 3 damage. Nebula crab reaches X.)<br>
+Turn 8: Red and Green move redward. Yellow and Purple change decks. Blue presses
+C. (Nebula crab reaches Y.)<br>
+Turn 9: Purple presses C; all other players press A. (Nebula Crab destroyed;
+Juggernaut takes 4 damage. Scout reaches X.)<br>
+Turn 10: Blue changes decks; Purple presses C; all other players press A.
+(Juggernaut destroyed.)<br>
+Turn 11: Red moves blueward; Yellow heroically rushes to lower white; Green
+presses B; Blue presses A; Purple moves redward. (Scout destroyed.)<br>
+Turn 12: All players press C. (7 points.)<p>
+
+I have not listed what the other side of each card does, but it's pretty easy to
+fill these in in a manner consistent with the contents of the deck.
+
+<h2>The minimum problem</h2>
+
+First, let's note some lower bounds.  There's an obvious lower bound of -36, if
+the players take all the penalties and gain no points.  It may seem like this
+should be 7*2-36=-22, because you get 2 points for surviving a white threat;
+however, one must remember that it's possible to survive the mission without
+destroying or surviving every threat, since one only counts as having "survived"
+a threat if it reaches Z.  We can, however, make a lower bound based on this
+idea.<p>
+
+The longest trajectory, T7, is 16 spaces long; a threat needs to advance 15
+spaces to reach Z. If it has speed 3 or more (let's assume everything is
+constant speed for now), it will assuredly reach Z regardless of when it
+appears. If it has speed 2, however, it will have to appear by turn 6 to reach
+Z; and if it has speed 1, it will never reach Z. One can come up with similar
+numbers for the other trajectories; I won't go into details here. Note that
+straight-up "speed 1" threats do not exist -- there are two "speed 1" threats,
+the Man-of-War and the Juggernaut, and both speed up. It's straightforward to
+compute numbers for both of these. (Be careful, the Juggernaut has the odd
+property that it sometimes arrives <i>sooner</i> on longer trajectories.) There
+are no threats that lose speed so these are not a concern.<p>
+
+Let's now analyze the audio tracks.  We'll consider both what happens with only
+4 players and with 5 players -- while having fewer threats may seem better for
+our purposes, let's remember that with 4 players, one can only get -8 points
+from knockouts, not -10.  I will not go through the full analysis here, but
+after a bit of work, we find the following (not necessarily unique) minima for
+points let through:<p>
+Track 1: 10 points (put T7 on red); 12 points with 5 players.<br>
+Track 2: 12 points (put T6 or T7 on blue); 14 points with 5 players.<br>
+Track 3: 6 points (put T7 on blue and T6 on white, with T+6 being the
+Man-of-War); still 6 points with 5 players (put T5 on red).<br>
+Track 4: 10 points (put T7 on blue, with T+6 being the Man-of-War); 12 points
+with 5 players.<br>
+Track 5: 12 points (put T7 on red and T6 on white); still 12 points with 5
+players.<br>
+Track 6: 12 points (put T6 on red); still 12 points with 5 players (put T7 on
+white).<br>
+Track 7: 10 points (put T7 on red and T6 on white); 12 points with 5
+players.<br>
+Track 8: 6 points (put T7 on red and T6 on white, with T+5 being the
+Man-of-War); still 6 points with 5 players (put T5 on blue).<p>
+
+This yields a lower bound of -30 points.  But in fact, we will see that -30 is
+not achievable.  Let's consider -- achieving this requires knocking out all
+players. But there's not too many ways to do that in the base game. Especially
+since the threat that delivers the knockout must either be white, or else knock
+the players out without reaching Z. The only white threats that knock out are
+the Battlebot Uprising and the Commandos (both serious internal). The only
+threats that knock out without reaching Z are the Battlebot Uprising (serious
+internal), the Executioner (serious internal), and the Power System Overload
+(common internal); however, the Executioner and the Power System Overload each
+lack the ability to knock <i>all</i> players out, and so if we are relying on
+one of them to deliver the knockout, we must have both. (Or rather, Executioner
+can knock all players out, but it can't both knock out all players and disable
+both battlebot squads.)<p>
+
+From this we can see that -30 is not achievable with track 8, since its only
+internal threat always reaches Z (meaning it must be white) but is also common,
+incompatible with the above. Track 3 can be ruled out for similar reasons. Thus
+-30 is not achievable. And since the only common threat that knocks out is Power
+System Overload, and it can't knock out all players by itself, one can deduce
+that -29 is not achievable either.<p>
+
+However, it turns out that <b>-28</b> is achievable.  We use 5 players and audio
+track 8.  For the trajectories, we put T5 on blue zone, T6 on white zone, T7 on
+red zone, and T4 internally.  For the threats, we have Hacked Shields (blue) at
+T+3, a Psionic Satellite at T+4, a Man-of-War at T+5, a Frigate at T+7, and a
+Gunship at T+8.  I will not include the execution details here because they are
+mostly fairly obvious -- the gist of it is, pick up the battlebots, fiddle with
+the shields, then get knocked out.  You need 2 shield up on red.  Note also
+that you need exactly 2 shield up on white, which means first you'll have to
+hit B in lower red before filling up the white shield. Don't worry about the
+blue shield; it'll take care of itself.<p>
+
+<h2>Notes on <i>The New Frontier</i></h2>
+
+As noted above, I cannot presently conduct the same level of detailed analysis
+on <i>The New Frontier</i>.  I can, however, make a few notes.
+
+<h3>Notes on the maximum problem</h3>
+
+<i>The New Frontier</i> raises the score for a "perfect game" from 69 to 90 --
+or to 122 for a double-action mission.  It does this in several ways:
+
+<ol>
+<li> The inclusion of red threats; these are worth more points than yellow
+threats.  A common red threat is worth 4 if survived (as opposed to 3 for yellow
+or 2 for white).</li>
+<li> The Data Analyst's basic action; use of this action gives you +1
+point.</li>
+<li> The Data Analyst's advanced action; use of this action allows you to get up
+to 4 extra points.</li>
+<li> This one's not relevant to a perfect game, but it is technically a new way
+to get additional points. By using the Medic's or the Special Ops's advanced
+action against the Seeker, you can avoid being knocked out by it (though your
+battlebots will still be disabled). The Seeker is worth 15 points if destroyed
+instead of the expected 12 to compensate for the knockout effect, meaning you
+normally only get 12 points out of it despite its listed number being higher;
+this allows you to get 14 points out of it (with Special Ops) or 13 points out
+of it (with Medic). Of course, that's still less than you'd get from just
+destroying a serious red threat instead, so as noted, it's not relevant to a
+perfect game.</li>
+</ol>
+
+Thus, the new upper bound is 8*8+25+1=90 for a normal mission, and 12*8+25+1=122
+for a double-action mission.  (Note that we get only 1 point from the Data
+Analyst's basic action, not 2, as we are also using the Data Analyst's advanced
+action.)  It is not at all clear, however, whether scores of 90 or 122 are
+actually achievable.  Analysis of that will have to wait for a later time,
+though.
+
+<h3>Notes on the minimum problem</h3>
+
+What about the minimum?  In the base game, we had an absolute lower bound of -36
+based on getting only penalties; a lower bound of -30 based on analyzing the
+audio tracks, trajectories, and threat speeds; and an actual minimum of -28.
+The expansion affords us several ways we might lower all of these.  Let us
+address them in reverse order.
+
+<ol>
+<li> The Plasmatic Fighter; the Plasmatic Fighter can knock people out, but is
+a white common threat.</li>
+<li> More slow threats; the expansion adds in more threats that have an initial
+speed of 1. If I recall correctly, they all speed up later, but these should
+still be useful for lowering point values, just as the Man-of-War is.  Many are
+yellow or red, but in this context that doesn't matter.</li>
+<li> Calling in threats. Several of the serious red threats call in another
+threat; these threats are only worth the points of a red common threat (4/8)
+instead of a red serious threat (8/16). This is still too many points to be
+helpful for this, but it's worth noting. A called-in threat may not appear until
+quite late, making it easy for it to be neither destroyed nor survived. However
+there is one case that is helpful...</li>
+<li> The Sealed Capsule. The Sealed Capsule is the one red common threat that
+calls in another threat; it is worth no points at all. (Yellow and white threats
+never call in other threats.) This, unlike the ones above, does seem helpful for
+reducing one's score.  Especially because, once again, the called in threat may
+not appear until quite late.</li>
+<li> The Hypernavigator's basic action; the Hypernavigator's basic action can be
+used to have threats move one less space that turn. The application is
+obvious.</li>
+<li> The Hypernavigator's advanced action; this allows the ship to jump to
+hyperspace after turn 10 or 11 instead of 12 (although there is always a "turn
+13", no matter what). The application, once again, is obvious.</li>
+<li>The Medic's advanced action; use of this action costs you 1 point.</li>
+</ol>
+
+So, #1 probably allows us to achieve -30, and #2-#6 probably allows us to
+achieve -36; indeed, they seem like overkill for achieving -36.  Finally, #7
+should allow us to achieve -37.  I have, of course, not checked that -37 is
+actually achievable -- that will have to wait for a later time -- but I
+strongly suspect that it is.
+</body>
+</html>
