@@ -11,5 +11,6 @@ comaximal
 coordinate
 coplanar
 coprime
+coset
 covariance
 covariant
