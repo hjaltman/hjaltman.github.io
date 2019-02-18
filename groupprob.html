@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Are probabilities in groups well-ordered?</title>
+</head>
+<body>
+<h1>Are probabilities in groups well-ordered?</h1>
+
+So, this is speculation without having done my homework first -- I haven't
+really tried to look at the existing literature here.  If you know of any,
+please let me know!  Because perhaps way more is known on this than I know.<p>
+
+Anyway, this is based on combining ideas from two papers: firstly, <a
+href="http://arxiv.org/abs/1411.0848">Commuting Probabilities of Finite
+Groups</a>, by Sean Eberhard (thanks to Juan Arias de Reyna for pointing this
+out to me), and <a href="https://arxiv.org/abs/1102.4353">Word-Induced Measures
+on Compact Groups</a>, by John Wiltshire-Gordon and Gene Kopp.<p>
+
+So, first, let's summarize the first of these papers.  If you have a finite
+group, you can consider the probability that a randomly chosen ordered pair of
+elements from it commutes. You could then consider the set of all probabilities
+obtained this way; this is some set of rational numbers between 0 and 1.<p>
+
+In this paper, Eberhard shows that this set is in fact reverse well-ordered!
+Moreover, its (reverse) order type is either &omega;<sup>&omega;</sup> or
+&omega;<sup>&omega;<sup>2</sup></sup>.  He also shows that all the limit points
+of this set are rational.  (Although I hear it's conjectured that this set is
+actually closed in (0,1]?)<p>
+
+Here's my questions:
+<ol>
+<li>Obvious question: Is it &omega;<sup>&omega;</sup> or is it
+&omega;<sup>&omega;<sup>2</sup></sup>?  (Maybe this has been answered.  Like I
+said, I haven't done my homework on this one.)
+<li>What if we allowed compact groups instead of just finite groups?  Obviously
+this would allow 0 as well; would it allow anything else?  Would it just be the
+closure of the finite case, say?  (So the order type would be either
+&omega;<sup>&omega;</sup>+1 or &omega;<sup>&omega;<sup>2</sup></sup>+1.)  That
+would be nice, certainly!
+<li>The big question: What if we tried using other words?  That is to say: We
+pick a word from some free group F<sub>n</sub>, and consider the probability
+that a randomly chosen n-tuple from G satisfies that word.  Would we still get
+(reverse) well-ordering?  What can be said about the order type and the
+closure?  (And obviously we can try this one with compact groups too.)
+</ol>
+
+It's this third question that's the most interesting to me.  Say our word is
+just "a", in F<sub>1</sub>.  Then obviously for finite groups we just get
+&omega;, or &omega;+1 for compact groups.  But what about other words in
+F<sub>1</sub>?  I.e., counting elements of order dividing some fixed k?  That
+sounds like a good place to start before tackling the general problem.<p>
+
+(Note that another easy case is the F<sub>2</sub> word "ab", which will again
+get you &omega;.  More generally this will work for any word
+a<sub>1</sub>...a<sub>n</sub>&isin;F<sub>n</sub> for n&gt;0, where the
+a<sub>i</sub> are the free generators.  But that's kind of a trivial case.  (I
+suppose an even more trivial case would be n=0, where you get 1 as your order
+type.  But...))<p>
+
+Not something I'm going to work on, though... (of course, maybe someone's
+already done it and I don't know!)<p>
+
+<a href="index.html">(back to main page)</a>
+</body>
+</html>
