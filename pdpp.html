@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>The PDPP model of computation</title>
+</head>
+<body>
+<h1>The PDPP model of computation</h1>
+
+In <a href="https://arxiv.org/abs/1412.6507">this paper</a>, Scott Aaronson,
+Adam Bouland, and several others introduce a model of computation that expands
+the power of quantum computing by also allowing (distinctly unphysical)
+non-collapsing measurements.  They name the complexity class of problems that
+can be solved by this model in polynomial time PDQP.  For simplicity, I'll refer
+to this model as "the PDQP model", even when I'm dicussing questions other than
+what it can solve in polynomial time.<p>
+
+(What does PDQP stand for?  Answer: It's not important, the name only makes
+sense if you know about Aaronson's original motivation for studying it, which I
+don't care about.)<p>
+
+Two theorems they show about this model are:
+<ol>
+<li> SZK &sube; PDQP
+<li> The PDQP model can solve the collision problem in constant time
+</ol><p>
+
+The thing is, neither of these theorems actually uses the quantum nature of the
+PDQP model at all!  We can define an analogous model based on classical model;
+I'll call it the PDPP model, and the complexity class of what it can solve in
+polynomial time as PDPP.  (What does PDPP stand for?  Nothing, it's just named
+by analogy!)<p>
+
+So in the PDPP model, you can do ordinary measurements -- where you sample from
+your probability distribution and then condition on the result -- and unphysical
+"non-collapsing" measurements, where you sample from the probability
+distribution but it magically remains unchanged.  It's a weird model to think
+about, because it requires thinking about two types of probability, one which we
+have to take as being ontologically real (but the other we don't).  We're used
+to thinking about quantum amplitudes this way, but not probabilities!  So it can
+get confusing, but try to keep it straight.<p>
+
+Anyway, as mentioned, since the theorems above don't actually use the quantum
+nature of the PDQP model, only the non-collapsing part, we have
+<ol>
+<li> SZK &sube; PDPP
+<li> The PDPP model can solve the collision problem in constant time
+</ol><p>
+
+Aaronson later wrote <a
+href="https://www.scottaaronson.com/papers/dqpqpoly.pdf">this paper</a>, where
+he showed that PDQP/qpoly = ALL.  Now since by this point I had pointed out to
+him in his blog comments the points above about the PDPP model, he also bothered
+to note there that this also doesn't depend on the quantum part and one
+similarly also has PPDP/rpoly = ALL.  (I actually have an acknowledgement there
+with a link to a comment of mine, heh.)<p>
+
+So, OK.  Lots of stuff about the PDQP model are in fact really just properties
+of the PDPP model.  So let's finally discuss something that doesn't seem to be:
+The complexity of search.<p>
+
+Clasically, search takes time &Theta;(n), with or without randomness.  With a
+quantum computer, it famously takes time &Theta;(n<sup>&frac12;</sup>) instead.
+What about in the PDQP and PDPP models?<p>
+
+Well, in their original paper on the matter, Aaronson et al show it takes time
+at most O(n<sup>1/3</sup>) and at least &Omega;(n<sup>&frac14;</sup>).  I don't
+believe the gap here has since been narrowed, unfortunately.  In any case, their
+search algorithm <i>is</i> fundamentally quantum, based on Grover search, so we
+can't make use of it in the PDPP model.<p>
+
+So what is the complxity of search in the PDPP model?  Well, I don't know.  It
+has to be at least &Omega;(n<sup>&frac14;</sup>), since even in the PDQP model
+it takes at least that long.  How about an upper bound?  Well, I can show that
+it can be done in time O(n<sup>&frac12;</sup>).<p>
+
+I'm going to just describe the algorithm informally.  Say we're searching a set
+S for an element t.  For simplicity, we can imagine that n, the size of S, is a
+perfect square, though obviously it doesn't need to be.  Group the elements of S
+into &radic;n groups of size &radic;n.  Pick one of the groups uniformly at
+random, but don't yet measure which one you picked!  Now, do a brute-force
+search of the group you picked to determine whether it contans t; this takes
+time &Theta;(&radic;n).  We now have a probability distribution over pairs (T,
+[t&isin;T]), where T is the group you picked, and the brackets are the Iverson
+bracket.  Now perform non-collapsing measurements on this distribution (i.e.,
+sample from it) until one gets a pair where [t&isin;T]=1; with high probability,
+this takes O(&radic;n) attempts.  Now one knows which T contains t, so one can
+search for t within T, taking time &Theta;(&radic;n).  This shows how to do
+search in time O(&radic;n) in the PDPP model.<p>
+
+So, can we prove that it's impossible to do better?  Well, unfortunately, I'm
+not really a complexity theorist, so I'm not the best-equipped  to tackle that
+problem.  But I think it's a question worth asking.  (And hopefully someone can
+improve on the Aaronson et al result and nail down the complexity in the PDQP
+model as well.)
+
+<a href="index.html">(back to main page)</a>
+</body>
+</html>
