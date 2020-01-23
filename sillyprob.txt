@@ -1,3 +1,11 @@
+UPDATE: The original problem is now solved; see
+https://annals.math.princeton.edu/wp-content/uploads/Moreira.pdf
+
+However, that does still leave the question of determining the growth rate of g
+below, and of the interleaving question below.
+
+-------------------------------------------------------------------------------
+
 So the other day I encountered on the internet the following simple open
 problem I hadn't heard of before: Is there a finite coloring of the positive
 integers such that for all (m,n)!=(2,2), m+n gets a different color from m*n?
