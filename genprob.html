@@ -1,0 +1,435 @@
+<html>
+<head>
+<title>Equational probabilities in other algebraic structures: What can we rule
+out?</title>
+</head>
+<body>
+<h1>Equational probabilities in algebraic structures: What can we rule
+out?</h1>
+
+I already have a page asking about <a href="groupprob.html">equational
+probabilities in groups</a>.  But recently people have asked me, what about
+Moufang loops?  And what about rings?  So, I thought I'd put together this page
+where I asked the question for a large variety of algebraic structures.<p>
+
+For each of these classes of algebraic structures, I'm going to ask the
+questions, could equational probabilities exhibit a gap, and could they be
+reverse well-ordered?  Note that for most of these that just means equational
+probabilities in the finite case; the compact case doesn't make sense for most
+of these.  So typically I'll only be talking about the finite case, but I'll
+make notes about the compact case when it's defined and relevant.  For each
+class of structures, I'm going to produce a judgment of <b>True</b>,
+<b>Plausible</b>, <b>Plausible?</b>, <b>Plausible??</b>, <b>???</b>, <b>False
+for well-ordering</b>, or <b>False</b>.<p>
+
+Which classes of structures am I including?  That's basically a judgment call.
+But for simplicity I am going to restrict my attention to finite-signature,
+finitely-axiomatized
+<a
+href="https://en.wikipedia.org/wiki/Variety_(universal_algebra)">varieties</a>.
+So, no fields (not a variety), no vector spaces over <b>R</b> (not a finite
+signature), etc.  All ring-like structures will be considered over <b>Z</b>, not
+over a field!  Also, whenever I consider "differential" anything, I'm always
+considering with a single derivation added, not multiple.  Anyway, if you want
+me to add one, you'll have to give me a reason.<p>
+
+Please send any corrections, updates, or additions to <script type="text/javascript">
+document.write("<n \
+uers=\"znvygb:uneel.w.nygzna@tznvy.pbz\" \
+ery=\"absbyybj\">uneel.w.nygzna@tznvy.pbz</n>".replace(/[a-zA-Z]/g,
+function(c)
+{return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26);}));
+</script> (if you can't see that address, that's because it's been obfuscated
+with Javascript to fool spammers).<p>
+
+I should stress that it is very possible that many of these classes have easy
+counterexamples that I've missed!  If you know of them, please send them in!<p>
+
+Finally, some of these terms have multiple inequivalent definitions... in case
+of ambiguity, I'm always using the notions defined on Wikipedia (as of 2 January
+2022).
+
+Anyway, on to the list!
+
+<hr>
+<h2>Group-like structures</h2>
+
+<h3>Groups</h3>
+
+The original question.  A few nontrivial cases (ab=ba, a&sup2;=1, a&sup3;=1 in
+the finite case) are even proven.  This whole page is more or less proceeding
+from the assumption that this is reasonable conjecture for groups, so I
+obviously have to rule this one <b>plausible</b>.
+
+<h3>Abelian groups</h3>
+
+This one is easily prove to be <b>true (including for the compact case)</b>,
+every word in n variables is also a homomorphism (from a power of the group to
+the group), and so its kernel is a subgroup; thus the probabilities we get are
+all of the form 1/n, and our order type can never be larger than &omega;.
+
+It's worth noting here -- for reasons that will become relevant later -- that
+this one is even true even if you allow constants; then you're just dealing with
+cosets rather than subgroups.  It will also be relevant later that it's still
+true if you equip the group with one or more endomorphisms.<p>
+
+<h3>Monoids, commutative monoids</h3>
+
+OK, so if we add additional conditions we can prove it true; what if we start
+relaxing conditions?  Let's start by removing inverses.<p>
+
+Well, removing things makes things easily <b>false</b>.  For a counterexample,
+let's take a finite set S, designate one element as the identity and another as
+the sink, and simply define the sum of any two non-identity elements to be the
+sink.  Our equation can then simply be <b>a+b=c+d</b>; as |S| increases, the
+probability of this being satisfied will approach 1.<p>
+
+This example illustrates an important point -- in order to avoid easy
+counterexamples of this form, <i>structures have to be sink-resistant</i>!
+This usually means having some form of inverses, but not necessarily, as we'll
+see later.
+
+<h3>Moufang loops</h3>
+
+So, instead let's weaken associativity, and look at Moufang loops.  It's hard to
+say, obviously, but I'm going to rule these <b>plausible</b>.  A lot of things
+that are true for groups end up being true for Moufang loops, but for more
+complicated reasons.<p>
+
+For instance, Moufang loops satisfy Lagrange's Theorem, but for complicated
+reasons instead of easy ones.  I consider this a good sign.<p>
+
+I've written more about these <a
+href="https://sniffnoy.dreamwidth.org/562083.html">here</a>.<p>
+
+(Also, I'm <a href="https://mathoverflow.net/questions/409658/do-compact-inverse-property-loops-or-just-compact-moufang-loops-have-bi-invari">
+unclear on whether it's possible to define Haar measure for arbitrary compact
+Moufang loops</a>...)
+
+<h3>Bruck loops, gyrogroups, Bol loops</h3>
+
+At this point we've gotten further away from groups; we no longer even have the
+inverse property.<p>
+
+But... Bruck loops and gyrogroups apparently do still satisfy Lagrange's
+Theorem.  And Bol loops aren't known to, but they also aren't known <i>not</i>
+to, and it is known that the order of an individual element necessarily divides
+the order of the loop.<p>
+
+This is getting onto pretty thin ground here, but I'm going to call these
+<b>plausible?</b>
+
+<h3>Inverse-property loops</h3>
+
+This case, on the other hand, is <b>false</b>; you do need <i>some</i> sort of
+associativity beyond merely the inverse property.<p>
+
+Our equation will be <b>a&sup2;=1</b>; or, if we want it to also work for
+quasigroups rather than just loops, we can instead use <b>a&sup2;b=b</b>.<p>
+
+Basically, we use the well-known construction that turns a group G into a
+twice-as-large Moufang loop M(G,2); if instead of putting in a group G, we put
+in an inverse-property loop L, then the output will again be an inverse-property
+loop.  If we start with, say, the cyclic group C<sub>4</sub>, we can iterate
+this construction to drive the involution fraction closer and closer to 1.<p>
+
+Note that this is a class of structures where we got a definitive false answer
+even though it's sink-resistant.  Sink-resistance is necessary, but by no means
+sufficient.
+
+<h3>Semisymmetric quasigroups, totally symmetric quasigroups, Steiner
+quasigroups</h3>
+
+I don't have counterexamples for these, but I also don't really know anything
+about them.  Judgment: <b>???</b>
+
+<h3>Medial quasigroups</h3>
+
+These ones, though, we can handle... by applying the Bruck-Murdoch-Toyoda
+theorem, we can turn this into the abelian group case, but with a constant and
+two commuting endomorphisms.<p>
+
+Hell, we can even consider the compact case and define Haar measure here -- the
+different choices of abelian group structure will all yield the same Haar
+measure, which will also be invariant under both of our endomorphisms.  So this
+is <b>true (including for the compact case)</b>.
+
+<h3>Heaps</h3>
+
+A heap is just a group that's forgotten its origin, so if groups are judged to
+be <b>plausible</b>, then heaps must also be, since the equations they can
+express are weaker.
+
+<h3>Semiheaps, idempotent semiheaps, generalized heaps</h3>
+
+These structures, on the other hand, fail to be sink-resistant, and so we get an
+answer of <b>false</b>.  We can just reuse our monoid example, and define
+[a,b,c] to be a+b+c; we can then use the equation <b>[a,b,c]=[d,e,f]</b>.  Note
+this example is also commutative.
+
+<h3>Racks, quandles, involutory quandles</h3>
+
+I don't have counterexamples for these, but I also don't know anything about
+them.  My judgment can only be <b>???</b>
+
+<hr>
+<h2>Ring-like structures</h2>
+
+<h3>Rings, rngs, commutative rings, commutative rngs</h3>
+
+I'm going to group these all together because they all seem <b>plausible</b>.
+I've been able to come up with any counterexamples... distributivity over an
+abelian group just makes it really difficult to do much here!  That abelian
+group does so much!<p>
+
+Note of course that it will necessarily be true for any equation that doesn't
+use the multiplication, because then you just have an abelian group with a
+constant.  But those are trivial cases.<p>
+
+Some interesting nontrivial cases where you can easily prove the existence of a
+gap are ab=ba (for rings/rngs, including in the compact case), and a&sup2;=a
+(for commutative rings/rngs, not including the compact case).  But there's also
+so many <i>uninteresting</i> and yet not-quite-trivial cases where you can prove
+a gap for what are, like, stupid reasons; think ab=1 in commutative rings.<p>
+
+Commutative rings, really, feel a bit like fields with their whole thing where a
+polynomial (in any number of variables) is either 0 everywhere or else is zero
+on only a tiny fraction of the domain; yes, obviously general commutative rings
+are a long way from fields, but it still seems like there is <i>enough</i> of
+something like that going on here to make this plausible.
+
+<h3>Semirings, commutative semirings, idempotent semirings, star algebras, Conway semirings</h3>
+
+These, on the other hand, fail to be sink-resistant, and so end up being
+<b>false</b>.<p>
+
+My example for idempotent semirings (and commutative semirings) actually isn't
+sink-based; likely it's possible to come up with a sink-based one, but I haven't
+bothered.  Let our base set be {0, 1, ..., n}, and define a+b=max(a,b), and
+define ab=max(a,b) if either a or b is nonzero, and ab=0 otherwise.  Then we can
+use the equation <b>a+b=ab</b>.<p>
+
+Note also that this example is commutative; and also that if we define
+a<sup>*</sup>=max(a,1), it becomes a Kleene algebra, but Kleene algebras don't
+form a variety, so they don't get an entry here!<p>
+
+As for Conway semirings (and star algebras), here we'll use a sink approach;
+take {0, ..., n} with saturating arithmetic, and define a<sup>*</sup>=n if a is
+nonzero and 0<sup>*</sup>=1.  Then the equation
+<b>a<sup>*</sup>=b<sup>*</sup></b> does the trick.
+
+<h3>Alternative rings, alernative rngs, non-associative rings, non-associative
+rngs</h3>
+
+So, no semirings; we need that sink-resistance.  What if we take rings and rngs
+and throw out associativity?<p>
+
+Well, uh... I still have no counterexamples.  Maybe having an abelian group with
+a bilinear operation is enough?  I'm going to call this <b>plausible?</b>.
+
+<h3>Lie rings, Jordan rings, Poisson rings</h3>
+
+These are types of non-associative rngs, so... <b>plausible?</b>
+
+<h3>Differential rings, differential rngs, differential Lie rings,
+differential non-associative rings, differential non-associative rngs</h3>
+
+Tossing in another linear operation seems like it probably shouldn't screw
+things up, so... <b>plausible?</b>
+
+<h3>Lie triple systems, Jordan triple systems (over Z)</h3>
+
+Having a trilinear operation rather than a bilinear one doesn't seem like it
+should really change things, so... <b>plausible??</b>
+
+<h3>Bol rings</h3>
+
+Now we've got one trilinear operation and one bilinear operation, but I don't
+see why that would change things, so... <b>plausible??</b>
+
+<h3>Exponential rings</h3>
+
+OK, now we're finally adding an operation that isn't linear, so I'm going to
+judge these <b>???</b>
+
+<h3>Near-rings, near-rings with commutative addition</h3>
+
+I've suggested above that distributivity over an abelian group is plausible, but
+<i>one-sided</i> distributivity, I'm afraid, is no good; these are <b>false</b>.
+(This is different from just adding linear functions, because just adding linear
+functions doesn't let you choose one of them at random!)<p>
+
+Take any abelian group for the additive group.  Pick one of the nonzero elements
+of the group to be 1; then define ab=0 if b&ne;1, and a1=a.  We can then use the
+equation <b>ab=0</b> as our counterexample and let the underlying additive group
+get arbitrarily large.
+
+<h3>Near-rings with identity (and commutative addition)</h3>
+
+I have a counterexample for these, but only a partial one; these ones are
+<b>false for well-ordering</b>, but I haven't shown they're false for gaps.  The
+problem is that the identity being two-sided rules out some of the dumb trickery
+used in the previous case.<p>
+
+Still, we can take the additive group to be an elementary abelian group of order
+2<sup>k</sup>, take the example from the previous case, then adjoin a new
+identity 1 that satisfies 1+1=0; we then again use the equation <b>ab=0</b>.  As
+k increases, our probability here doesn't tend to 1, but does tend to &frac14;
+from below, so reverse well-ordering is false.
+
+<h3>Two-sided near-rings</h3>
+
+Both the above examples rely on one-sided distributivity.  If you had a
+two-sided near-ring -- so the only thing keeping it from being a rng was that
+addition doesn't need to be commutative -- well... I think I have to call that
+<b>plausible??</b>
+
+<h3>Boolean rings</h3>
+
+Finally, let's end this section with one more that's <b>true (including for the
+compact case)</b>!  We can conclude that Boolean rings do indeed have a reverse
+well-ordering law for the simple reason that they're equivalent to Boolean
+algebras, which have a very restricted form.  Finite ones are necessarily powers
+of the two-element Boolean algebra, which no matter the equation can only yield
+probabilities of 0, &frac12;, and 1; so no matter the equation, you can only get
+probabilities of the form 2<sup>-k</sup>.<p>
+
+If I'm not mistaken, the infinite case is similar, only you'll get a probability
+of 0 for equations that have a probability of 1/2 over {0, 1}.
+
+<hr>
+<h2>Lattice-like structures</h2>
+
+<h3>Lattices, bounded lattices, semilattices</h3>
+
+Let's start with your basic lattices and semilattices.  These fail to be
+sink-resistant, and so are <b>false</b>.  Just take a lattice consisting of a
+top element, a bottom element, and any number of incomparable middle elements.
+We can then use <b>a&and;b=c&and;d</b>.
+
+<h3>Boolean algebras</h3>
+
+On the other hand, we've already seen that Boolean algebras are <b>true
+(including for the compact case)</b>; the question now is, how much structure do
+we need to get that?
+
+<h3>Modular lattices, bounded modular lattices</h3>
+
+Modular lattices aren't enough; our previous counterexample was already modular,
+so these are <b>false</b>.
+
+<h3>Distributive lattices</h3>
+
+On the other hand, I haven't been able to find a counterexample for distributive
+lattices... having to avoid that diamond sublattice lends these a bit of
+sink-resistance, so I'm going to call these <b>plausible??</b>
+
+<h3>Orthocomplemented lattices, orthomodular lattices</h3>
+
+Now let's try adding complement operations.  But this by itself won't help; we
+can take the same counterexample as before, make sure to use an even number of
+elements in the middle layer, then pick an arbitrary orthocomplementation, still
+using the equation <b>a&and;b=c&and;d</b>, ignoring the orthocomplementation
+entirely.  These are <b>false</b>.<p>
+
+Also, since this is example is modular, it is automatically also
+orthomodular.<p>
+
+Of course, an orthocomplemented distributive lattice would be a Boolean algebra,
+and we know those are true.  But we can try distributivity with some weaker
+complementation requirements...
+
+<h3>Ockham algebras, De Morgan algebras</h3>
+
+...like these!  These ones are still <b>false</b>, though.
+
+For a De Morgan algebra counterexample, take the set {-n, -(n-1), ..., -1, 0,
+0', 1, ..., n-1, n}, where 0 and 0' are incomparable, and let &not;a be the
+unique order-reversing function with &not;0=0 and &not;0'=0'.<p>
+
+We can then use the equation <b>a&and;&not;a&le;b&or;&not;b</b> (which I've
+written as an inequality but obviously can be written as an equation) to get our
+counterexample.<p>
+
+These, in addition to the near-ring cases above, are a good example of how
+adding an additional operation to a structure, allowing more expressive
+equations, can change it from plausible to false, or true to false; we'll see
+more of this shortly.
+
+<h3>Kleene algebras (in the lattice theory sense)</h3>
+
+But what if we make our complement requirements a little bit stronger, ruling
+out the previous counterexample, while still not quite being a Boolean
+algebra?<p>
+
+Well, honestly, I have no idea; but I haven't been able to find a counterexample
+for these, so I'm labelling them as <b>???</b>
+
+<h3>Pseudcomplemented lattices, pseudocomplemented distributive lattices,
+Stone algebras, Heyting algebras</h3>
+
+OK, we've taken a look at the complemented world, but what about the
+pseudocomplemented world?  Well, these are all <b>false</b>, even if you go all
+the way to Heyting algebras.  The counterexample?  Just take a chain!  This will
+be both a Heyting algebra and a Stone algebra.  (And the dual of both of these,
+too!)<p>
+
+Yeah, unlike complementation, pseudocomplementation lacks any sort of sink
+resistance, so we can just use <b>&not;a=&not;b</b> as our counterexample.
+
+<h3>Residuated lattices, residuated Boolean algebras</h3>
+
+Adding this extra operation with so few requirements destroys the
+sink-resistance algebra that Boolean algebras have, so this is <b>false</b>.<p>
+
+For our counterexample, we can take the Boolean algebra of subsets of a finite
+set S, and define A&bull;B=A&cup;B if A&cap;B=&empty;, and A&bull;B=S otherwise.
+Then of course we correspondingly take I=&empty;, and A/B is the set difference
+A-B (I'm avoiding the backslash notation for obvious reasons here).  We can then
+use the equation <b>a&bull;b=1</b>.<p>
+
+(Note also this counterexample is commutative.)
+
+<h3>Derivative algebras</h3>
+
+Once again, extra operation has no sink-resistance, so this is <b>false</b>.
+Just define a<sup>D</sup>=1 if a&ne;0 and 0<sup>D</sup>=0; we can then use the
+equation <b>a<sup>D</sup>=1</b>.
+
+<h3>MV-algebras, relation algebras</h3>
+
+I have no idea about these, but I couldn't find a counterexample, so these are
+both <b>???</b>
+
+<hr>
+<h2>Miscellaneous</h2>
+
+<h3>Median algebras</h3>
+
+Once again, no sink-resistance means these are <b>false</b>.  Take the median
+algebra of a star graph, and use the equation
+<b>&lang;a,b,c&rang;=&lang;d,e,f&rang;</b>.
+
+<h3>Left/right regular bands</h3>
+
+These are already covered under commutative monoids (and semilattices) and so
+are <b>false</b>.  I'm only including them as a lead-in to the next entry...
+
+<h3>Rectangular bands</h3>
+
+...which I have to include, because this is a funny one -- this is another one
+that has a really restricted form, with the result that it's <b>true (only the
+finite case makes sense)</b> (I don't see how there could possibly be any form
+of Haar measure here.)<p>
+
+I view this as something of a red herring -- yeah, it's true, but I don't see
+that telling us anything useful about what we really wanted to get at here.<p>
+
+The restricted form these take means that any probability we get will be of the
+form 1/n, so that gives us well-ordering, but... I can't see this as really
+being relevant to anything we care about.
+
+<hr>
+<a href="index.html">(back to main page)</a>
+</body>
+</html>
