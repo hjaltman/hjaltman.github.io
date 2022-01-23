@@ -20,12 +20,12 @@ of these.  So typically I'll only be talking about the finite case, but I'll
 make notes about the compact case when it's defined and relevant.  For each
 class of structures, I'm going to produce a judgment of <b>True</b>,
 <b>Trivially true</b>, <b>Plausible</b>, <b>Plausible?</b>, <b>Plausible??</b>,
-<b>???</b>, <b>False for well-ordering</b>, or <b>False</b>.  (Note that
-"trivially true" is reserved for those varieties that contain no finite (or,
-when applicable, compact) structures.)  We won't consider the question of
-whether these sets are closed, because we already know that's false for groups
-if you only allow finite groups (x<sup>p</sup>=1 for p an odd prime is a
-counterexample).<p>
+<b>???</b>, <b>Implausible</b>, <b>False for well-ordering</b>, or <b>False</b>.
+(Note that "trivially true" is reserved for those varieties that contain no
+finite (or, when applicable, compact) structures.)  We won't consider the
+question of whether these sets are closed, because we already know that's false
+for groups if you only allow finite groups (x<sup>p</sup>=1 for p an odd prime
+is a counterexample).<p>
 
 Which classes of structures am I including?  That's basically a judgment call.
 But for simplicity I am going to restrict my attention to finite-signature,
@@ -153,24 +153,31 @@ This is getting onto pretty thin ground here, but I'm going to call these
 This case, on the other hand, is <b>false</b>; you do need <i>some</i> sort of
 associativity beyond merely the inverse property.<p>
 
-Our equation will be <b>a&sup2;=1</b>; or, if we want it to also work for
-quasigroups rather than just loops, we can instead use <b>a&sup2;b=b</b>.<p>
-
-Basically, we use the well-known construction that turns a group G into a
-twice-as-large Moufang loop M(G,2); if instead of putting in a group G, we put
-in an inverse-property loop L, then the output will again be an inverse-property
-loop.  If we start with, say, the cyclic group C<sub>4</sub>, we can iterate
-this construction to drive the involution fraction closer and closer to 1.<p>
+Our equation will be <b>a&sup2;=1</b>  Basically, we use the well-known
+construction that turns a group G into a twice-as-large Moufang loop M(G,2); if
+instead of putting in a group G, we put in an inverse-property loop L, then the
+output will again be an inverse-property loop.  If we start with, say, the
+cyclic group C<sub>4</sub>, we can iterate this construction to drive the
+involution fraction closer and closer to 1.<p>
 
 Note that this is a class of structures where we got a definitive false answer
 even though it's sink-resistant.  Sink-resistance is necessary, but by no means
 sufficient.
 
 <h3>Semisymmetric quasigroups, totally symmetric quasigroups, Steiner
-quasigroups, sloops</h3>
+quasigroups</h3>
 
-I don't have counterexamples for these, but I also don't really know anything
-about them.  Judgment: <b>???</b>
+Here's another example to illustrate that; these too are <b>false</b>.  Consider
+the Steiner quasigroup obtained from <b>P</b><sup>n</sup><b>F</b><sub>2</sub>;
+explicitly, the elements are non-empty subsets of {1,...n}, with ST=S&Delta;T if
+S&ne;T and S&sup2;=S.  Then the probability of <b>a(bc)=(ab)c</b> goes to 1 as n
+increases, since the equation holds (with both sides equal to a&Delta;b&Delta;c)
+except when a=b&ne;c, when a&ne;b=c, or when a&Delta;b&Delta;c=0.
+
+<h3>Sloops</h3>
+
+Given that Steiner quasigroups are false, these presumably are as well; but
+I haven't found a counterexample yet, so I'm juding these <b>implausible</b>.
 
 <h3>Medial quasigroups</h3>
 
