@@ -407,7 +407,7 @@ unique order-reversing function with &not;0=0 and &not;0'=0'.<p>
 
 We can then use the equation <b>a&and;&not;a&le;b&or;&not;b</b> (which I've
 written as an inequality but obviously can be written as an equation) to get our
-counterexample.<p>
+counterexample; it will hold unless {a,b}={0,0'}.<p>
 
 These, in addition to the near-ring cases above, are a good example of how
 adding an additional operation to a structure, allowing more expressive
@@ -423,8 +423,9 @@ algebra?<p>
 Well, I don't know how to disprove a gap, but we can modifiy our previous
 example to disprove well-ordering!  Just define &not;0=0' and &not;0'=0; then we
 have a Kleene algera, and the probability of <b>a&le;&not;a</b> (which again can
-also be written as an equation) is just under &frac12; approaching it from
-below, showing that these are <b>false for well-ordering</b>.<p>
+also be written as an equation) is just under &frac12; (since it holds precisely
+for the negative numbers), approaching it from below, showing that these are
+<b>false for well-ordering</b>.<p>
 
 So, it looks like for complemented lattices, you may need the full power of a
 Boolean algebra to get well-ordering.
@@ -450,7 +451,8 @@ For our counterexample, we can take the Boolean algebra of subsets of a finite
 set S, and define A&bull;B=A&cup;B if A&cap;B=&empty;, and A&bull;B=S otherwise.
 Then of course we correspondingly take I=&empty;, and A/B is the set difference
 A-B (I'm avoiding the backslash notation for obvious reasons here).  We can then
-use the equation <b>a&bull;b=1</b>.<p>
+use the equation <b>a&bull;b=1</b>, since the probability of two random subsets
+being disjoint goes to 0 as the size of S increases.<p>
 
 (Note also this counterexample is commutative.)
 
