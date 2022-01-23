@@ -108,7 +108,11 @@ probability of this being satisfied will approach 1.<p>
 This example illustrates an important point -- in order to avoid easy
 counterexamples of this form, <i>structures have to be sink-resistant</i>!
 This usually means having some form of inverses, but not necessarily, as we'll
-see later.
+see later.<p>
+
+(Another nice counterexample, not relying on the failure of sink-resistance, is
+<b>a&sup2;=a</b>; you can take the set {0,1,...n} and define ab=max(a,b) except
+that n*n=n-1.)
 
 <h3>Moufang loops</h3>
 
@@ -164,7 +168,9 @@ elements added are involution, so only two elements -- the two elements of order
 
 Note that this is a class of structures where we got a definitive false answer
 even though it's sink-resistant.  Sink-resistance is necessary, but by no means
-sufficient.
+sufficient.<p>
+
+(We'll see another counterexample for inverse-property loops below.)<p>
 
 <h3>Semisymmetric quasigroups, totally symmetric quasigroups, Steiner
 quasigroups</h3>
@@ -334,7 +340,11 @@ functions doesn't let you choose one of them at random!)<p>
 Take any abelian group for the additive group.  Pick one of the nonzero elements
 of the group to be 1; then define ab=0 if b&ne;1, and a1=a.  We can then use the
 equation <b>ab=0</b> as our counterexample and let the underlying additive group
-get arbitrarily large.
+get arbitrarily large.<p>
+
+(Another similar example is that <b>ab=a</b>, where you use the same
+construction as above, except you don't pick a 1, and define ab=a if b&ne;0 and
+a0=0.)
 
 <h3>Near-rings with identity (and commutative addition)</h3>
 
@@ -344,10 +354,10 @@ problem is that the identity being two-sided rules out some of the dumb trickery
 used in the previous case.<p>
 
 Still, we can take the additive group to be an elementary abelian group of order
-2<sup>k</sup>, take the example from the previous case, then adjoin a new
-identity 1 that satisfies 1+1=0; we then again use the equation <b>ab=0</b>.  As
-k increases, our probability here doesn't tend to 1, but does tend to &frac14;
-from below, so reverse well-ordering is false.
+2<sup>k</sup> and use the first construction from the previous case, then adjoin
+a new identity 1 that satisfies 1+1=0; we then again use the equation
+<b>ab=0</b>.  As k increases, our probability here doesn't tend to 1, but does
+tend to &frac14; from below, so reverse well-ordering is false.
 
 <h3>Two-sided near-rings</h3>
 
