@@ -19,13 +19,13 @@ probabilities in the finite case; the compact case doesn't make sense for most
 of these.  So typically I'll only be talking about the finite case, but I'll
 make notes about the compact case when it's defined and relevant.  For each
 class of structures, I'm going to produce a judgment of <b>True</b>,
-<b>Trivially true</b>, <b>Highly plausible</b>, <b>Plausible</b>,
-<b>Plausible?</b>, <b>Plausible??</b>, <b>False for well-ordering</b>, or
-<b>False</b>.  (Note that "trivially true" is reserved for those varieties that
-contain no finite (or, when applicable, compact) structures.)  We won't
-consider the question of whether these sets are closed, because we already know
-that's false for groups if you only allow finite groups (x<sup>p</sup>=1 for p
-an odd prime is a counterexample).<p>
+<b>Trivially true</b>, <b>Plausible</b>, <b>Plausible?</b>, <b>Plausible??</b>,
+<b>False for well-ordering but plausible for gaps</b>, <b>False for
+well-ordering</b>, or <b>False</b>.  (Note that "trivially true" is reserved
+for those varieties that contain no finite (or, when applicable, compact)
+structures.)  We won't consider the question of whether these sets are closed,
+because we already know that's false for groups if you only allow finite groups
+(x<sup>p</sup>=1 for p an odd prime is a counterexample).<p>
 
 Which classes of structures am I including?  That's basically a judgment call.
 But for simplicity I am going to restrict my attention to finite-signature,
@@ -279,7 +279,7 @@ use the multiplication, because then you just have an abelian group with a
 constant.  But those are trivial cases.<p>
 
 Some interesting nontrivial cases where you can easily prove the existence of a
-gap are ab=ba (for rings/rngs, including in the compact case; the 5/8 law
+gap are ab=ba (for rings/rngs, including in the compact case; the &frac58; law
 reoccurs here), and a&sup2;=a (for commutative rings/rngs, not including the
 compact case).  Indeed, for the latter, you can even prove well-ordering,
 because it's not too hard to determine all the possible values (they're numbers
@@ -324,7 +324,7 @@ and throw out associativity?<p>
 
 Well, uh... I still have no counterexamples.  Maybe having an abelian group with
 a bilinear operation is enough?  I'm going to call this <b>plausible?</b>  Note
-that the 5/8 commuting law does still apply to these, it doesn't require
+that the &frac58; commuting law does still apply to these, it doesn't require
 associativity.
 
 <h3>Lie rings, Jordan rings, Poisson rings</h3>
@@ -394,7 +394,8 @@ tend to &frac14; from below, so reverse well-ordering is false.
 Both the above examples rely on one-sided distributivity.  If you had a
 two-sided near-ring -- so the only thing keeping it from being a rng was that
 addition doesn't need to be commutative -- well... I think I have to call that
-<b>plausible??</b>  Also, the 5/8 commuting law once again applies to these.<p>
+<b>plausible??</b>  Also, the &frac58; commuting law once again applies to
+these.<p>
 
 (We could possibly generalize this to "group with one or more 'multilinear'
 operations" attached...?)
@@ -410,7 +411,7 @@ probabilities of 0, &frac12;, and 1; so no matter the equation, you can only get
 probabilities of the form 2<sup>-k</sup>.<p>
 
 If I'm not mistaken, the infinite case is similar, only you'll get a probability
-of 0 for equations that have a probability of 1/2 over {0, 1}.
+of 0 for equations that have a probability of &frac12; over {0, 1}.
 
 <hr>
 <h2>Lattice-like structures</h2>
@@ -531,24 +532,21 @@ this counterexample can be construed as a failure of sink-resistance.<p>
 
 <h3>MV-algebras</h3>
 
-These ones I haven't been able to find a counterexample for... and, not only
-that, but they all come from lattice-ordered abelian groups (and a designated
-element)!  And we're concerned here with <i>finite</i> MV-algebras, for which
-even more is true: If I understand correctly, any finite MV-algebra must
-specifically be a finite product of MV-algebras of the form
-MV<sub>n+1</sub>={0, 1/n, ..., (n-1)/n, 1}; so it would suffice to prove a
-well-ordering law just for the MV<sub>n</sub>!  I don't see how to prove such a
-law offhand, but I have to consider these <b>highly plausible</b> as a
-result.<p>
+So, here's a counterexample to well-ordering for these.  Our equation will be
+<b>x&oplus;x&oplus;x=1</b>, and our MV-algebra will be MV<sub>3n-1</sub> (that
+is to say, the set {0, 1/(3n-2), 2/(3n-2), ..., 1} with saturating addition).
+Then the probability of this equation being satisfied is just below &frac23; and
+approaches it from below.
 
-Note you might think that these aren't sink-resistant due to the saturating
-addition, but that I think you'll quickly find that it's not so easy to exploit
-that saturating addition to create a counterexample, since you can't create a
-number of things that are all <i>just</i> below the maximum and all pairwise add
-to it.  And just an equation like a&oplus;b=1 does not, in fact, make a
-counterexample; the probability will be just <i>over</i> &frac12;, and tend
-downward to it from above.  So I don't think the saturating addition is much of
-a reason to think these are false.
+However, while well-ordering doesn't work here, I suspect that gaps still likely
+do.  Consider that all MV-algebras come from a lattice-ordered abelian group
+(together with a designated element).  And we're concerned here with
+<i>finite</i> MV-algebras, for which even more is true: If I understand
+correctly, any finite MV-algebra must specifically be a finite product of
+MV-algebras of the form MV<sub>n</sub>; so it would suffice to prove a gap law
+just for those.  I don't see how to prove such a law offhand, but I have to
+consider these <b>false for well-ordering but plausible for gaps</b> as a
+result.
 
 <hr>
 <h2>Miscellaneous</h2>
