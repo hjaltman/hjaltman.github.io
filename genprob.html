@@ -19,13 +19,15 @@ probabilities in the finite case; the compact case doesn't make sense for most
 of these.  So typically I'll only be talking about the finite case, but I'll
 make notes about the compact case when it's defined and relevant.  For each
 class of structures, I'm going to produce a judgment of <b>True</b>,
-<b>Trivially true</b>, <b>Plausible</b>, <b>Plausible?</b>, <b>Plausible??</b>,
-<b>False for well-ordering but plausible for gaps</b>, <b>False for
-well-ordering</b>, or <b>False</b>.  (Note that "trivially true" is reserved
-for those varieties that contain no finite (or, when applicable, compact)
-structures.)  We won't consider the question of whether these sets are closed,
-because we already know that's false for groups if you only allow finite groups
-(x<sup>p</sup>=1 for p an odd prime is a counterexample).<p>
+<b>Plausible</b>, <b>Plausible?</b>, <b>Plausible??</b>, or <b>False</b>; this
+may be broken down further (based on well-ordering vs gaps or finite vs
+infinite) where relevant -- note if I say something is false for well-ordering,
+with no further notes, I'm implying that I consider gaps to also be implausible
+unless I specify otherwise.  (Also, varieties with no nontrivial finite (or,
+when applicable, compact) examples will be labeled "trivially true".)  We won't
+consider the question of whether these sets are closed, because we already know
+that's false for groups if you only allow finite groups (x<sup>p</sup>=1 for p
+an odd prime is a counterexample).<p>
 
 Which classes of structures am I including?  That's basically a judgment call.
 But for simplicity I am going to restrict my attention to finite-signature,
@@ -532,21 +534,38 @@ this counterexample can be construed as a failure of sink-resistance.<p>
 
 <h3>MV-algebras</h3>
 
-So, here's a counterexample to well-ordering for these.  Our equation will be
+These, interestingly, turn out to be <b>false for well-ordering but true for
+gaps (at least in the finite case)</b>.  (I'm not actually clear on whether it's
+possible to define a natural measure in the compact case... it may be, but I'm
+not sure.  Of course, it won't be translation-invariant!)<p>
+
+Let's start with the counterexample to well-ordering.  Our equation will be
 <b>x&oplus;x&oplus;x=1</b>, and our MV-algebra will be MV<sub>3n-1</sub> (that
 is to say, the set {0, 1/(3n-2), 2/(3n-2), ..., 1} with saturating addition).
 Then the probability of this equation being satisfied is just below &frac23; and
-approaches it from below.
+approaches it from below.<p>
 
-However, while well-ordering doesn't work here, I suspect that gaps still likely
-do.  Consider that all MV-algebras come from a lattice-ordered abelian group
-(together with a designated element).  And we're concerned here with
-<i>finite</i> MV-algebras, for which even more is true: If I understand
-correctly, any finite MV-algebra must specifically be a finite product of
-MV-algebras of the form MV<sub>n</sub>; so it would suffice to prove a gap law
-just for those.  I don't see how to prove such a law offhand, but I have to
-consider these <b>false for well-ordering but plausible for gaps</b> as a
-result.
+So if well-ordering doesn't work, why do gaps?  Well, finite MV-algebras have a
+quite restricted form.  Consider that all MV-algebras come from a
+lattice-ordered abelian group (together with a designated element).  For a
+<i>finite</i> MV-algebras, we can say even more; the lattice-ordered abelian
+group will have to be discrete (meaning, satisfying the descending chain
+property), which in this cases forces it to be of the form <b>Z</b><sup>m</sup>.
+The result is that a finite MV-algebra must be a finite product of MV-algebras
+of the form MV<sub>n</sub>; so it would suffice to prove a gap law just for
+MV<sub>n</sub>.<p>
+
+To prove this law, observe that as n&rarr;&infin;, the probability over
+MV<sub>n</sub> has a limit, namely, the probability over [0,1].  If this limit
+is smaller than 1, we obtain a gap (or else there would be another limit point).
+If the probability is equal to 1, then the equation holds almost surely over
+[0,1]; since it holds on a closed subset of [0,1]<sup>m</sup>, that means it
+holds on all of it, i.e., the equation is simply true over [0,1].  But then it
+is also true over each MV<sub>n</sub> as they embed in it.<p>
+
+I'm a little unclear if it's possible to define the infinite case, as mentioned
+above; if it is possible, though, I don't see how you'd prove a gap in such a
+case.  But who knows?
 
 <hr>
 <h2>Miscellaneous</h2>
