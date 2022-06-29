@@ -5,7 +5,7 @@
 <body>
 <h1>Which graphs are winnable in Snake?</h1>
 
-(<b>Updated</b> May 9th, 2019; see bottom for what was corrected)<p>
+(<b>Updated</b> June 28th, 2022)<p>
 
 Let's consider the game of Snake; except instead of playing it on a grid, we're
 going to play it on an arbitrary finite [simple] graph.  We assume the snake
@@ -73,12 +73,24 @@ consisting of two vertices and three paths between them, with i, j, and k
 vertices in the interior of the three paths (respectively).  Then
 &Theta;<sub>1,1,k</sub> and &Theta;<sub>2,2,k</sub>
 are examples of minimal winnable graphs.
+<li>(Thanks to Justin Kopinsky for finding these!)  For m&ge;2 and k&ge;1, take
+&Theta;<sub>m,m,k</sub>, except that instead of using paths of length m, we use
+cliques of size m; moreover, each vertex in each clique is connected to one of
+the two "hinge" vertices (do this however you want so long as each clique has at
+least one edge going to each hinge vertex -- so this gets us additional
+parameters describing the distribution of these).  Note that when m=2, this is
+just &Theta;<sub>2,2,k</sub> from above, but I've listed this separately because
+I think it's easier to understand this way.
 </ol><p>
 
 So, <b>question number two</b>: Could this possibly be all of them?  It seems
 unlikely, but it might just be possible.  I have in fact verified that these are
 all of them up to 7 vertices, so any counterexample will have to be at least 8
 vertices, unless I've messed up.<p>
+
+Note that an earlier version of this page did not not include family (4) above;
+so the original "are these all?" question has now been answered with a "no".
+Still, we can once again ask "are these all" about the new list!
 
 <hr>
 
