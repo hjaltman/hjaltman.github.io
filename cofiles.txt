@@ -12,5 +12,6 @@ coordinate
 coplanar
 coprime
 coset
+cospectral
 covariance
 covariant
