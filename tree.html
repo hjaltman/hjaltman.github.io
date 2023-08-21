@@ -264,7 +264,7 @@ Zeckendorf, there's another pattern you may spot.  As noted, the root is 1.
 Then, to get the children of a given node, if the node ends in an even number of
 zeroes, then the left child appends 0 and the right child appends 00.  While if
 the node ends in an odd number of zeroes, then the left child appends 1, while
-the right child appends 01.<p>
+the right child appends 01.<a href="#dzpar"><sup>12</sup></a><p>
 
 I know of two ways to prove this equivalence.  The first is to once again adapt
 Ophelia's cold/hot argument to this new description, directly proving its
@@ -369,7 +369,18 @@ if you want.  And, I claim, the left/right convention here is in fact not
 totally arbitrary, but is being chosen in a way that has a consistent sense to
 it, even if it might take some work to write down that sense.<p>
 
-<a name="ascii"><sup>11</sup></a>Yeah, ASCII art I'm willing to do.
+<a name="ascii"><sup>11</sup></a>Yeah, ASCII art I'm willing to do.<p>
+
+<a name="dzpar"><sup>12</sup></a>Actually, there's one last analogue we could
+define: We could define a new dual Zeckendorf tree by analogy with this
+description.  (Not bijective Zeckendorf, that once again doesn't work here.)
+To spell it out, the root would be zero (the empty string), and if n ends in an
+even number of 1's, the left child would be n:1 and the right child would be
+n:11, while if n ends in an odd number of 1's, the left child would be n:0 and
+the right child would be n:10.  Unfortunately, other than being defined
+analogously, I'm not aware of this tree having any relation to the other trees
+discussed above, or of its reading permutation or its inverse being anything
+interesting.
 
 <hr>
 
