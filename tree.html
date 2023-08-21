@@ -5,9 +5,6 @@
 <body>
 <h1>Notes on a Fibonacci tree</h1>
 
-(<b>NOTE</b>: I found more ways to relate two more trees, update to come
-shortly to include them.)<p>
-
 So Beren Gunsolus came up with this nifty rule for generating a tree that is
 full of Fibonacci numbers, he and I and some others (Astra Kolomatskaia, <a
 href="https://twitter.com/orellanin">Ophelia</a>) figured out what's going on
@@ -51,7 +48,7 @@ appending 1, and taking the right child corresponds to appending 10.  Every
 legal dual Zeckendorf representation can be made uniquely in this way, so the
 tree contains each whole number exactly once, as we saw earlier.<p>
 
-<h2>Proof of the dual Zeckendorf description</h2>
+<h3>Proof of the dual Zeckendorf description</h3>
 
 To prove this<a href="#credit"><sup>8</sup></a>, let's divide positive integers
 into "cold" numbers, that end with a 1 in dual Zeckendorf, and "hot" numbers,
@@ -73,10 +70,37 @@ claim.<p>
 
 Now this new description of the tree may strike you as obviously related to some
 other trees, or cause you to ask hey what about such-and-such a natural-seeming
-variant, but, we'll get to variants down below.  First I want to tell you about
-another phenomenon Beren found.<p>
+variant, but, we'll get to variants down below.  First, let's give a third
+description of the tree!<p>
+
+<h3>Another alternate description</h3>
+
+But there's yet another description of Beren's tree, one based on ordinary
+Zeckendorf and not dual Zeckendorf, and one that doesn't require adjusting the
+tree by subtracting one from everything.<p>
+
+Write the original tree in ordinary Zeckendorf.  The root is 1.  Then, to get
+the children of a given node, if the node ends in an even number of zeroes, then
+the left child appends 0 and the right child appends 00.  While if the node ends
+in an odd number of zeroes, then the left child appends 1, while the right child
+appends 01.<p>
+
+I know of two ways to prove this equivalence.  The first is to once again adapt
+Ophelia's cold/hot argument to this new description, proving its equivalence
+with Beren's original description.  This adaptation is straightforward and I
+won't belabor it.<p>
+
+The second is to directly prove its equivalence with the dual Zeckendorf
+description; I won't go over this proof here, I'll leave it for you to think
+about.  (Since this isn't an actual paper, I get to do that!)  You'll want to
+use the following nontrivial fact about Fibonacci numbers: If we consider
+"pseduo-Zeckendorf representations", that is, Zeckendorf representations with no
+consecutivity restrictions, then the "left shift" operation (appending a 0) is
+well-defined.<a href="#wd"><sup>9</sup></a><p>
 
 <h2>The reading sequence and its inverse</h2>
+
+Now let's get to the really good stuff.<p>
 
 Let's say we read across the rows of the tree, in order, from left to right.  If
 we do this, we get the sequence<p>
@@ -120,7 +144,7 @@ nodes (juvenile rabbits) having only one.<p>
 So, we have a Fibonacci binary tree, and a binary Fiboncci tree.  The inverse
 relation makes a bit more sense now, no?<p>
 
-<h2>Switching from binary to bijective binary</h2>
+<h3>Switching from binary to bijective binary</h3>
 
 To actually prove it, we'll want to start by subtracing 1 from each number in
 both trees, so the roots are now 0 rather than 1.  These are the versions of the
@@ -142,7 +166,7 @@ the left child meaning you change the final 1 to a 2, and the right child
 meaning you append a 1; and even numbers have only one child, corresponding to
 appending a 1.<p>
 
-<h2>Proof core of the inverse relation</h2>
+<h3>Proof core of the inverse relation</h3>
 
 Anyway, having made the adjustments above, time to start the work of the proof.
 In order to see that these trees have inverse reading permutations, I want to
@@ -160,7 +184,7 @@ as our Fibonacci-shaped tree of bijective binary numbers, but one whose reading
 sequence is simply 0, 1, 2, 3, etc.  This similarly has a natural interpretation
 in terms of dual Zeckendorf; left children mean append a zero, right (or only)
 children mean you append a 1.  Only numbers that are a 1-child can have a
-0-child.<a href="#lex"><sup>9</sup></a><p>
+0-child.<a href="#lex"><sup>10</sup></a><p>
 
 So: Let us consider the permutation that takes our binary binary tree (whose
 reading sequence is just the whole numbers) to our Fibonacci (dual-Zeckendorf)
@@ -201,89 +225,103 @@ left-to-right.  That tree had the left child meaning "change the final 0 to a 1"
 (when there were two children) and the right child meaning "append a 0"; here it
 would be the other way around.<a href="#ltr"><sup>10</sup></a><p>
 
-To summarize, here's a list of the (nontrivial) involved trees and the relations
-between them.  Here, "B" stands for "binary", "Z" stands for "Zeckendorf", "D"
-stands for "dual Zeckendorf", and "J" stands for "bijective binary".  The first
-letter describes the representation used to make the numbers in the tree, while
-the second letter represents the shape of the tree (note "J" is not a separate
-shape from "B"), and I'll also put each tree's root in brackets.  And Beren's
-original tree I'm just going to label "TB[1]" because I don't have a better
-name.<p>
+But there's more!  What if we took this ordinary Zeckendorf tree, and subtracted
+1 from everything?  Well, then, obviously, the reading permutation would be
+inverse to that of our flipped tree but with 1 subtracted from everything.  The
+interesting part is that this tree has an alternate characterization!<p>
 
-List of involved trees, excluding trivial trees (those whose reading sequences are just consecutive whole numbers or positive integers):
+Namely, this new tree, if we write it in dual Zeckendorf, follows a parity rule
+like we saw earlier!  The root is 0 (the empty string), and if a node ends in an
+even number of ones, then the left child appends 1 and the right child appends
+11; while if the node ends in an odd number of ones, then the left child
+appends 0, while the right child appends 10.<p>
+
+Unfortunately, the only way I know to prove this last equivalence is to use the
+argument I mentioned earlier but didn't actually state.  Maybe at some point
+I'll go back and edit that in... or eventually I'll write a proper paper on this
+and include it.<p>
+
+<h3>Summary with lists and charts</h3>
+
+To summarize, here's a list of the (nontrivial) involved trees and the relations
+between them.<p>
+
+Each tree I'll notate by two letters.  The first letter will be one of "Z" (for
+trees based on Zeckendorf representation), "D" (for dual Zeckendorf), "B" (for
+binary), or "J" for bijective binary).  The former two will always be
+binary-shaped, while the latter two will always be Fibonacci-shaped.<p>
+
+If the first letters is B or J, the second letter will be either D (to indicate
+that incrementing is on the left and approximately-doubling is on the right), or
+Z (for vice-versa).<p>
+
+If the first letters is Z or D, the second letter will be either B (for the
+trees that don't use a parity rule), or P (for the trees that do).<p>
+
+Trees beginning with B or Z will use 1 as the root, while trees beginning with D
+or J will use 0 (the empty string) as the root.  For clarity, I'll put the root
+in brackets after the name of the tree.<p>
+
+Then, the involved trees are:
 <ul>
-<li>TB[1]: Beren's original tree.  Root is 1, generated iteratively by rule
-above.
-<li>DB[0]: Dual-Zeckendorf binary tree.  Written in dual Zeckendorf, root is
-empty string (zero), left child appends 1, right child appends 10.
+<li>ZB[1]: Zeckendorf binary tree.  Root is 1, left child appends 0, right child
+appends 01.
+<li>DB[0]: Dual-Zeckendorf binary tree.  Root is empty string (zero), left child
+appends 1, right child appends 10.
+<li>ZP[1]: Zeckendorf parity-based tree; Beren's original tree.  Root is 1.  On
+even number of terminal zeroes, left child appends 0, right appends 00.  On odd,
+left appends 1, right appends 01.
+<li>DP[)]: Dual Zeckendorf parity-based tree.  Root is 0.  On
+even number of terminal ones, left child appends 1, right appends 11.  On odd,
+left appends 0, right appends 10.
 <li>BD[1]: The original double-or-increment tree.  Written in binary, root is 1,
-left child (for even numbers only) increments (changes final 0 to 1), right
-child doubles (appends 0).
+left child (for even numbers only) changes final 0 to 1, right child appends 0.
 <li>JD[0]: Double-and-increment-or-just-increment tree.  Written in bijective
 binary, root is empty string (zero), left child (for odd numbers only)
-increments (changes final 1 to a 2), right child doubles and increments (appends
-1).
+changes final 1 to a 2, right child appends 1.
 <li>BZ[1]: Double-or-increment tree, but reversed.  Written in binary, root is
-1, left doubles (appends 0), right child (for even numbers only) increments
-(changes final 0 to 1).
-<li>ZB[1]: Zeckendorf binary tree.  Written in Zeckendorf, root is 1, left child
-appends 0, right child appends 01.
+1, left child appends 0, right child (for even numbers only) changes final 0 to
+a 1.
+<li>JZ[0]: Double-or-increment tree, but reversed.  Written in bijective binary,
+root is empty string (zero), left child appends 1, right child (for odd numbers
+only) changes final 1 to a 2.
 </ul>
 
 List of relations among involved trees:
 
 <ul>
-<li>TB[1] = DB[0] + 1
+<li>ZP[1] = DB[0] + 1
 <li>BD[1] = JD[0] + 1
-<li>BD[1] = flip(BZ[1])
-<li>TB[1] and BD[1] have inverse reading permutations.
+<li>BZ[1] = JZ[0] + 1
+<li>ZB[1] = DP[0] + 1
+<li>BD[1] and BZ[1] are mirrors of each other.
+<li>JD[0] and JZ[0] are mirrors of each other.
+<li>ZP[1] and BD[1] have inverse reading permutations.
 <li>DB[0] and JD[0] have inverse reading permutations.
 <li>ZB[1] and BZ[1] have inverse reading permutations.
+<li>JZ[0] and DP[0] have inverse reading permutations.
 </ul>
 
-Um, I realize that's likely a bit confusing, but I hope it clears things up
-somewhat?  Here's a diagram<a href="#ascii"><sup>11</sup></a>:
-<pre>      inverse
-DB[0] ------- JD[0]
- |-1            |-1
- |              |
- |+1  inverse   |+1
-TB[1] ------- BD[1]
-                |
-                |flip
-      inverse   |
-ZB[1] ------- BZ[1]</pre>
-...where the left column is binary trees with Fibonacci-based contents, and the
-right column is Fibonacci-shaped trees with binary-based contents.<p>
+Confused?  Here's a diagram!<a href="#ascii"><sup>12</sup></a>:
+<pre>            inverse
+    DB[0] ---------- JD[0]
+    -1/              -1/|
+     /                / |
+    /                /  |
+ +1/     inverse    /+1 |
+ ZP[1] --------- BD[1]  |flip
+                   |    |
+                   |    |
+          inverse  |    |
+    DP[0] ---------+-- JZ[0] 
+   -1/             |   /-1
+    /          flip|  /
+   /               | /  
++1/    inverse     |/+1
+ ZB[1] ---------- BZ[1]</pre><p>
 
 By the way, you may be wondering, what about bijective Zeckendorf?
 Unfortunately, it doesn't seem to fit nicely into the picture above.<p>
-
-<h2>One last alternate description</h2>
-
-I'll close with one additional description of Beren's original tree.  If you
-write the original tree (not adjusted, the root is 1) in ordinary (not dual)
-Zeckendorf, there's another pattern you may spot.  As noted, the root is 1.
-Then, to get the children of a given node, if the node ends in an even number of
-zeroes, then the left child appends 0 and the right child appends 00.  While if
-the node ends in an odd number of zeroes, then the left child appends 1, while
-the right child appends 01.<a href="#dzpar"><sup>12</sup></a><p>
-
-I know of two ways to prove this equivalence.  The first is to once again adapt
-Ophelia's cold/hot argument to this new description, directly proving its
-equivalence with Beren's original description.  So, in this proof you'd define a
-cold' number to be one that (in ordinary Zeckendorf) ends with an even number of
-0s and ends in a 0, or ends in an even number of 0s followed by a 1; while a
-hot' number would be one that ends with an odd number of 0s, or ends in an odd
-number of 0s followed by a 1.  (The number 1 is neither cold' nor hot'.  Note of
-course it will turn out that n is cold' iff n-1 is cold and n is hot' iff n-1 is
-hot.)  This adaptation is straightforward and I won't belabor it.<p>
-
-The second is to directly prove its equivalence with the dual Zeckendorf
-description; doing this requires making use of a nontrivla fact about sums of
-Fibonacci numbers that I haven't discussed here in order to handle the switch
-between the two representations.  If this were an actual paper I might include
-the proof, but here, I'll just leave it for you to think about!<p>
 
 <a href="index.html">(back to main page)</a>
 
@@ -354,14 +392,18 @@ number 3.<p>
 
 <a name="credit"><sup>8</sup>This proof is primarily due to Ophelia.<p>
 
-<a name="lex"><sup>9</sup>The identity of these two descriptions of the tree
+<a name="wd"><sup>9</sup>I assume this has to be known, but I'm writing this
+up quickly and so haven't bothered to actually go find a reference.  I sure hope
+there's a proof of it out there, because my own proof of it is kind of bad.
+
+<a name="lex"><sup>10</sup>The identity of these two descriptions of the tree
 might not be obvious, but it follows from the fact that to compare two numbers
 written in dual Zeckendorf, you just do so lexicographically.  This in turn can
 be proven by comparing the smallest possible dual Zeckendorf number of a given
 length with the largest possible dual Zeckendorf number that's one shorter in
 length.<p>
 
-<a name="ltr"><sup>10</sup>At this point you might point out that the choice of
+<a name="ltr"><sup>11</sup>At this point you might point out that the choice of
 reading left-to-right is arbitrary, so we ought to consider the right-to-left
 reading order as well.  You might also point out that the choice of which
 children go on the left, and which go on the right, is arbitrary as well.  And,
@@ -372,18 +414,7 @@ if you want.  And, I claim, the left/right convention here is in fact not
 totally arbitrary, but is being chosen in a way that has a consistent sense to
 it, even if it might take some work to write down that sense.<p>
 
-<a name="ascii"><sup>11</sup></a>Yeah, ASCII art I'm willing to do.<p>
-
-<a name="dzpar"><sup>12</sup></a>Actually, there's one last analogue we could
-define: We could define a new dual Zeckendorf tree by analogy with this
-description.  (Not bijective Zeckendorf, that once again doesn't work here.)
-To spell it out, the root would be zero (the empty string), and if n ends in an
-even number of 1's, the left child would be n:1 and the right child would be
-n:11, while if n ends in an odd number of 1's, the left child would be n:0 and
-the right child would be n:10.  Unfortunately, other than being defined
-analogously, I'm not aware of this tree having any relation to the other trees
-discussed above, or of its reading permutation or its inverse being anything
-interesting.
+<a name="ascii"><sup>12</sup></a>Yeah, ASCII art I'm willing to do.<p>
 
 <hr>
 
