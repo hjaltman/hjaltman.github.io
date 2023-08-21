@@ -1,0 +1,368 @@
+<html>
+<head>
+<title>Beren's Fibonacci Tree</title>
+</head>
+<body>
+<h1>Notes on a Fibonacci tree</h1>
+
+So Beren Gunsolus came up with this nify rule for generating a tree that is full
+of Fibonacci numbers, he I and some others (Astra Kolomatskaia, <a
+href="https://twitter.com/orellanin">Ophelia</a>) figured out what's going on
+with it, and now I want to tell you about it.<a href="#paper"><sup>1</sup></a><p>
+
+Beren defined the tree iteratively.  The root is 1.  Then, at each step, we find
+the smallest number in the tree that does not have any children<a
+href="#nodups"><sup>2</sup></a>, and give it two children; the left child is the
+smallest not yet in the tree, and the right child is the sum of the parent and
+the left child.<p>
+
+If you do this<a href="#nopics"><sup>3</sup></a>, you'll notice some patterns,
+like the Fibonacci numbers going down the right-hand side, or the Fibonacci
+numbers minus one going down the left hand side, or any of the many other ways
+that Fibonacci numbers appear in the tree.<a href="#fib"><sup>4</sup></a>  You
+may also notice some relations that hold but aren't obvious from the original
+construction; like, for instance, not only does the parent plus the left child
+equal the right child, but also, the left child plus the right child equals the
+left child <i>of</i> the right child.<a href="#relations"><sup>5</sup></a><p>
+
+<h2>So what is this tree?</h2>
+
+So, is there some nice description of the tree that explains all of this, that
+isn't based on this iterative building rule?  Yes!
+
+You've probably heard of <a
+href="https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem">Zeckendorf
+representation</a>, which is like "base Fibonacci" (for the purposes of
+Zeckendorf the Fibonacci sequence starts 1, 2, 3, 5,...), with the digits being
+0 and 1, and the restriction being that there can never be two conseuctive ones.
+Well it turns out there's such a thing as <i>dual Zeckendorf</i>, which is the
+same thing, except that instead the restriction is that you can't have
+consecutive zeroes (the implicit 0's before the initial 1 don't count).<a
+href="#bz"><sup>6</sup></a><p>
+
+It turns out that dual Zeckendorf is the key to Beren's tree, if we just
+subtract 1 from each number (so now 0 is the root).  If we subtract 1 from each
+number, then the root is the empty string, taking the left child corresponds to
+appending 1, and taking the right child corresponds to appending 10.  Every
+legal dual Zeckendorf representation can be made uniquely in this way, so the
+tree contains each whole number exactly once, as we saw earlier.<p>
+
+<h2>Proof of the dual Zeckendorf description</h2>
+
+To prove this<a href="#credit"><sup>8</sup></a>, let's divide positive integers
+into "cold" numbers, that end with a 1 in dual Zeckendorf, and "hot" numbers,
+that end with a 0 (the number 0 is neither).  We're going to work in the
+adjusted tree, which is going to obey the rule R'(n)=n+L'(n)+1 (here L', R'
+denote the adjusted operations for this adjusted tree).  Now, we'll group hot
+and cold numbers into pairs, where a cold number m will be paired with the hot
+number m:0, the colon denoting concatenation.  So in each pair, the cold number
+is always smaller.<p>
+
+So, assume as an inductive hypothesis that the theorem is true for all numbers
+already in the tree; this means that cold and hot numbers have been added in
+pairs.  Then, when we go to process a number n, and we want to determine L'(n),
+well, L'(n) cannot be hot, because each excluded hot number has a smaller cold
+number that is also excluded.  So L'(n) must be cold, and the smallest excluded
+cold number is (applying the inductive hypothesis) n:1.  Then to determine R'(n)
+we simply add n, L'(n), and 1, and this addition yields n:10.  This proves the
+claim.<p>
+
+Now this new description of the tree may strike you as obviously related to some
+other trees, or cause you to ask hey what about such-and-such a natural-seeming
+variant, but, we'll get to variants down below.  First I want to tell you about
+another phenomenon Beren found.<p>
+
+<h2>The reading sequence and its inverse</h2>
+
+Let's say we read across the rows of the tree, in order, from left to right.  If
+we do this, we get the sequence<p>
+
+1, 2, 3, 4, 6, 5, 8, 7, 11, 10, 16, 9, 14, 13, 21...<p>
+
+Beren plugged this into OEIS and found that it's <a
+href="https://oeis.org/A232560">A232560</a>, which is defined as the inverse
+permutation of <a href="https://oeis.org/A232559">A232559</a>, which is in turn
+obtained from reading across a <i>different</i> tree.
+
+This other tree is a tree of doubling or adding 1.  It has 1 as the root, and
+each node has two children; for the left child you add 1, for the right child
+you double.  Well, except that actually not every node has two children -- if we
+did that, the tree would be full of duplicates, so, we only allow adding 1 to
+numbers that are even.  Odd numbers only get a single child.<p>
+
+From this description, this second tree doesn't seem to have anything to do with
+Fibonacci numbers!  Why would it be somehow inverse to the first tree?<p>
+
+That's not the only seemingly odd thing here either.  The second tree isn't even
+a binary tree.  If the trees had the same shape, then we could regard these two
+permutations not as being on the linearly-ordered natural numbers, but rather on
+the nodes of the unlabeled tree of that shape, and show that the permutations
+were inverse that way, and then we'd never have to involve this whole "reading
+sequence" business.  But since they're not the same shape, that means that in
+our two reading order sequences, the row boundaries are falling in different
+places.  And yet they're inverse to each other!<p>
+
+Well, it turns out that there's a nice explanation, and that the shape of the
+tree is actually not a problem but rather the solution.  You see, the tree that
+we started with was a tree based on Fibonacci numbers and (dual) Zeckendorf
+representation, but in shape it was a binary tree.  The second tree is based on
+binary representation, but its shape is Fibonacci!<p>
+
+If you actually draw the second tree, you'll see the lengths of the rows are
+Fibonacci.  Of course they are; it's doing the whole Fibonacci rabbit thing.
+Only even-valued nodes (adult rabbits) can have two children, with odd-valued
+nodes (juvenile rabbits) having only one.<p>
+
+So, we have a Fibonacci binary tree, and a binary Fiboncci tree.  The inverse
+relation makes a bit more sense now, no?<p>
+
+<h2>Switching from binary to bijective binary</h2>
+
+To actually prove it, we'll want to start by subtracing 1 from each number in
+both trees, so the roots are now 0 rather than 1.  These are the versions of the
+trees we'll work with.  As you know, when you do this to Beren's tree, you get
+the dual Zeckendorf tree; 0 is the root (empty string), left child means
+appending 1, right child means appending 0.<p>
+
+What about our other tree?  Well, if we <i>don't</i> subtract 1, then it's a
+tree of binary representations; 1 is the root; even numbers have two children,
+with the left child corresponding to changing the final 0 to a 1, and the right
+child corresponding to appending 0; and odd numbers have one child,
+corresponding to appending 0.<p>
+
+OK, but what if we do subtract 1?  Well, then it's a tree of <i>bijective</i>
+binary representations!  The doubling operation becomes double-and-increment.
+So now 0 (the empty string) is the root; it's odd numbers that have two
+children, with the left child meaning you change the final 1 to a 2, and the
+right child meaning you append a 1; and even numbers have only one child,
+corresponding to appending a 1.<p>
+
+<h2>Proof core of the inverse relation</h2>
+
+Anyway, having made the adjustments above, time to start the work of the proof.
+In order to see that these trees have inverse reading permutations, I want to
+introduce two auxiliary trees.  We have a Fibonacci binary tree and a binary
+Fibonacci tree, but for comaprison, I'm going to introduce a binary binary tree
+and a Fibonacci Fibonacci tree.<p>
+
+That is to say -- consider the binary tree that, when read across, simply yields
+0, 1, 2, 3, etc.  This, if we look at it in bijective binary, can be described
+as a tree with root 0 (the empty string), where the left child is append a 1,
+and the right child is append a 2.<p>
+
+We can do the same thing on the other side; we can take a tree as the same shape
+as our Fibonacci-shaped tree of bijective binary numbers, but one whose reading
+sequence is simply 0, 1, 2, 3, etc.  This similarly has a natural interpretation
+in terms of dual Zeckendorf; left children mean append a zero, right (or only)
+children mean you append a 1.  Only numbers that are a 1-child can have a
+0-child.<a href="#lex"><sup>9</sup></a><p>
+
+So: Let us consider the permutation that takes our binary binary tree (whose
+reading sequence is just the whole numbers) to our Fibonacci (dual-Zeckendorf)
+binary tree (which has the same shape).  What does it do to the number at any
+given spot?  Well, what you do to the number is, you write the number in
+bijective binary; then you change each 2 to a 10 while leaving each 1 as a 1;
+then you interpret the string as dual Zeckendorf.  So that's our permutation one
+way.<p>
+
+Now, we consider the permutation that takes our Fibonacci Fibonacci tree (whose
+reading sequence is just the whole numbers) to our binary Fibonacci tree (which
+has the same shape).  What does this do to the number at any given spot?  Well,
+you write the number in bijective binary; then, starting with the empty string,
+you interpret each 1 as an "append 1" and each 0 as a "change the final 1 to a
+2" (because a 0-child must have a parent that is a 1-child, this is
+well-defined); then you interpret the string as bijective binary.  That's our
+permutation the other way.<p>
+
+And, well, those two operations are inverse to each other, so there you go!
+Where did we use the reading order?  How did we deal with the fact that the two
+trees are different shapes?  By setting up two auxiliary trees which, although
+they had different shapes from each other, had identical reading sequences.
+Basically we had a chain of four trees, FB-BB-FF-BF, where the pairs FB-BB and
+FF-BF have the same shape, while the pairs BB-FF have the same reading
+sequence.<p>
+
+<h2>Variants and relations among them</h2>
+
+Now, you may have noticed here that we used <i>dual</i> Zeckendorf and
+<i>bijective</i> binary, with roots starting from 0.  But what if we had used
+<i>ordinary</i> Zeckendorf, with root starting from 1?  Where the left child
+meant "append 0" and the right child meant "append 01"?  Well, in that case, the
+same argument as above implies that our corresponding "inverse" tree would be a
+tree based on <i>ordinary</i> binary, with 1 as the root... a tree that is
+<i>almost</i> the same as our original double-or-increment tree, before we
+subtracted 1 from everything.  The only difference?  It'd be flipped
+left-to-right.  That tree had the left child meaning "change the final 0 to a 1"
+(when there were two children) and the right child meaning "append a 0"; here it
+would be the other way around.<a href="#ltr"><sup>10</sup></a><p>
+
+To summarize, here's a list of the (nontrivial) involved trees and the relations
+between them.  Here, "B" stands for "binary", "Z" stands for "Zeckendorf", "D"
+stands for "dual Zeckendorf", and "J" stands for "bijective binary".  The first
+letter describes the representation used to make the numbers in the tree, while
+the second letter represents the shape of the tree (note "J" is not a separate
+shape from "B"), and I'll also put each tree's root in brackets.  And Beren's
+original tree I'm just going to label "TB[1]" because I don't have a better
+name.<p>
+
+List of involved trees, excluding trivial trees (those whose reading sequences are just consecutive whole numbers or positive integers):
+<ul>
+<li>TB[1]: Beren's original tree.  Root is 1, generated iteratively by rule
+above.
+<li>DB[0]: Dual-Zeckendorf binary tree.  Written in dual Zeckendorf, root is
+empty string (zero), left child appends 1, right child appends 10.
+<li>BD[1]: The original double-or-increment tree.  Written in binary, root is 1,
+left child (for even numbers only) increments (changes final 0 to 1), right
+child doubles (appends 0).
+<li>JD[0]: Double-and-increment-or-just-increment tree.  Written in bijective
+binary, root is empty string (zero), left child (for odd numbers only)
+increments (changes final 1 to a 2), right child doubles and increments (appends
+1).
+<li>BZ[1]: Double-or-increment tree, but reversed.  Written in binary, root is
+1, left doubles (appends 0), right child (for even numbers only) increments
+(changes final 0 to 1).
+<li>ZB[1]: Zeckendorf binary tree.  Written in Zeckendorf, root is 1, left child
+appends 0, right child appends 01.
+</ul>
+
+List of relations among involved trees:
+
+<ul>
+<li>TB[1] = DB[0] + 1
+<li>BD[1] = JD[0] + 1
+<li>BD[1] = flip(BZ[1])
+<li>TB[1] and BD[1] have inverse reading permutations.
+<li>DB[0] and JD[0] have inverse reading permutations.
+<li>ZB[1] and BZ[1] have inverse reading permutations.
+</ul>
+
+Um, I realize that's likely a bit confusing, but I hope it clears things up
+somewhat?  Here's a diagram<a href="#ascii"><sup>11</sup></a>:
+<pre>      inverse
+DB[0] ------- JD[0]
+ |-1            |-1
+ |              |
+ |+1  inverse   |+1
+TB[1] ------- BD[1]
+                |
+                |flip
+      inverse   |
+ZB[1] ------- BZ[1]</pre>
+...where the left column is binary trees with Fibonacci-based contents, and the
+right column is Fibonacci-shaped trees with binary-based contents.<p>
+
+By the way, you may be wondering, what about bijective Zeckendorf?
+Unfortunately, it doesn't seem to fit nicely into the picture above.<p>
+
+<h2>One last alternate description</h2>
+
+I'll close with one additional description of Beren's original tree.  If you
+write the original tree (not adjusted, the root is 1) in ordinary (not dual)
+Zeckendorf, there's another pattern you may spot.  As noted, the root is 1.
+Then, to get the children of a given node, if the node ends in an even number of
+zeroes, then the left child appends 0 and the right child appends 00.  While if
+the node ends in an odd number of zeroes, then the left child appends 1, while
+the right child appends 01.<p>
+
+The truth of this description can be proved from the description in terms of
+dual Zeckendorf representations of the adjusted tree (although there's a
+nontrivial fact I haven't discussed here, about sums of Fibonacci numbers, that
+you'll probably need to make use of in order to handle the switch between
+ordinary and dual Zeckendorf).  If this were an actual paper I'd include the
+proof, but here, I'll just leave it for you to think about!<p>
+
+<a href="index.html">(back to main page)</a>
+
+<hr>
+
+<a name="paper"><sup>1</sup>Could this be a paper?  Probably, assuming the main
+parts turn out to be original, but first I'm making this quick informal public
+writeup so that I have something to cite when I add this information on OEIS!
+Formalizing everything to make it a paper can come eventually, meanwhile I've
+got other papers I need to get out...<p>
+
+<a name="nodups"><sup>2</sup>This is always well-defined, because the tree
+contains no duplicates.  Each new left child can't be a duplicate by definition.
+Each new right child must be bigger than the corresponding parent and left
+child, which, since parents are processed in order and left children are
+added in order, means that it must also be bigger than each existing left child
+and each existing parent.  But also, from the monotonicity of addition, it must
+also be bigger than each existing right child, since each is a sum of a parent
+and a left child, and this new one is the sum of the largest parent and largest
+left child.  (Also, the tree contains all positive integers, due to the rule for
+generating left children.  So it contains each positive integer exactly
+once.)<p>
+
+<a name="nopics"><sup>3</sup>Where are the pictures of this tree, you ask?  Man,
+the point of this page was to be quick.  If I had to include pictures, it
+wouldn't be quick.<p>
+
+<a name="fib"><sup>4</sup>OK, you want a list of ways that we've found?  OK.
+Here, L(n) means the left child of n, while R(n) means the right child of n.
+<ul>
+<li> The obvious one: R<sup>n</sup>(1)=F<sub>2n+2</sub> and
+LR<sup>n</sup>(1)=F<sub>2n+3</sub>
+<li> The slightly less obvious one I've already mentioned:
+L<sup>k</sup>(1)=F<sub>k+3</sub>-1.
+<li> A generalization of the previous two:
+R<sup>n</sup>L<sup>k</sup>(1)=F<sub>2n+k+3</sub>-F<sub>2n+1</sub> and
+LR<sup>n</sup>L<sup>k</sup>(1)=F<sub>2n+k+4</sub>-F<sub>2n+2</sub>.
+<li> One more: L&sup2;R<sup>n</sup>(1)=F<sub>2n+4</sub>+1 and
+RLR<sup>n</sup>(1)=F<sub>2n+5</sub>.
+</ul>
+<p>
+
+<a name="relations"><sup>5</sup>You want a list of what we found there too?  OK.
+Again, L(n) means the left child of n, while R(n) means the right child of n.
+<ul>
+<li> This one holds by definition: n+L(n)=R(n)
+<li> The less obvious one I've already mentioned: L(n)+R(n)=LR(n).
+<li> A related one, but don't try to generalize, it won't work:
+L&sup2;(n)+LR(n)=L&sup3;(n).
+<li> One that explains that final occurrence of the Fibonacci numbers:
+RL(n)=LR(n)+1.
+</ul>
+<p>
+
+<a name="bz"><sup>6</sup>Speaking of Zeckendorf variants, there's also
+<a href="https://en.wikipedia.org/wiki/Bijective_numeration">bijective</a>
+Zeckendorf!  As in, instead of 0 and 1, you use 1 and 2, and you can't have two
+consecutive 2's.<a href="#dbz"><sup>7</sup></a>  Now, famously bijective binary
+holds a special relation with ordinary binary, where the bijective binary for n
+is the same as the ordinary binary for n+1, but with the initial 1 stripped off
+and each digit incremented by 1.  A similar relation holds for bijective
+Zeckendorf; the bijective Zeckendorf for n is the ordinary Zeckendorf for n+2
+but with the initial 10 stripped off and each digit incremented.
+<p>
+
+<a name="dbz"><sup>7</sup>Note that there's no such thing as dual bijective
+Zeckendorf, because in such a system it would be impossible to represent the
+number 3.<p>
+
+<a name="credit"><sup>8</sup>This proof is primarily due to Ophelia.<p>
+
+<a name="lex"><sup>9</sup>The identity of these two descriptions of the tree
+might not be obvious, but it follows from the fact that to compare two numbers
+written in dual Zeckendorf, you just do so lexicographically.  This in turn can
+be proven by comparing the smallest possible dual Zeckendorf number of a given
+length with the largest possible dual Zeckendorf number that's one shorter in
+length.<p>
+
+<a name="ltr"><sup>10</sup>At this point you might point out that the choice of
+reading left-to-right is arbitrary, so we ought to consider the right-to-left
+reading order as well.  You might also point out that the choice of which
+children go on the left, and which go on the right, is arbitrary as well.  And,
+this is true, so we could also consider reverse reading order.  However, there
+isn't a true need to do so, as all the relations regarding reverse reading are
+already implicit in what I'm already writing; you can figure them out yourselves
+if you want.  And, I claim, the left/right convention here is in fact not
+totally arbitrary, but is being chosen in a way that has a consistent sense to
+it, even if it might take some work to write down that sense.<p>
+
+<a name="ascii"><sup>11</sup></a>Yeah, ASCII art I'm willing to do.
+
+<hr>
+
+<a href="index.html">(back to main page)</a>
+</body>
+</html>
