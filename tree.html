@@ -266,12 +266,21 @@ zeroes, then the left child appends 0 and the right child appends 00.  While if
 the node ends in an odd number of zeroes, then the left child appends 1, while
 the right child appends 01.<p>
 
-The truth of this description can be proved from the description in terms of
-dual Zeckendorf representations of the adjusted tree (although there's a
-nontrivial fact I haven't discussed here, about sums of Fibonacci numbers, that
-you'll probably need to make use of in order to handle the switch between
-ordinary and dual Zeckendorf).  If this were an actual paper I'd include the
-proof, but here, I'll just leave it for you to think about!<p>
+I know of two ways to prove this equivalence.  The first is to once again adapt
+Ophelia's cold/hot argument to this new description, directly proving its
+equivalence with Beren's original description.  So, in this proof you'd define a
+cold' number to be one that (in ordinary Zeckendorf) ends with an even number of
+0s and ends in a 0, or ends in an even number of 0s followed by a 1; while a
+hot' number would be one that ends with an odd number of 0s, or ends in an odd
+number of 0s followed by a 1.  (The number 1 is neither cold' nor hot'.  Note of
+course it will turn out that n is cold' iff n-1 is cold and n is hot' iff n-1 is
+hot.)  This adaptation is straightforward and I won't belabor it.<p>
+
+The second is to directly prove its equivalence with the dual Zeckendorf
+description; doing this requires making use of a nontrivla fact about sums of
+Fibonacci numbers that I haven't discussed here in order to handle the switch
+between the two representations.  If this were an actual paper I might include
+the proof, but here, I'll just leave it for you to think about!<p>
 
 <a href="index.html">(back to main page)</a>
 
