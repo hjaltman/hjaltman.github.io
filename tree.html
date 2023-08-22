@@ -17,14 +17,31 @@ href="#nodups"><sup>2</sup></a>, and give it two children; the left child is the
 smallest not yet in the tree, and the right child is the sum of the parent and
 the left child.<p>
 
-If you do this<a href="#nopics"><sup>3</sup></a>, you'll notice some patterns,
-like the Fibonacci numbers going down the right-hand side, or the Fibonacci
-numbers minus one going down the left hand side, or any of the many other ways
-that Fibonacci numbers appear in the tree.<a href="#fib"><sup>4</sup></a>  You
-may also notice some relations that hold but aren't obvious from the original
+Here's a partial picture of what it looks like, having given children to every
+number up to 21:
+<pre>                                         1
+                         /---------------+---------------\
+                         |                               |
+               /---------2-------\               /-------3-------\
+               |                 |               |               |
+        /------4---\         /---6---\         /---5---\       /---8---\
+        |          |         |       |         |       |       |       |
+     /--7--\    /-11-\    /-10-\  /-16-\     /-9-\  /-14-\  /-13-\  /-21-\
+     |     |    |    |    |    |  |    |     |   |  |    |  |    |  |    |
+  /-12\ /-19\ /18\  29  /17\  27 26   42   /15\ 24  23  37  22  35  34  55
+  |   | |   | |  |      |  |               |  |
+/20\ 32 31 50 30 48    28  45             25  40
+|  |
+33 53</pre><p>
+
+If you stare at this a while, you'll likely notice some patterns, like the
+Fibonacci numbers going down the right-hand side, or the Fibonacci numbers
+minus one going down the left hand side, or any of the many other ways that
+Fibonacci numbers appear in the tree.<a href="#fib"><sup>3</sup></a>  You may
+also notice some relations that hold but aren't obvious from the original
 construction; like, for instance, not only does the parent plus the left child
 equal the right child, but also, the left child plus the right child equals the
-left child <i>of</i> the right child.<a href="#relations"><sup>5</sup></a><p>
+left child <i>of</i> the right child.<a href="#relations"><sup>4</sup></a><p>
 
 <h2>So what is this tree?</h2>
 
@@ -39,7 +56,7 @@ Zeckendorf the Fibonacci sequence starts 1, 2, 3, 5,...), with the digits being
 Well it turns out there's such a thing as <i>dual Zeckendorf</i>, which is the
 same thing, except that instead the restriction is that you can't have
 consecutive zeroes (the implicit 0's before the initial 1 don't count).<a
-href="#bz"><sup>6</sup></a><p>
+href="#bz"><sup>5</sup></a><p>
 
 It turns out that dual Zeckendorf is the key to Beren's tree, if we just
 subtract 1 from each number (so now 0 is the root).  If we subtract 1 from each
@@ -50,7 +67,7 @@ tree contains each whole number exactly once, as we saw earlier.<p>
 
 <h3>Proof of the dual Zeckendorf description</h3>
 
-To prove this<a href="#credit"><sup>8</sup></a>, let's divide positive integers
+To prove this<a href="#credit"><sup>7</sup></a>, let's divide positive integers
 into "cold" numbers, that end with a 1 in dual Zeckendorf, and "hot" numbers,
 that end with a 0 (the number 0 is neither).  We're going to work in the
 adjusted tree, which is going to obey the rule R'(n)=n+L'(n)+1 (here L', R'
@@ -96,7 +113,7 @@ about.  (Since this isn't an actual paper, I get to do that!)  You'll want to
 use the following nontrivial fact about Fibonacci numbers: If we consider
 "pseduo-Zeckendorf representations", that is, Zeckendorf representations with no
 consecutivity restrictions, then the "left shift" operation (appending a 0) is
-well-defined.<a href="#wd"><sup>9</sup></a><p>
+well-defined.<a href="#wd"><sup>8</sup></a><p>
 
 <h2>The reading sequence and its inverse</h2>
 
@@ -110,7 +127,8 @@ we do this, we get the sequence<p>
 Beren plugged this into OEIS and found that it's <a
 href="https://oeis.org/A232560">A232560</a>, which is defined as the inverse
 permutation of <a href="https://oeis.org/A232559">A232559</a>, which is in turn
-obtained from reading across a <i>different</i> tree.
+obtained from reading across a <i>different</i> tree (there's a picture of it at
+the link).
 
 This other tree is a tree of doubling or adding 1.  It has 1 as the root, and
 each node has two children; for the left child you add 1, for the right child
@@ -184,7 +202,7 @@ as our Fibonacci-shaped tree of bijective binary numbers, but one whose reading
 sequence is simply 0, 1, 2, 3, etc.  This similarly has a natural interpretation
 in terms of dual Zeckendorf; left children mean append a zero, right (or only)
 children mean you append a 1.  Only numbers that are a 1-child can have a
-0-child.<a href="#lex"><sup>10</sup></a><p>
+0-child.<a href="#lex"><sup>9</sup></a><p>
 
 So: Let us consider the permutation that takes our binary binary tree (whose
 reading sequence is just the whole numbers) to our Fibonacci (dual-Zeckendorf)
@@ -296,8 +314,7 @@ put the root in brackets after the name of the tree.<p>
 
 Beren's original tree is ZP[1].<p>
 
-We then get the following diagram of relations among the trees:<a
-href="#ascii"><sup>11</sup></a>:
+We then get the following diagram of relations among the trees:
 <pre>               inverse        flip          inverse
         jD[0] -------- Db[0] ------ DB[0] ---------- JD[0]
       -1/|               /-1        -1/              -1/|
@@ -340,11 +357,7 @@ left child.  (Also, the tree contains all positive integers, due to the rule for
 generating left children.  So it contains each positive integer exactly
 once.)<p>
 
-<a name="nopics"><sup>3</sup>Where are the pictures of this tree, you ask?  Man,
-the point of this page was to be quick.  If I had to include pictures, it
-wouldn't be quick.<p>
-
-<a name="fib"><sup>4</sup>OK, you want a list of ways that we've found?  OK.
+<a name="fib"><sup>3</sup>OK, you want a list of ways that we've found?  OK.
 Here, L(n) means the left child of n, while R(n) means the right child of n.
 <ul>
 <li> The obvious one: R<sup>n</sup>(1)=F<sub>2n+2</sub> and
@@ -359,7 +372,7 @@ RLR<sup>n</sup>(1)=F<sub>2n+5</sub>+1.
 </ul>
 <p>
 
-<a name="relations"><sup>5</sup>You want a list of what we found there too?  OK.
+<a name="relations"><sup>4</sup>You want a list of what we found there too?  OK.
 Again, L(n) means the left child of n, while R(n) means the right child of n.
 <ul>
 <li> This one holds by definition: n+L(n)=R(n)
@@ -370,10 +383,10 @@ L&sup2;(n)+LR(n)=L&sup3;(n).
 </ul>
 <p>
 
-<a name="bz"><sup>6</sup>Speaking of Zeckendorf variants, there's also
+<a name="bz"><sup>5</sup>Speaking of Zeckendorf variants, there's also
 <a href="https://en.wikipedia.org/wiki/Bijective_numeration">bijective</a>
 Zeckendorf!  As in, instead of 0 and 1, you use 1 and 2, and you can't have two
-consecutive 2's.<a href="#dbz"><sup>7</sup></a>  Now, famously bijective binary
+consecutive 2's.<a href="#dbz"><sup>6</sup></a>  Now, famously bijective binary
 holds a special relation with ordinary binary, where the bijective binary for n
 is the same as the ordinary binary for n+1, but with the initial 1 stripped off
 and each digit incremented by 1.  A similar relation holds for bijective
@@ -381,24 +394,22 @@ Zeckendorf; the bijective Zeckendorf for n is the ordinary Zeckendorf for n+2
 but with the initial 10 stripped off and each digit incremented.
 <p>
 
-<a name="dbz"><sup>7</sup>Note that there's no such thing as dual bijective
+<a name="dbz"><sup>6</sup>Note that there's no such thing as dual bijective
 Zeckendorf, because in such a system it would be impossible to represent the
 number 3.<p>
 
-<a name="credit"><sup>8</sup>This proof is primarily due to Ophelia.<p>
+<a name="credit"><sup>7</sup>This proof is primarily due to Ophelia.<p>
 
-<a name="wd"><sup>9</sup>I assume this has to be known, but I'm writing this
+<a name="wd"><sup>8</sup>I assume this has to be known, but I'm writing this
 up quickly and so haven't bothered to actually go find a reference.  I sure hope
 there's a proof of it out there, because my own proof of it is kind of bad.<p>
 
-<a name="lex"><sup>10</sup>The identity of these two descriptions of the tree
+<a name="lex"><sup>9</sup>The identity of these two descriptions of the tree
 might not be obvious, but it follows from the fact that to compare two numbers
 written in dual Zeckendorf, you just do so lexicographically.  This in turn can
 be proven by comparing the smallest possible dual Zeckendorf number of a given
 length with the largest possible dual Zeckendorf number that's one shorter in
 length.<p>
-
-<a name="ascii"><sup>11</sup></a>Yeah, ASCII art I'm willing to do.<p>
 
 <hr>
 
