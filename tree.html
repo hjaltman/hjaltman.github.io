@@ -108,12 +108,8 @@ with Beren's original description.  This adaptation is straightforward and I
 won't belabor it.<p>
 
 The second is to directly prove its equivalence with the dual Zeckendorf
-description; I won't go over this proof here, I'll leave it for you to think
-about.  (Since this isn't an actual paper, I get to do that!)  You'll want to
-use the following nontrivial fact about Fibonacci numbers: If we consider
-"pseduo-Zeckendorf representations", that is, Zeckendorf representations with no
-consecutivity restrictions, then the "left shift" operation (appending a 0) is
-well-defined.<a href="#wd"><sup>8</sup></a><p>
+description; I'm going to relegate that one to the footnotes. <a
+href="#parity"><sup>8</sup></a><p>
 
 <h2>The reading sequence and its inverse</h2>
 
@@ -202,7 +198,7 @@ as our Fibonacci-shaped tree of bijective binary numbers, but one whose reading
 sequence is simply 0, 1, 2, 3, etc.  This similarly has a natural interpretation
 in terms of dual Zeckendorf; left children mean append a zero, right (or only)
 children mean you append a 1.  Only numbers that are a 1-child can have a
-0-child.<a href="#lex"><sup>9</sup></a><p>
+0-child.<a href="#lex"><sup>10</sup></a><p>
 
 So: Let us consider the permutation that takes our binary binary tree (whose
 reading sequence is just the whole numbers) to our Fibonacci (dual-Zeckendorf)
@@ -258,10 +254,23 @@ even number of ones, then the left child appends 1 and the right child appends
 11; while if the node ends in an odd number of ones, then the left child
 appends 0, while the right child appends 10.<p>
 
-Unfortunately, the only way I know to prove this last equivalence is to use the
-argument I mentioned earlier but didn't actually state.  Maybe at some point
-I'll go back and edit that in... or eventually I'll write a proper paper on this
-and include it.<p>
+One can prove this using an analogue of the parity proof from earlier; it's
+exactly analogous, so I won't bother writing it out.<a
+href="#append1"><sup>11</sup></a><p>
+
+<h3>Characterizing these last two trees Beren-style</h3>
+
+But we can also characterizes the last two trees Beren-style!  I won't bother
+with the proofs since it's the same as before.  Just as the dual Zeckendorf tree
+was the tree starting with 0 and following n+L'(n)+1=R'(n), the Zeckendorf tree
+is the tree starting with 1 and following the same rule.  The dual Zeckendorf
+parity tree, then, would be the tree starting from 0 and following
+n+L'(n)+2=R'(n).  (I guess you could use this to prove the fact that these last
+two trees differ by 1, hot/cold style, instead of using the proof I wrote out in
+the footnotes.)<p>
+
+I guess you could try fiddling with the constants more to get even more trees,
+but I won't do that here.<p>
 
 <h3>Now let's double everything</h3>
 
@@ -406,16 +415,68 @@ number 3.<p>
 
 <a name="credit"><sup>7</sup>This proof is primarily due to Ophelia.<p>
 
-<a name="wd"><sup>8</sup>I assume this has to be known, but I'm writing this
-up quickly and so haven't bothered to actually go find a reference.  I sure hope
-there's a proof of it out there, because my own proof of it is kind of bad.<p>
+<a name="parity"><sup>8</sup>This proof will rely on the following nontrivial
+fact about Fibonacci numbers: If we consider "pseduo-Zeckendorf
+representations", that is, Zeckendorf representations with no consecutivity
+restrictions, then the "left shift" operation (appending a 0) is well-defined.
+I'm going to relegate the proof of that to a separate footnote.<a
+href="#wd"><sup>9</sup></a><p>
 
-<a name="lex"><sup>9</sup>The identity of these two descriptions of the tree
+Anyway, suppose w is the Zeckendorf representation of n, and w ends in k zeroes,
+so w=w'0<sup>k</sup>; w' is then also a Zeckendorf representation of some number
+n', and w' ends in a 1.  Let v be the Zeckendorf representation of n'-1, which,
+since w' ends in a 1, is simply w' with its final 1 changed to a 0.  Therefore,
+the value of v0<sup>k</sup> is n-f<sub>k</sub>, where here by f<sub>k</sub> I
+mean F<sub>k+2</sub> (that conflicts with another convention, I know, sorry).
+<p>
+
+Now let u be the dual Zeckendorf representation of n'-1; by the lemma, the value
+of u0<sup>k</sup> is therefore also equal to n-f<sub>k</sub>.  So, if k is even
+with k=2&ell;, then u':=u(10)<sup>&ell;</sup> has value
+n-f<sub>k</sub>+(f<sub>k</sub>-1)=n-1, and is also in dual Zeckendorf; so it's
+the dual Zeckendorf representation of n-1.  Similarly, if k is odd with
+k=2&ell;+1, then u':=u(10)<sup>&ell;</sup>1 has value
+n-f<sub>k</sub>+(f<sub>k</sub>-1)=n-1, and it too is in dual Zeckendorf, so once
+again it's the dual Zeckendorf representation of n-1.<p>
+
+Now let's consider what happens as n varies.  Going by the above, if k is even,
+then u' ends in a 0; so appending 1 to u' corresponds to appending 0 to w, and
+appending 10 to u' corresponds to appending 00 to w.<p>
+
+On the other hand, if k is odd, then u' ends in a 1.  Appending 1 to u'
+is the same as appending 0 and then incrementing; so this corresponds to
+appending 0 to w and then incrementing, which appends a 1.  Similarly, appending
+10 to u' we can think of as appending 01 and then incrementing; so this
+corresponds to appending 00 to w and then incrementing, which appends a 01.
+This completes the proof.<p>
+
+<a name="wd"><sup>9</sup>It suffices to show that if w is a pseudo-Zeckendorf
+representation representing the number n, and v is the Zeckendorf representation
+of n, then w0 and v0 again represent the same number.  Note that v0 is again a
+Zeckendorf representation, so we are showing that the number represented by w0
+has Zeckendorf representation v0.<p>
+
+To show this, note that any pseudo-Zeckendorf representation can be converted to
+Zeckendorf representing the same number by the following procedure: Find the
+leftmost "11" (which cannot be preceded by another 1 or it would not be
+leftmost), then change this "011" to a "100"; repeat until there are no 11's
+(and this procedure must terminate because the number of 1's decreases with each
+step).  Now observe that this procedure (both each step and the termination
+condition) commutes with appending a 0.  This proves the claim.<p>
+
+<a name="lex"><sup>10</sup>The identity of these two descriptions of the tree
 might not be obvious, but it follows from the fact that to compare two numbers
 written in dual Zeckendorf, you just do so lexicographically.  This in turn can
 be proven by comparing the smallest possible dual Zeckendorf number of a given
 length with the largest possible dual Zeckendorf number that's one shorter in
 length.<p>
+
+<a name="append1"><sup>11</sup>Note that this proof needs to use the fact that
+appending 1 to pseudo-Zeckendorf representations is well-defined.  You could
+prove this by first proving it for 0, as done above, and then note that
+appending 1 is just appending 0 and then incrementing; or you could do it
+directly, mimicking the above proof for 0, except you'd use dual Zeckendorf
+instead of Zeckendorf.<p>
 
 <hr>
 
