@@ -7,8 +7,8 @@
 
 So Beren Gunsolus came up with this nifty rule for generating a tree that is
 full of Fibonacci numbers, he and I and some others (Astra Kolomatskaia, <a
-href="https://twitter.com/orellanin">Ophelia</a>) figured out what's going on
-with it, and now I want to tell you about it.<a
+href="https://twitter.com/orellanin">Ophelia</a>, Emma C) figured out what's
+going on with it, and now I want to tell you about it.<a
 href="#paper"><sup>1</sup></a><p>
 
 Beren defined the tree iteratively.  The root is 1.  Then, at each step, we find
@@ -393,8 +393,10 @@ Again, L(n) means the left child of n, while R(n) means the right child of n.
 <li> This one holds by definition: n+L(n)=R(n)
 <li> The less obvious one I've already mentioned: L(n)+R(n)=LR(n).
 <li> A related one, but don't try to generalize, it won't work:
-L&sup2;(n)+LR(n)=L&sup3;(n).
+L&sup2;(n)+LR(n)=L&sup2;R(n).
 <li> One that explains the RLR<sup>n</sup>(1) rule: RL(n)=LR(n)+1.
+<li> Also: L&sup;2(n)=R(n)+1.  Combining the previous few, we then get
+R(n)+RL(n)=L&sup2;R(n).
 </ul>
 <p>
 
