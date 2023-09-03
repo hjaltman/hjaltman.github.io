@@ -258,20 +258,6 @@ One can prove this using an analogue of the parity proof from earlier; it's
 exactly analogous, so I won't bother writing it out.<a
 href="#append1"><sup>11</sup></a><p>
 
-<h3>Characterizing these last two trees Beren-style</h3>
-
-But we can also characterizes the last two trees Beren-style!  I won't bother
-with the proofs since it's the same as before.  Just as the dual Zeckendorf tree
-was the tree starting with 0 and following n+L'(n)+1=R'(n), the Zeckendorf tree
-is the tree starting with 1 and following the same rule.  The dual Zeckendorf
-parity tree, then, would be the tree starting from 0 and following
-n+L'(n)+2=R'(n).  (I guess you could use this to prove the fact that these last
-two trees differ by 1, hot/cold style, instead of using the proof I wrote out in
-the footnotes.)<p>
-
-I guess you could try fiddling with the constants more to get even more trees,
-but I won't do that here.<p>
-
 <h3>Now let's double everything</h3>
 
 OK, but what if we took our Zeckendorf and dual-Zeckendorf-based trees and
@@ -349,6 +335,88 @@ flip|  jZ[0] --------- Dp[0] ------ DP[0] ---------+-- JZ[0]
 
 By the way, you may be wondering, what about bijective Zeckendorf?
 Unfortunately, it doesn't seem to fit nicely into the picture above.<p>
+
+<h2>Back to the original characterization: Handling the variants</h2>
+
+Can we characterize some of these variants in the same way we originally
+generated Beren's tree?  Yes, we can!<p>
+
+Beren's tree ZP uses 1 as the root and obeys n+L(n)=R(n).  When you subtract 1
+to get the tree DB, it uses 0 as the root and obeys n+L(n)+1=R(n).  (In this
+section I'll just use L(n) and R(n) to mean the left and right child in the tree
+under discussion, not necessarily the original tree ZP.)<p>
+
+Let's generalize this.  For c&ge;1, we'll define T<sub>c,0</sub>, or just
+T<sub>c</sub>, to be the 0-rooted tree, generated like Beren's tree but with the
+law n+L(n)+c=R(n).  We'll also define T<sub>c,1</sub> to be the 1-rooted tree
+defined analogously but with n+L(n)+(c-1)=R(n).  We subtract 1 from the
+contstant so that T<sub>c,1</sub> is equal to T<sub>c,0</sub> with 1 added to
+each node.<p>
+
+Then, as noted above, T<sub>1,0</sub>=DB, and T<sub>1,1</sub>=ZP.  But the trees
+T<sub>2,0</sub> and T<sub>2,1</sub> are also trees that were discussed above!
+Namely, T<sub>2,1</sub>=ZB.  One can prove this using the usual hot/cold-style
+argument.  This means that T<sub>2,0</sub>=DP.  One can prove this either by
+noting that T<sub>2,0</sub>=T<sub>2,1</sub>-1=ZB-1=DP, or one can again prove it
+hot/cold style.  The latter approach, I suppose, would also function as an
+alternate proof that DP=ZP-1.<p>
+
+Let's make this into a table:
+
+<ul>
+<li> T<sub>1,0</sub> = DB
+<li> T<sub>1,1</sub> = T<sub>1,0</sub>+1 = ZP
+<li> T<sub>2,0</sub> = DP
+<li> T<sub>2,1</sub> = T<sub>2,0</sub>+1 = ZB
+</ul>
+
+OK, but what about T<sub>3</sub> and up?  (From here on out I'm just going to
+focus on the 0-rooted version.)
+
+<h3>Fiddling with the constants a little</h3>
+
+This is where things really start to get hairy.  For T<sub>3</sub> I
+actually have a description, although it's a little funky.  Beyond that, though,
+I simply don't have any good answer.  (Note that it's T<sub>3,0</sub> and not
+T<sub>3,1</sub> that admit this nice description... this is why I'm ignoring the
+1-rooted trees in this section.)<p>
+
+We can generate the tree T<sub>3</sub> as follows.  Write each number in dual
+Zeckendorf.  The root is 0, which we will write as 0 rather than as the empty
+string.  Then:
+
+<ul>
+<li> If the parent ends in a 1, then the left child appends a 0, while the right
+child appends 11.
+<li> If the parent is 1<sup>k</sup>0 with k even, or ends in 01<sup>k</sup> with
+k odd, then the left child appends a 1, while the right child replaces the final
+0 with 101.
+<li> If the parent is 1<sup>k</sup>0 with k odd, or ends in 01<sup>k</sup> with
+k even, then the left child replaces the final 10 with 011, while the right
+child appends 11.  (Note that the left child of 10 is 11.)
+</ul>
+
+This can, again, be proven using the usual hot/cold-style argument.<p>
+
+An interesting consequence of this is that L(F<sub>k</sub>)=F<sub>k+1</sub> for
+k&ge;6.<p>
+
+OK, but what about T<sub>4</sub> and up?
+
+<h3>Unknown territory</h3>
+
+For T<sub>4</sub> and up, I don't have any good description.  These ones so far
+seem pretty wild compared to T<sub>3</sub> and below.<p>
+
+However, that doesn't mean there's nothing interesting going on here!  If you
+draw these trees yourself, you will see that Fibonacci patterns are still
+evident.  For instance, <b>it appears that in T<sub>4</sub>,
+L(F<sub>k</sub>)=F<sub>k+1</sub> for k&ge;5</b>, and <b>it similarly appears
+that R(F<sub>k</sub>-2)=F<sub>k+2</sub>-1 for k&ge;6</b>.<p>
+
+Are these patterns real?  Will they, or similar ones, continue to hold for
+higher values of c, likely with higher starting points before they kick in?  I
+don't know!  A good question for the future.<p>
 
 <a href="index.html">(back to main page)</a>
 
