@@ -417,9 +417,56 @@ evident.  Here are a few that <b>appear</b> to hold in T<sub>4</sub>:
 <li> R(F<sub>k</sub>-2)=F<sub>k+2</sub>-1 for k&ge;7
 </ul>
 
-Are these patterns real?  Will they, or similar ones, continue to hold for
-higher values of c, likely with higher starting points before they kick in?  I
-don't know!  A good question for the future.<p>
+Meanwhile, in T<sub>5</sub>, we appear to have:
+<ul>
+<li> L(F<sub>k</sub>)=F<sub>k+1</sub> for k&ge;11
+<li> L(F<sub>k</sub>-1)=F<sub>k+1</sub>-2 for k&ge;6
+<li> R(F<sub>k</sub>-2)=F<sub>k+2</sub>-1 for k&ge;10
+</ul>
+
+The same patterns, just starting later!  However, for T<sub>6</sub> we appear to
+instead have:
+
+<ul>
+<li> L(F<sub>k</sub>)=F<sub>k+1</sub>-1 for k&ge;8
+<li> L(F<sub>k</sub>-1)=F<sub>k+1</sub>-2 for k&ge;9
+<li> R(F<sub>k</sub>-2)=F<sub>k+2</sub> for k&ge;8
+</ul>
+
+And then for T<sub>7</sub> things get a bit more complicated:
+
+<ul>
+<li> L(F<sub>k</sub>)=F<sub>k+1</sub>-1 for k&ge;8
+<li> L(F<sub>k</sub>-1)=F<sub>k+1</sub>-3 for k&ge;8
+<li> R(F<sub>k</sub>-3)=F<sub>k+2</sub>-2 for k&ge;7
+<li> R(F<sub>k</sub>-2)=F<sub>k+2</sub>+1 for k&ge;12
+<li> L(F<sub>k</sub>+1)=F<sub>k+1</sub> for k&ge;13
+</ul>
+
+But for T<sub>8</sub> things seemingly get a bit simpler again:
+
+<ul>
+<li> L(F<sub>k</sub>)=F<sub>k+1</sub>-2 for k&ge;13
+<li> R(F<sub>k</sub>-2)=F<sub>k+2</sub>+1 for k&ge;9
+<li> L(F<sub>k</sub>+1)=F<sub>k+1</sub> for k&ge;8
+</ul>
+
+Unfortunately, I have no idea how to prove any of these statements for
+T<sub>4</sub> and up!  (Note obviously that these statements are selected, and
+one could write down many more like them.)  Still, based on them, I'll make the
+following conjecture:<p>
+
+<b>Conjecture</b>: Given c&ge;1 and i&isin;<b>Z</b>, there exists
+j&isin;<b>Z</b> and K&ge;0 such that, for all k&ge;K,
+L<sub>c</sub>(F<sub>k</sub>+i) = F<sub>k+1</sub>+j.<p>
+
+Here, of course, L<sub>c</sub> denotes the L operation for T<sub>c</sub>.  Note
+also from this it would follow that R<sub>c</sub>(F<sub>k</sub>+i) would be
+equal to F<sub>k+2</sub>+i+j+c, so there's no need to state that separately.<p>
+
+This conjecture is true for c&le;3, since it follows from the L operation acting
+only on the last few digits of the dual Zeckendorf representation.  If it's true
+for c=4 or above, well, I have no proof!<p>
 
 <a href="index.html">(back to main page)</a>
 
