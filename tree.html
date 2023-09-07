@@ -403,7 +403,7 @@ k&ge;6.<p>
 
 OK, but what about T<sub>4</sub> and up?
 
-<h3>Unknown territory</h3>
+<h3>Unknown territory, and some open questions</h3>
 
 For T<sub>4</sub> and up, I don't have any good description.  These ones so far
 seem pretty wild compared to T<sub>3</sub> and below.<p>
@@ -453,20 +453,30 @@ But for T<sub>8</sub> things seemingly get a bit simpler again:
 
 Unfortunately, I have no idea how to prove any of these statements for
 T<sub>4</sub> and up!  (Note obviously that these statements are selected, and
-one could write down many more like them.)  Still, based on them, I'll make the
-following conjecture:<p>
+one could write down many more like them.)  Still, based on them, I'll ask the
+following question:<p>
 
-<b>Conjecture</b>: Given c&ge;1 and i&isin;<b>Z</b>, there exists
+<b>Question:</b> Given c&ge;4 and i&isin;<b>Z</b>, does there always exist
 j&isin;<b>Z</b> and K&ge;0 such that, for all k&ge;K,
-L<sub>c</sub>(F<sub>k</sub>+i) = F<sub>k+1</sub>+j.<p>
+L<sub>c</sub>(F<sub>k</sub>+i) = F<sub>k+1</sub>+j?<p>
 
 Here, of course, L<sub>c</sub> denotes the L operation for T<sub>c</sub>.  Note
 also from this it would follow that R<sub>c</sub>(F<sub>k</sub>+i) would be
 equal to F<sub>k+2</sub>+i+j+c, so there's no need to state that separately.<p>
 
-This conjecture is true for c&le;3, since it follows from the L operation acting
-only on the last few digits of the dual Zeckendorf representation.  If it's true
-for c=4 or above, well, I have no proof!<p>
+Note that the answer to this question is <i>no</i> for c&le;3, because there,
+the value of j often ends up depending not only on i, but also on the parity of
+k.  We could modify the question though to allow for this:<p>
+
+<b>Question:</b> Given c&ge;1 and i&isin;<b>Z</b>, do there always exist
+j<sub>0</sub>,j<sub>1</sub>&isin;<b>Z</b> and K&ge;0 such that, for all k&ge;K,
+L<sub>c</sub>(F<sub>k</sub>+i) = F<sub>k+1</sub>+j<sub>k mod 2</sub>?<p>
+
+This weaker statement does hold for c&le;3, if I'm not mistaken<a
+href="#local"><sup>12</sup></a>.  But if it holds for c=4 or higher, I have no
+proof!<p>
+
+<p>
 
 <a href="index.html">(back to main page)</a>
 
@@ -597,6 +607,12 @@ prove this by first proving it for 0, as done above, and then note that
 appending 1 is just appending 0 and then incrementing; or you could do it
 directly, mimicking the above proof for 0, except you'd use dual Zeckendorf
 instead of Zeckendorf.<p>
+
+<a name="local"><sup>12</sup>I haven't bothered to write down a formal proof of
+this because it seems like a pain to do, but it ought to follow from the fact
+that L acts only on the last few digits of the dual Zeckendorf representation
+combined with the fact that it only uses parity conditions (or even simpler
+conditions) in determining which case to apply.<p>
 
 <hr>
 
