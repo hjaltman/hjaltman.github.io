@@ -466,9 +466,8 @@ Here, of course, L<sub>c</sub> denotes the L operation for T<sub>c</sub>.  Note
 also from this it would follow that R<sub>c</sub>(F<sub>k</sub>+u) would be
 equal to F<sub>k+2</sub>+u+v+c, so there's no need to state that separately.<p>
 
-This statement does hold for c&le;3, if I'm not mistaken<a
-href="#local"><sup>12</sup></a>.  But if it holds for c=4 or higher, I have no
-proof!<p>
+This statement does hold for c&le;3<a href="#vcomput"><sup>12</sup></a>.  But if
+it holds for c=4 or higher, I have no proof!<p>
 
 <p>
 
@@ -603,30 +602,39 @@ appending 1 is just appending 0 and then incrementing; or you could do it
 directly, mimicking the above proof for 0, except you'd use dual Zeckendorf
 instead of Zeckendorf.<p>
 
-<a name="local"><sup>12</sup></a>I haven't bothered to write down a formal proof
-of this because it seems like a pain to do<a href="#vcomput"><sup>13</sup></a>,
-but it ought to follow from the fact that L acts only on the last few digits of
-the dual Zeckendorf representation combined with the fact that it only uses
-parity conditions (or even simpler conditions) in determining which case to
-apply.<p>
-
-<a name ="vcomput"><sup>13</sup></a>Actually, it's only really a pain for c=3.
-For c&isin;{1,2}, it's fairly easy to write down a function explicitly.  Let Z
+<a name ="vcomput"><sup>12</sup></a>Indeed, for c&le;3 it's not too hard to
+prove an explicit formula for v (well, handling positive u can be a pain without
+the right technique, especially for c=3, but I'll skip going into that).  Let Z
 denote the Zeckendorf left-shift operation.  Then for c=1, we get
 <ul>
 <li> For u&ge;0, v=Z(u)+1=L(u)
 <li> For u=-1, v<sub>0</sub>=-1 and v<sub>1</sub>=0
 <li> For u&le;-2, v=-2-Z(-2-u)
 </ul>
-and for c=2, we get
+while for c=2 we get
 <ul>
 <li> For u&ge;-1, v=Z(u+1)-1 (which for u&ge;0 is equal to L(u))
 <li> For u=-2, v<sub>0</sub>=-2 and v<sub>1</sub>=-3
 <li> For u&le;-3, v=-3-Z(-2-u)
 </ul>
-One could undoubtedly do the work to write down a similar breakdown for c=3,
-but this would be more complicated so I haven't done so.  It is worth noting
-that for c=3, we do not have v(u)=L(u) for u&ge;0, as there one has v(0)=0.
+and for c=3 we get
+<ul>
+<li> For u&ge;1, write u in dual Zeckendorf.  If u ends in a 1 or has an even
+number of 1's before a final 0, v=Z(u); if u ends in an odd number of 1's before
+a final 0, v=Z(u)+1.  Note that this means v=L(u) <i>except</i> when
+u=F<sub>&ell;</sub>-3 for some &ell;, in which case
+v=L(u)+(-1)<sup>&ell;+1</sup>.
+<li> For u=0, v=0.  (I guess this could be folded into the previous case, but I
+determined it separately.)
+<li> For u=-1, v=-1.
+<li> For u=-2, v=-3.
+<li> For u=-3, v<sub>0</sub>=-4 and v<sub>1</sub>=-5.
+<li> For u&le;-4, write -2-u in Zeckendorf (note -2-u&gt;1).  If -2-u ends in a
+0, or it has an even number of 0's before a final 1, v=-2-Z(-2-u); if -2-u has
+an odd number of 0's before a final 1, v=-3-Z(-2-u).
+</ul>
+I will again skip proving any of this.  One could similarly easily explicitly
+determine K, but that's less interesting so I'm skipping it here.
 
 <hr>
 
