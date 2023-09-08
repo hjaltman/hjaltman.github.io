@@ -453,26 +453,20 @@ But for T<sub>8</sub> things seemingly get a bit simpler again:
 
 Unfortunately, I have no idea how to prove any of these statements for
 T<sub>4</sub> and up!  (Note obviously that these statements are selected, and
-one could write down many more like them.)  Still, based on them, I'll ask the
-following question:<p>
+one could write down many more like them.)  Still, based on these and other
+experiments that I won't write all write down here, I'll make the following
+conjecture:<p>
 
-<b>Question:</b> Given c&ge;4 and u&isin;<b>Z</b>, does there always exist
-v&isin;<b>Z</b> and K&ge;0 such that, for all k&ge;K,
-L<sub>c</sub>(F<sub>k</sub>+u) = F<sub>k+1</sub>+v?<p>
+<b>Conjecture:</b> Given c&ge;1 and u&isin;<b>Z</b>, there exist
+v<sub>0</sub>,v<sub>1</sub>&isin;<b>Z</b> and K&ge;0 such that, for all k&ge;K,
+L<sub>c</sub>(F<sub>k</sub>+u) = F<sub>k+1</sub>+v<sub>k mod 2</sub>.  Moreover,
+if u&ne;-c, v<sub>0</sub>=v<sub>1</sub>.<p>
 
 Here, of course, L<sub>c</sub> denotes the L operation for T<sub>c</sub>.  Note
 also from this it would follow that R<sub>c</sub>(F<sub>k</sub>+u) would be
 equal to F<sub>k+2</sub>+u+v+c, so there's no need to state that separately.<p>
 
-Note that the answer to this question is <i>no</i> for c&le;3, because there,
-the value of v often ends up depending not only on u, but also on the parity of
-k.  We could modify the question though to allow for this:<p>
-
-<b>Question:</b> Given c&ge;1 and u&isin;<b>Z</b>, do there always exist
-v<sub>0</sub>,v<sub>1</sub>&isin;<b>Z</b> and K&ge;0 such that, for all k&ge;K,
-L<sub>c</sub>(F<sub>k</sub>+u) = F<sub>k+1</sub>+v<sub>k mod 2</sub>?<p>
-
-This weaker statement does hold for c&le;3, if I'm not mistaken<a
+This statement does hold for c&le;3, if I'm not mistaken<a
 href="#local"><sup>12</sup></a>.  But if it holds for c=4 or higher, I have no
 proof!<p>
 
@@ -482,13 +476,13 @@ proof!<p>
 
 <hr>
 
-<a name="paper"><sup>1</sup>Could this be a paper?  Probably, assuming the main
-parts turn out to be original, but first I'm making this quick informal public
-writeup so that I have something to cite when I add this information on OEIS!
-Formalizing everything to make it a paper can come eventually, meanwhile I've
-got other papers I need to get out...<p>
+<a name="paper"><sup>1</sup></a>Could this be a paper?  Probably, assuming the
+main parts turn out to be original, but first I'm making this quick informal
+public writeup so that I have something to cite when I add this information on
+OEIS!  Formalizing everything to make it a paper can come eventually, meanwhile
+I've got other papers I need to get out...<p>
 
-<a name="nodups"><sup>2</sup>This is always well-defined, because the tree
+<a name="nodups"><sup>2</sup></a>This is always well-defined, because the tree
 contains no duplicates.  Each new left child can't be a duplicate by definition.
 Each new right child must be bigger than the corresponding parent and left
 child, which, since parents are processed in order and left children are
@@ -500,7 +494,7 @@ left child.  (Also, the tree contains all positive integers, due to the rule for
 generating left children.  So it contains each positive integer exactly
 once.)<p>
 
-<a name="fib"><sup>3</sup>OK, you want a list of ways that we've found?  OK.
+<a name="fib"><sup>3</sup></a>OK, you want a list of ways that we've found?  OK.
 Here, L(n) means the left child of n, while R(n) means the right child of n.
 <ul>
 <li> The obvious one: R<sup>n</sup>(1)=F<sub>2n+2</sub> and
@@ -515,8 +509,9 @@ RLR<sup>n</sup>(1)=F<sub>2n+5</sub>+1.
 </ul>
 <p>
 
-<a name="relations"><sup>4</sup>You want a list of what we found there too?  OK.
-Again, L(n) means the left child of n, while R(n) means the right child of n.
+<a name="relations"><sup>4</sup></a>You want a list of what we found there too?
+OK.  Again, L(n) means the left child of n, while R(n) means the right child of
+n.
 <ul>
 <li> This one holds by definition: n+L(n)=R(n)
 <li> The less obvious one I've already mentioned: L(n)+R(n)=LR(n).
@@ -528,7 +523,7 @@ R(n)+RL(n)=L&sup2;R(n).
 </ul>
 <p>
 
-<a name="bz"><sup>5</sup>Speaking of Zeckendorf variants, there's also
+<a name="bz"><sup>5</sup></a>Speaking of Zeckendorf variants, there's also
 <a href="https://en.wikipedia.org/wiki/Bijective_numeration">bijective</a>
 Zeckendorf!  As in, instead of 0 and 1, you use 1 and 2, and you can't have two
 consecutive 2's.<a href="#dbz"><sup>6</sup></a>  Now, famously bijective binary
@@ -539,14 +534,14 @@ Zeckendorf; the bijective Zeckendorf for n is the ordinary Zeckendorf for n+2
 but with the initial 10 stripped off and each digit incremented.
 <p>
 
-<a name="dbz"><sup>6</sup>Note that there's no such thing as dual bijective
+<a name="dbz"><sup>6</sup></a>Note that there's no such thing as dual bijective
 Zeckendorf, because in such a system it would be impossible to represent the
 number 3.<p>
 
-<a name="credit"><sup>7</sup>This proof is primarily due to Ophelia.<p>
+<a name="credit"><sup>7</sup></a>This proof is primarily due to Ophelia.<p>
 
-<a name="parity"><sup>8</sup>This proof will rely on the following nontrivial
-fact about Fibonacci numbers: If we consider "pseduo-Zeckendorf
+<a name="parity"><sup>8</sup></a>This proof will rely on the following
+nontrivial fact about Fibonacci numbers: If we consider "pseduo-Zeckendorf
 representations", that is, Zeckendorf representations with no consecutivity
 restrictions, then the "left shift" operation (appending a 0) is well-defined.
 I'm going to relegate the proof of that to a separate footnote.<a
@@ -580,11 +575,11 @@ appending 0 to w and then incrementing, which appends a 1.  Similarly, appending
 corresponds to appending 00 to w and then incrementing, which appends a 01.
 This completes the proof.<p>
 
-<a name="wd"><sup>9</sup>It suffices to show that if w is a pseudo-Zeckendorf
-representation representing the number n, and v is the Zeckendorf representation
-of n, then w0 and v0 again represent the same number.  Note that v0 is again a
-Zeckendorf representation, so we are showing that the number represented by w0
-has Zeckendorf representation v0.<p>
+<a name="wd"><sup>9</sup></a>It suffices to show that if w is a
+pseudo-Zeckendorf representation representing the number n, and v is the
+Zeckendorf representation of n, then w0 and v0 again represent the same number.
+Note that v0 is again a Zeckendorf representation, so we are showing that the
+number represented by w0 has Zeckendorf representation v0.<p>
 
 To show this, note that any pseudo-Zeckendorf representation can be converted to
 Zeckendorf representing the same number by the following procedure: Find the
@@ -594,25 +589,44 @@ leftmost), then change this "011" to a "100"; repeat until there are no 11's
 step).  Now observe that this procedure (both each step and the termination
 condition) commutes with appending a 0.  This proves the claim.<p>
 
-<a name="lex"><sup>10</sup>The identity of these two descriptions of the tree
-might not be obvious, but it follows from the fact that to compare two numbers
-written in dual Zeckendorf, you just do so lexicographically.  This in turn can
-be proven by comparing the smallest possible dual Zeckendorf number of a given
-length with the largest possible dual Zeckendorf number that's one shorter in
-length.<p>
+<a name="lex"><sup>10</sup></a>The identity of these two descriptions of the
+tree might not be obvious, but it follows from the fact that to compare two
+numbers written in dual Zeckendorf, you just do so lexicographically.  This in
+turn can be proven by comparing the smallest possible dual Zeckendorf number of
+a given length with the largest possible dual Zeckendorf number that's one
+shorter in length.<p>
 
-<a name="append1"><sup>11</sup>Note that this proof needs to use the fact that
-appending 1 to pseudo-Zeckendorf representations is well-defined.  You could
-prove this by first proving it for 0, as done above, and then note that
+<a name="append1"><sup>11</sup></a>Note that this proof needs to use the fact
+that appending 1 to pseudo-Zeckendorf representations is well-defined.  You
+could prove this by first proving it for 0, as done above, and then note that
 appending 1 is just appending 0 and then incrementing; or you could do it
 directly, mimicking the above proof for 0, except you'd use dual Zeckendorf
 instead of Zeckendorf.<p>
 
-<a name="local"><sup>12</sup>I haven't bothered to write down a formal proof of
-this because it seems like a pain to do, but it ought to follow from the fact
-that L acts only on the last few digits of the dual Zeckendorf representation
-combined with the fact that it only uses parity conditions (or even simpler
-conditions) in determining which case to apply.<p>
+<a name="local"><sup>12</sup></a>I haven't bothered to write down a formal proof
+of this because it seems like a pain to do<a href="#vcomput"><sup>13</sup></a>,
+but it ought to follow from the fact that L acts only on the last few digits of
+the dual Zeckendorf representation combined with the fact that it only uses
+parity conditions (or even simpler conditions) in determining which case to
+apply.<p>
+
+<a name ="vcomput"><sup>13</sup></a>Actually, it's only really a pain for c=3.
+For c&isin;{1,2}, it's fairly easy to write down a function explicitly.  Let Z
+denote the Zeckendorf left-shift operation.  Then for c=1, we get
+<ul>
+<li> For u&ge;0, v=Z(u)+1=L(u)
+<li> For u=-1, v<sub>0</sub>=-1 and v<sub>1</sub>=0
+<li> For u&le;-2, v=-2-Z(-2-u)
+</ul>
+and for c=2, we get
+<ul>
+<li> For u&ge;-1, v=Z(u+1)-1 (which for u&ge;0 is equal to L(u))
+<li> For u=-2, v<sub>0</sub>=-2 and v<sub>1</sub>=-3
+<li> For u&le;-3, v=-3-Z(-2-u)
+</ul>
+One could undoubtedly do the work to write down a similar breakdown for c=3,
+but this would be more complicated so I haven't done so.  It is worth noting
+that for c=3, we do not have v(u)=L(u) for u&ge;0, as there one has v(0)=0.
 
 <hr>
 
