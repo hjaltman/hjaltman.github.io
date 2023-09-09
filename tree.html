@@ -471,10 +471,11 @@ the following holds:
 
 Note this graph need not be a tree -- it can have cycles, even having directed
 cycles and even having self-loops; it also may not be connected (it has two
-components for c=1 and c=2, and it has three components for c=3).<p>
+components for c=1 and c=2, and it has three components for c=3).<a
+href="#components"><sup>12</sup></a><p>
 
 Do these conjectures hold?  Well, they do for c&le;3.<a
-href="#vcomput"><sup>12</sup></a>  But if it holds for c=4 or higher, I have no
+href="#vcomput"><sup>13</sup></a>  But if it holds for c=4 or higher, I have no
 proof!<p>
 
 <p>
@@ -610,7 +611,14 @@ appending 1 is just appending 0 and then incrementing; or you could do it
 directly, mimicking the above proof for 0, except you'd use dual Zeckendorf
 instead of Zeckendorf.<p>
 
-<a name="vcomput"><sup>12</sup></a>Indeed, for c&le;3 it's not too hard to
+<a name="components"><sup>12</sup></a>For c=1 and c=2, there's one component for
+u&le;-2 and another component for u&ge;-1.  For c=3, there's one component for
+u&le;-2, a second component for u&ge;1 with the last block of 1's in the dual
+Zeckendorf representation of u having odd length or u=-1, and a third component
+for u&ge;1 with the last block of 1's in the dual Zeckendorf representation of u
+having even length or u=0.<p>
+
+<a name="vcomput"><sup>13</sup></a>Indeed, for c&le;3 it's not too hard to
 prove an explicit formula for v (well, handling positive u can be a pain without
 the right technique, especially for c=3, but I'll skip going into that).  Let Z
 denote the Zeckendorf left-shift operation.  Then for c=1, we get
