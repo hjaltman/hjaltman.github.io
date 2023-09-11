@@ -336,6 +336,58 @@ flip|  jZ[0] --------- Dp[0] ------ DP[0] ---------+-- JZ[0]
 By the way, you may be wondering, what about bijective Zeckendorf?
 Unfortunately, it doesn't seem to fit nicely into the picture above.<p>
 
+<h3>A quick but disappointing generalization to higher Fibonacci analogues</h3>
+
+Finally, before we change gears, let's look at one more way we can get similar
+inverse relations.<p>
+
+Define the t-Fibonacci numbers to be the sequence that starts with t 1's, and
+then obeys the recurrence F<sub>t,k</sub>=F<sub>t,k-1</sub>+F<sub>t,k-t</sub>.
+So the 1-Fibonacci numbers are the powers of 2, while the 2-Fibonacci numbers
+are the Fibonacci numbers.<p>
+
+A number of facts transfer from the Fibonacci setting to the t-Fibonacci
+setting (I'll omit the proofs).  One has t-Zeckendorf representations, where we
+require that any two 1's have at least t-1 0's between them.  These exist, are
+unique, and can be compared lexicographically.  One also has bijective
+t-Zeckendorf; again, representations exist, are unique, can be compared
+lexicographically, and have a relation to ordinary t-Zeckendorf that's similar
+to the t=2 case.  (The number you have to adjust by is t, and the prefix you
+have to strip off is 10<sup>t-1</sup>.)  And one has dual t-Zeckendorf; once
+again, this exists, is unique, and can be compared lexicographically.<p>
+
+Unfortunately, not everything works so well.  Notably, the well-definedness of
+left-shift on pseudo-t-Zeckendorf does not hold for t=3.  And while dual
+t-Zeckendorf exists, it's not clear how to sensibly put it in a tree for
+t&gt;2.<p>
+
+Still, one can at least make an ordinary t-Zeckendorf tree for any t; the root
+is 1, edges are either 0 (left) or 1 (right), and you can't have a 1 edge except
+after t-1 consecutive 0 edges.  We might call this tree
+Z<sup>t</sup>Z<sup>t</sup>, following the pattern above (where Z<sup>2</sup>
+means the same thing as Z and Z<sup>1</sup> means the same thing as B).  Of
+course, such a tree is not that interesting; its reading sequence will simply be
+the positive integers.  What we want to know is about mixing values of t, like
+we did above with t=1 and t=2, to get more interesting trees.<p>
+
+Well, if t'&lt;t, we can make the tree Z<sup>t</sup>Z<sup>t'</sup> by having
+edges be either 0 (left) or 0<sup>t-t'</sup>1 (right); the latter can't occur
+except after t'-1 consecutive 0s.  Notably we can take t'=1 and get
+Z<sup>t</sup>B.  Unfortunately, if we subtract 1 from each number in
+Z<sup>t</sup>B, and write the results in dual-t-Zeckendorf, we don't seem to get
+any nice rule when, say, t=3.<p>
+
+Now if t'=t+1, we can make the tree Z<sup>t</sup>Z<sup>t+1</sup> where edges are
+either 0 (left) or "change final 0 to a 1" (right); the latter can occur only
+after t consecutive 0's.  Unfortunately, I don't see how to make an analogous
+tree Z<sup>t</sup>Z<sup>t'</sup> for t'&gt;t+1.<p>
+
+Still, if you do this, then the trees Z<sup>t</sup>Z<sup>t+1</sup> and the trees
+Z<sup>t+1</sup>Z<sup>t</sup> will have inverse reading permutations!  But for
+t&gt;1, this fact doesn't seem to fit into a nice big diagram like the one above
+for t=1; it's fairly isolated.  You can I'm sure write down trivial variants on
+it that will also be true, but for nontrivial variants, I'm not aware of any.<p>
+
 <h2>Back to the original characterization: Handling the variants</h2>
 
 Can we characterize some of these variants in the same way we originally
