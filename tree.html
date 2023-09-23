@@ -422,113 +422,22 @@ Let's make this into a table:
 <li> T<sub>2,1</sub> = T<sub>2,0</sub>+1 = ZB
 </ul>
 
-OK, but what about T<sub>3</sub> and up?  (From here on out I'm just going to
-focus on the 0-rooted version.)
+OK, but what about T<sub>3</sub> and up?
 
-<h3>Fiddling with the constants a little</h3>
+<h3>Higher constants</h3>
 
-This is where things really start to get hairy.  For T<sub>3</sub> I
-actually have a description, although it's a little funky.  Beyond that, though,
-I simply don't have any good answer.  (Note that it's T<sub>3,0</sub> and not
-T<sub>3,1</sub> that admit this nice description... this is why I'm ignoring the
-1-rooted trees in this section.)<p>
+Well, I actually have an answer to this question, but it gets pretty hairy as c
+increases, so I think I'm not going to cover it here.  This page was supposed
+to be about those inverse permutations and this isn't relevant to that!  I'll
+write about those some other time.<p>
 
-We can generate the tree T<sub>3</sub> as follows.  Write each number in dual
-Zeckendorf.  The root is 0, which we will write as 0 rather than as the empty
-string.  Then:
-
-<ul>
-<li> If the parent ends in a 1, then the left child appends a 0, while the right
-child appends 11.
-<li> If the parent is 1<sup>k</sup>0 with k even, or ends in 01<sup>k</sup> with
-k odd, then the left child appends a 1, while the right child replaces the final
-0 with 101.
-<li> If the parent is 1<sup>k</sup>0 with k odd, or ends in 01<sup>k</sup> with
-k even, then the left child replaces the final 10 with 011, while the right
-child appends 11.  (Note that the left child of 10 is 11.)
-</ul>
-
-This can, again, be proven using the usual hot/cold-style argument.<p>
-
-An interesting consequence of this is that L(F<sub>k</sub>)=F<sub>k+1</sub> for
-k&ge;6.<p>
-
-OK, but what about T<sub>4</sub> and up?
-
-<h3>Unknown territory, and some open questions</h3>
-
-For T<sub>4</sub> and up, I don't have any good description.  These ones so far
-seem pretty wild compared to T<sub>3</sub> and below.<p>
-
-However, that doesn't mean there's nothing interesting going on here!  If you
-draw these trees yourself, you will see that Fibonacci patterns are still
-evident.  Here are a few that <b>appear</b> to hold in T<sub>4</sub>:
-<ul>
-<li> L(F<sub>k</sub>)=F<sub>k+1</sub> for k&ge;5
-<li> L(F<sub>k</sub>-1)=F<sub>k+1</sub>-2 for k&ge;6
-<li> R(F<sub>k</sub>-2)=F<sub>k+2</sub>-1 for k&ge;7
-</ul>
-
-Meanwhile, in T<sub>5</sub>, we appear to have:
-<ul>
-<li> L(F<sub>k</sub>)=F<sub>k+1</sub> for k&ge;11
-<li> L(F<sub>k</sub>-1)=F<sub>k+1</sub>-2 for k&ge;6
-<li> R(F<sub>k</sub>-2)=F<sub>k+2</sub>-1 for k&ge;10
-</ul>
-
-The same patterns, just starting later!  However, for T<sub>6</sub> we appear to
-instead have:
-
-<ul>
-<li> L(F<sub>k</sub>)=F<sub>k+1</sub>-1 for k&ge;8
-<li> L(F<sub>k</sub>-1)=F<sub>k+1</sub>-2 for k&ge;9
-<li> R(F<sub>k</sub>-2)=F<sub>k+2</sub> for k&ge;8
-</ul>
-
-Subsequent trees appear to have their own similar but distinct rules; I will
-skip listing examples here.<p>
-
-Unfortunately, I have no idea how to prove any of these statements for
-T<sub>4</sub> and up!  (Note obviously that these statements are selected, and
-one could write down many more like them.)  Still, based on these and other
-experiments that I won't write all write down here, I'll make the following
-conjecture:<p>
-
-<b>Conjecture:</b> Given c&ge;1 and u&isin;<b>Z</b>, there exist
-v<sub>0</sub>,v<sub>1</sub>&isin;<b>Z</b> and K&ge;0 such that, for all k&ge;K,
-L<sub>c</sub>(F<sub>k</sub>+u) = F<sub>k+1</sub>+v<sub>k mod 2</sub>.  Moreover,
-v<sub>0</sub>&ne;v<sub>1</sub> if and only if u=-c.<p>
-
-Here, of course, L<sub>c</sub> denotes the L operation for T<sub>c</sub>.  Note
-also from this it would follow that R<sub>c</sub>(F<sub>k</sub>+u) would be
-equal to F<sub>k+2</sub>+u+v+c, so there's no need to state that separately.<p>
-
-Actually, if this conjecture holds, we can use it to make another graph for each
-c, this one with <b>Z</b> as the set of vertices.  This will be a directed
-graph, with each vertex having two edges out.  For u&ne;-c, the two edges out
-would be labeled L and R (pointing to v and to u+v+c, respectively), while for
-u=-c, the two edges out would be labeled 0 and 1 (pointing to v<sub>0</sub> and
-v<sub>1</sub>).  Each vertex would presumably also have a unique edge in,
-although I'm not sure that actually follows from the conjecture; I guess we can
-add that as a stronger conjecture.<p>
-
-<b>Further conjecture:</b> Given c, for every w&isin;<b>Z</b>, exactly one of
-the following holds:
-<ul>
-<li> w=v(u) for some unique u&ne;-c,
-<li> w=v(u)+u+c for some unique u&ne;-c,
-<li> w=v<sub>0</sub>(-c)
-<li> w=v<sub>1</sub>(-c)
-</ul>
-
-Note this graph need not be a tree -- it can have cycles, even having directed
-cycles and even having self-loops; it also may not be connected (it has two
-components for c=1 and c=2, and it has three components for c=3).<a
-href="#components"><sup>12</sup></a><p>
-
-Do these conjectures hold?  Well, they do for c&le;3.<a
-href="#vcomput"><sup>13</sup></a>  But if it holds for c=4 or higher, I have no
-proof!<p>
+To give you a bit of the flavor of it, though... let S(n) denote the Zeckendorf
+left-shift operations.  Then with c=1 (sticking to the 0-rooted trees), we have
+L(n)=S(n)+1.  With c=2, we have L(n)=S(n+1)-1.  With c=3, we have
+L(n)=S(n+2)-3... <i>unless</i> n is of the form F<sub>k</sub>-3, then
+L(n)=S(n+2)-3+(-1)<sup>k</sup>.  A little funky, right?  And the exceptions grow
+quadratically thicker from there!  But again, I'll write about that some other
+time...
 
 <p>
 
@@ -662,47 +571,6 @@ could prove this by first proving it for 0, as done above, and then note that
 appending 1 is just appending 0 and then incrementing; or you could do it
 directly, mimicking the above proof for 0, except you'd use dual Zeckendorf
 instead of Zeckendorf.<p>
-
-<a name="components"><sup>12</sup></a>For c=1 and c=2, there's one component for
-u&le;-2 and another component for u&ge;-1.  For c=3, there's one component for
-u&le;-2, a second component for u&ge;1 with the last block of 1's in the dual
-Zeckendorf representation of u having odd length or u=-1, and a third component
-for u&ge;1 with the last block of 1's in the dual Zeckendorf representation of u
-having even length or u=0.<p>
-
-<a name="vcomput"><sup>13</sup></a>Indeed, for c&le;3 it's not too hard to
-prove an explicit formula for v (well, handling positive u can be a pain without
-the right technique, especially for c=3, but I'll skip going into that).  Let Z
-denote the Zeckendorf left-shift operation.  Then for c=1, we get
-<ul>
-<li> For u&ge;0, v=Z(u)+1=L(u)
-<li> For u=-1, v<sub>0</sub>=-1 and v<sub>1</sub>=0
-<li> For u&le;-2, v=-2-Z(-2-u)
-</ul>
-while for c=2 we get
-<ul>
-<li> For u&ge;-1, v=Z(u+1)-1 (which for u&ge;0 is equal to L(u))
-<li> For u=-2, v<sub>0</sub>=-2 and v<sub>1</sub>=-3
-<li> For u&le;-3, v=-4-Z(-3-u)
-</ul>
-and for c=3 we get
-<ul>
-<li> For u&ge;1, write u in dual Zeckendorf.  If u ends in a 1 or has an even
-number of 1's before a final 0, v=Z(u); if u ends in an odd number of 1's before
-a final 0, v=Z(u)+1.  Note that this means v=L(u) <i>except</i> when
-u=F<sub>&ell;</sub>-3 for some &ell;, in which case
-v=L(u)+(-1)<sup>&ell;+1</sup>.
-<li> For u=0, v=0.  (I guess this could be folded into the previous case, but I
-determined it separately.)
-<li> For u=-1, v=-1.
-<li> For u=-2, v=-3.
-<li> For u=-3, v<sub>0</sub>=-4 and v<sub>1</sub>=-5.
-<li> For u&le;-4, write -2-u in Zeckendorf (note -2-u&gt;1).  If -2-u ends in a
-0, or it has an even number of 0's before a final 1, v=-3-Z(-2-u); if -2-u has
-an odd number of 0's before a final 1, v=-2-Z(-2-u).
-</ul>
-I will again skip proving any of this.  One could similarly easily explicitly
-determine K, but that's less interesting so I'm skipping it here.<p>
 
 <hr>
 
