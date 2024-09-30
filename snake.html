@@ -5,7 +5,7 @@
 <body>
 <h1>Which graphs are winnable in Snake?</h1>
 
-(<b>Updated</b> June 28th, 2022)<p>
+(<b>Updated</b> September 30th, 2024)<p>
 
 Let's consider the game of Snake; except instead of playing it on a grid, we're
 going to play it on an arbitrary finite [simple] graph.  We assume the snake
@@ -46,19 +46,33 @@ Hence the restriction to simple graphs -- if I'm right, then unless the
 affect anything.  (And it's easy to see how it affects P<sub>3</sub>.)<p>
 
 But let's put that aside and return to the question of which graphs are
-winnable more generally.  Above I wrote that this question might be too broad
-to answer.  But actually it's possible -- I won't say likely, but possible --
-that it might have a not-too-complicated answer.<p>
+winnable more generally.  Here are some examples of winnable graphs:
+<ul>
+<li>For n&ge;3, the cycle C<sub>n</sub>.
+<li>For n&ge;3, two copies of K<sub>n</sub> joined at a vertex.
+<li>For 1&le;i&le;j&le;k, define &Theta;<sub>i,j,k</sub> to be the graph
+consisting of two vertices and three paths between them, with i, j, and k
+vertices in the interior of the three paths (respectively).  Then
+&Theta;<sub>1,1,k</sub> is winnable.
+<li>(Thanks to Justin Kopinsky for finding these!)  For m&ge;2 and k&ge;1, take
+&Theta;<sub>m,m,k</sub>, except that instead of using paths of length m,
+we use cliques of size m; moreover, each vertex in each clique is
+connected to both of the "hinge" vertices.  Note that when m=1, this is
+just &Theta;<sub>1,1,k</sub> from above, but I've listed this separately
+because I think it's easier to understand this way.  Let's call this new graph
+&Psi;<sub>m,k</sub>.
+</ul><p>
 
-Let's reformulate the question first.  If a graph has a spanning subgraph which
-is winnable, then the graph is winnable.  Hence, rather than focusing on all
-winnable graphs, let's focus just on <i>minimal</i> winnables -- ones where
-deleting any edge renders the graph unwinnable.  (Note: For the rest of this,
-I'm going to assume the strong game unless I say otherwise.)  Characterizing
-these would characterize all winnable graphs, as a graph is winnable iff it
-contains some minimal winnable.<p>
+Now above I've talked about winnable graphs, but I've found an alternative
+formulation helpful.  If a graph has a spanning subgraph which is winnable, then
+the graph is winnable.  Hence, rather than focusing on all winnable graphs,
+let's focus just on <i>minimal</i> winnables -- ones where deleting any edge
+renders the graph unwinnable.  (Note: For the rest of this, I'm going to assume
+the strong game unless I say otherwise.)  Characterizing these would
+characterize all winnable graphs, as a graph is winnable iff it contains some
+minimal winnable.<p>
 
-Then so far I've only managed to find a few types of minimal winnable graphs!
+So far I've only managed to find a few types of minimal winnable graphs!
 And, more generally, every winnable graph I know of contains one of these as a
 spanning subgraph.  There are of course the trivial ones -- the zero-vertex
 graph, the one-vertex graph, the path P<sub>2</sub>.  But the interesting ones
@@ -68,38 +82,48 @@ are the following:
 to n&ge;4, as there C<sub>3</sub> is not minimal.)
 <li>For n&ge;3, two copies of K<sub>n</sub> joined at a vertex.  (In the weak
 game, we should instead say n&ge;2, as n=2 yields the path P<sub>3</sub>.)
-<li>For 1&le;i&le;j&le;k, define &Theta;<sub>i,j,k</sub> to be the graph
-consisting of two vertices and three paths between them, with i, j, and k
-vertices in the interior of the three paths (respectively).  Then
-&Theta;<sub>1,1,k</sub> and &Theta;<sub>2,2,k</sub>
-are examples of minimal winnable graphs.
-<li>(Thanks to Justin Kopinsky for finding these!)  For m&ge;2 and k&ge;1, take
-&Theta;<sub>m,m,k</sub>, except that instead of using paths of length m, we use
-cliques of size m; moreover, each vertex in each clique is connected to one of
-the two "hinge" vertices (do this however you want so long as each clique has at
-least one edge going to each hinge vertex -- so this gets us additional
-parameters describing the distribution of these).  Note that when m=2, this is
-just &Theta;<sub>2,2,k</sub> from above, but I've listed this separately because
-I think it's easier to understand this way.
+<li>The graphs &Psi;<sub>1,k</sub>=&Theta;<sub>1,1,k</sub>.
+<li>The graphs &Theta;<sub>2,2,k</sub> for k&isin;{1,2}, and, for
+k&ge;3, the graphs &Psi;<sub>2,k</sub>.
+<li>For m&ge;4, let's take &Psi;<sub>m,k</sub> and modify it as follows.  For
+each vertex in one of the two cliques, connect it to only one of the two "hinge"
+vertices instead of both of them.  As long as k&le;m, any choice of how to do
+this should work, so long as each hinge vertex is in fact adjacent to each
+clique; if k&gt;m, we require that each hinge vertex is adjacent to each clique
+via at least two edges.
+<li>For m=3, k&le;3, we'll do the same thing as in the previous case; but if
+k&gt;3, in each triangle, among the three vertices, one will connect to one
+hinge vertex, one to the other hinge vertex, and one to both.
 </ol><p>
+
+(Note: Those last few I haven't quite fully checked, but I think they're
+right?)<p>
 
 So, <b>question number two</b>: Could this possibly be all of them?  It seems
 unlikely, but it might just be possible.  I have in fact verified that these are
 all of them up to 7 vertices, so any counterexample will have to be at least 8
 vertices, unless I've messed up.<p>
 
-Note that an earlier version of this page did not not include family (4) above;
+Note that an earlier version of this page only included families (1)-(3) above;
 so the original "are these all?" question has now been answered with a "no".
 Still, we can once again ask "are these all" about the new list!
 
 <hr>
 
-Corrections: An earlier version of this page erroneously claimed that
-&Theta;<sub>1,2,k</sub> is winnable.  It also asked, as question number two,
-whether a subdivision of an unwinnable graph is also unwinnable; this question
-is now answered in the negative.  Finally, it also claimed that I had checked
-all graphs of up to 8 vertices, but it turns out the method I used is only valid
-up to 7 vertices.<p>
+<h3>Corrections:</h3>
+
+An earlier version of this page erroneously claimed that &Theta;<sub>1,2,k</sub>
+is winnable.  It also asked, as question number two, whether a subdivision of an
+unwinnable graph is also unwinnable; this question is now answered in the
+negative.  Finally, it also claimed that I had checked all graphs of up to 8
+vertices, but it turns out the method I used is only valid up to 7 vertices.
+Thanks to Tim Ophelders and Marzio De Biasi for finding this error.<p>
+
+An earlier version of this page erroneously claimed that &Theta;<sub>2,2,k</sub>
+is winnable for k&ge;3; this was part of more generally giving an incorrect
+minimization of Kopinsky's family (I said that the one-connection procedure
+sufficed for all m,k&ge;1, rather than it requiring k&le;m.)  Thanks to Rakesh
+Rivera and others for finding this error.<p>
 
 <a href="index.html">(back to main page)</a>
 </body>
