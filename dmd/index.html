@@ -134,7 +134,7 @@ function(c)
                 let date = new Date();
                 let month = date.getMonth();
                 let day = date.getDate();
-                let age = (month===12 || (month === 11 && day>=5)) ?
+                let age = (month===11 || (month === 10 && day>=5)) ?
                     date.getFullYear()-1986 :
                     date.getFullYear()-1986-1;
                 document.write(`Age: ${age}`)
