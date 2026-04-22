@@ -5,7 +5,11 @@
 <body>
 <h1>Which graphs are winnable in Snake?</h1>
 
-(<b>Updated</b> April 27, 2025)<p>
+(<b>Updated</b> April 21, 2026: This problem has now been
+<a href="https://arxiv.org/abs/2506.21281v1">studied</a>
+by some Dutch mathematicians!  They proved some things I didn't, but missed
+some things that I and others found.  I've updated the text below to
+incorporate their work.)<p>
 
 Let's consider the game of Snake; except instead of playing it on a grid, we're
 going to play it on an arbitrary finite [simple] graph.  We assume the snake
@@ -113,6 +117,42 @@ unwinnable graph, is the result necessarily also unwinnable?  I used to think I
 had a counterexample to this, but it turned out to be wrong!  If these really
 are all the minimal winnables, then the answer to this question is positive, but
 I think it's also of independent interest!<p>
+
+<h3>Some positive results, and discussion of Graafsma et. al.</h3>
+
+The paper by Graafsma et. al. does answer question number two in one
+limited case: They show that if G has an odd number of vertices and is
+2-colorable, then it is winnable if and only if it contains
+&Theta;<sub>1,1,k</sub> for appropriate k as a spanning subgraph.  Equivalently,
+the &Theta;<sub>1,1,k</sub> are the only minimal winnables that have an odd
+number of vertices and are 2-colorable.  (They then use this to show that
+determining winnability is NP-hard.  Go check it out!)<p>
+
+Graafsma et. al. also show that if G is winnable and does <i>not</i> have a
+Hamilton cycle, then it has girth at most 6.  They also provide an example to
+show that this is tight, although I don't really understand their example.
+However, it definitely is tight, because, as mentioned abouve,
+&Theta;<sub>2,2,2</sub> is winnable!<p>
+
+Instead of asking about the shortest cycle, though, we could ask about the
+longest cycle (the circumference).  Here's a result that Graafsma. et. al.
+missed: Say G is a winnable graph with n vertices, and let &omega;(G) be its
+clique number and c(G) be its circumference.  Then <b>&omega;(G)+c(G)&ge;n</b>.
+In particular, <b>c(G)&ge;n/2</b>.  (Actually, we can do better; let &omega;'(G)
+be the size of the largest clique in G that lies at the end of a Hamilton path.
+Then <b>&omega;'(G)+c(G)&ge;n</b>.)<p>
+
+(Here's a quick proof sketch.  The way to prove this is to rephrase it as: For
+any k, either there's a cycle of length at least n-k, or there exists a Hamilton
+path with a K<sub>k+1</sub> at the end.  Consider what happens when the snake
+reaches length n-k.  If the head together with the non-snake vertices form a
+K<sub>k+1</sub>, then great, you're done.  If not, then the computer can force
+there to be a subsequent time step when the snake moves without eating the food.
+If when the snake next eats a food, it occupies the spot vacated by its tail,
+then we have our required cycle; if it doesn't, the computer can place the food
+there, forcing the snake to make the required cycle in order to win.  Thanks to
+Tim Ophelders for reminding me of the proof, I seem to have lost the relevant
+notes!)
 
 <hr>
 
