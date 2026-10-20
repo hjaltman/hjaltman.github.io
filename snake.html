@@ -11,6 +11,9 @@ by some Dutch mathematicians!  They proved some things I didn't, but missed
 some things that I and others found.  I've updated the text below to
 incorporate their work.)<p>
 
+(<b>Updated</b> again October 19, 2026: Upskuttle, with the help of an LLM, has
+found a number of mistakes!  I am trying to update this page.)<p>
+
 Let's consider the game of Snake; except instead of playing it on a grid, we're
 going to play it on an arbitrary finite [simple] graph.  We assume the snake
 starts at length 1 -- the game begins by the "computer" (who acts adversarially)
@@ -49,6 +52,10 @@ Hence the restriction to simple graphs -- if I'm right, then unless the
 "underlying simple graph" is P<sub>3</sub>, adding multiple edges simply won't
 affect anything.  (And it's easy to see how it affects P<sub>3</sub>.)<p>
 
+(<b>Update</b>: This conjecture is false.  There are counterexamples on 10
+vertices.  I don't claim to understand them.  Thanks to Upskuttle for finding
+them.)<p>
+
 But let's put that aside and return to the question of which graphs are
 winnable more generally.  Here are some examples of winnable graphs:
 <ul>
@@ -76,19 +83,19 @@ the strong game unless I say otherwise.)  Characterizing these would
 characterize all winnable graphs, as a graph is winnable iff it contains some
 minimal winnable.<p>
 
-So far I've only managed to find a few types of minimal winnable graphs!
-And, more generally, every winnable graph I know of contains one of these as a
-spanning subgraph.  There are of course the trivial ones -- the zero-vertex
-graph, the one-vertex graph, the path P<sub>2</sub>.  But the interesting ones
-are the following:
+Prior to Upskuttle's work, I could only find a few types of minimal winnable
+graphs, and every winnable graph I knew of contained one of them as a spanning
+subgraphs.  Excluding a the trivial ones (the zero-vertex
+graph, the one-vertex graph, the path P<sub>2</sub>), they were as follows:
 <ol>
 <li>For n&ge;3, the cycle C<sub>n</sub>.  (In the weak game, we should restrict
 to n&ge;4, as there C<sub>3</sub> is not minimal.)
 <li>For n&ge;3, two copies of K<sub>n</sub> joined at a vertex.  (In the weak
 game, we should instead say n&ge;2, as n=2 yields the path P<sub>3</sub>.)
 <li>The graphs &Psi;<sub>1,k</sub>=&Theta;<sub>1,1,k</sub>.
-<li>The graphs &Theta;<sub>2,2,k</sub> for k&isin;{1,2}, and, for
-k&ge;3, the graphs &Psi;<sub>2,k</sub>.
+<li>The graph &Theta;<sub>2,2,2</sub> and, for
+k&ge;3, the graphs &Psi;<sub>2,k</sub>.  (This list <b>previously</b> also
+included &Theta;<sub>2,2,1</sub>, but that was in error -- it's not winnable!)
 <li>For m&ge;4, let's take &Psi;<sub>m,k</sub> and modify it as follows.  For
 each vertex in one of the two cliques, connect it to only one of the two "hinge"
 vertices instead of both of them.  As long as k&le;m, any choice of how to do
@@ -108,15 +115,10 @@ unlikely, but it might just be possible.  I have in fact verified that these are
 all of them up to 7 vertices, so any counterexample will have to be at least 8
 vertices, unless I've messed up.<p>
 
-Note that an earlier version of this page only included families (1)-(3) above;
-so the original "are these all?" question has now been answered with a "no".
-Still, we can once again ask "are these all" about the new list!<p>
-
-I'd also like to ask, <b>question number three</b>: If one subdivides an
-unwinnable graph, is the result necessarily also unwinnable?  I used to think I
-had a counterexample to this, but it turned out to be wrong!  If these really
-are all the minimal winnables, then the answer to this question is positive, but
-I think it's also of independent interest!<p>
+(<b>Update</b>: The answer to this question is <b>very much no</b>.  There are
+lots more.  Not only that, but I messed up on 7 vertices -- my classification
+was only correct up to 6, because I incorrectly thought that
+&Theta;<sub>2,2,1</sub> was winnable!)<p>
 
 <h3>Some positive results, and discussion of Graafsma et. al.</h3>
 
@@ -163,7 +165,12 @@ can define "winning" as the snake increasing in length without bound.  I mostly
 think this variant is less interesting, but earlier here I asked the question:
 Is there an infinite unwinnable graph without any cut-vertices?  Credit goes to
 Upskuttle for pointing out that K<sub>2,&alefsym;<sub>0</sub></sub> is an
-example of this.
+example of this.<p>
+
+Also, I previously asked if there could be an unwinnable graph with a winnable
+subdivision.  I asked this because I mistakenly thought that
+&Theta;<sub>2,2,1</sub> was winnable.  Now that we know it's unwinnable, we can
+see that it provides an example (as &Theta;<sub>2,2,2</sub> is winnable).
 
 <h3>Corrections:</h3>
 
@@ -173,7 +180,7 @@ error.<p>
 
 An earlier version of this page erroneously claimed that I had checked all
 graphs of up to 8 vertices, but it turns out the method I used is only valid up
-to 7 vertices.  <p>
+to 7 vertices.  (Oops, nope, it was only valid up to 6.)<p>
 
 An earlier version of this page erroneously claimed that &Theta;<sub>2,2,k</sub>
 is winnable for k&ge;3; this was part of more generally giving an incorrect
@@ -182,6 +189,9 @@ sufficed for all m,k&ge;1, rather than it requiring k&le;m.)  It also used this
 to claim a counterexample to question number three, but this counterexample
 wasn't valid.  Thanks to Rakesh Rivera, Enze Chen, Nathan Negera, and Janice
 Yuan for finding this error.<p>
+
+An earlier version of this page erroneously claimed that &Theta;<sub>2,2,1</sub>
+was winnable; thanks to Upskuttle for finding the error.<p>
 
 <a href="index.html">(back to main page)</a>
 </body>
